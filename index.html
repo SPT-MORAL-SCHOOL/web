@@ -166,21 +166,16 @@
             </div>
         </div>
 
-        <div id="committeePage" class="page hidden bg-gray-50 min-h-screen"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"> <div class="flex flex-col md:flex-row justify-between items-center mb-12 pb-8 border-b-4 border-double border-indigo-200">
-            <div class="text-center md:text-left mb-6 md:mb-0">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-pink-600 tracking-tight leading-tight drop-shadow-lg">
-                    คณะกรรมการนักเรียน
-                </h1>
-                <p class="text-xl md:text-2xl font-semibold text-gray-700 mt-2">
-                    ขับเคลื่อนโรงเรียนคุณธรรม สพฐ.
-                </p>
-                <p class="text-lg text-indigo-500 mt-1">โรงเรียนสตรีพัทลุง</p>
-            </div>
-            
-            <button id="addMemberBtn" onclick="showAddMemberModal()" class="hidden bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-50">
-                เพิ่มสมาชิก
-            </button>
-        </div>
+        <div id="committeePage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold gradient-text">คณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม สพฐ.</h1>
+                        <p class="text-lg text-gray-600 mt-2">โรงเรียนสตรีพัทลุง</p>
+                    </div>
+                    <button id="addMemberBtn" onclick="showAddMemberModal()" class="hidden bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-xl text-base hover:from-purple-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มสมาชิก</button>
+                </div>
+                
         
         <div class="space-y-12">
             <div id="committeeStructure" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
