@@ -366,8 +366,9 @@
         </div>
     </main>
 
-    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 transition-opacity duration-300">
-    <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-sm w-full transform transition-transform duration-300 scale-100">
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-start lg:items-center justify-center z-50 p-4 transition-opacity duration-300 overflow-y-auto">
+    
+    <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-sm w-full transform transition-transform duration-300 scale-100 mt-12 mb-12 lg:mt-0 lg:mb-0">
         
         <div class="p-6 bg-gradient-to-r from-purple-600 to-blue-500 text-white text-center">
             <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m3-4a3 3 0 00-3-3H6a3 3 0 00-3 3"></path></svg>
@@ -663,11 +664,14 @@
     </div>
 
 
-    <footer class="bg-white py-8 mt-20 shadow-2xl border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="text-base text-gray-600 font-medium">©️ 2024 SPT MORAL SCHOOL - โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง | All Rights Reserved</p>
-        </div>
-    </footer>
+<footer class="bg-white py-8 mt-20 shadow-2xl border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+        <p class="text-base text-gray-600 font-medium whitespace-nowrap overflow-x-auto inline-block">
+            ©️ 2024 SPT MORAL SCHOOL - โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง | All Rights Reserved
+        </p>
+    </div>
+</footer>
+
 
     <script>
         // Firebase Configuration
