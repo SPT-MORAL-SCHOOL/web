@@ -208,41 +208,44 @@
         </div>
 
         <div id="committeePage" class="page hidden">
-            <div class="max-w-6xl mx-auto px-4 py-12">
-                <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
-                    <div>
-                        <h1 class="text-xl md:text-2xl font-bold gradient-text">คณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม สพฐ.</h1>
-                        <p class="text-lg text-gray-600 mt-2">โรงเรียนสตรีพัทลุง</p>
-                    </div>
-                    <button id="addMemberBtn" onclick="showAddMemberModal()" class="hidden bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-xl text-base hover:from-purple-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มสมาชิก</button>
-                </div>
-                
+    <div class="max-w-6xl mx-auto px-4 py-12">
         
-        <div class="space-y-12">
-            <div id="committeeStructure" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                
-                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 border border-gray-100">
-                    <div class="relative">
-                        <img class="w-full h-48 object-cover object-center rounded-t-2xl" src="[URL_TO_MEMBER_IMAGE]" alt="ชื่อสมาชิก">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        
-                        <span class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full shadow-md">
-                            ประธาน
-                        </span>
-                    </div>
-                    
-                    <div class="p-6 text-center">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-1">ชื่อ-นามสกุล สมาชิก</h3>
-                        <p class="text-lg text-indigo-600 font-medium">ชั้น ม.X/Y</p>
-                        <p class="text-sm text-gray-500 mt-2">รายละเอียดเพิ่มเติม / หน้าที่</p>
-                    </div>
-                    
-                    </div>
-                
-                </div>
+        <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold gradient-text">คณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม สพฐ.</h1>
+                <p class="text-lg text-gray-600 mt-2">โรงเรียนสตรีพัทลุง</p>
+            </div>
+            <button id="addMemberBtn" onclick="showAddMemberModal()" class="hidden bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-xl text-base hover:from-purple-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มสมาชิก</button>
         </div>
-    </div>
+        
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
+        
+            <div class="space-y-12">
+                <div id="committeeStructure" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                    
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover object-center rounded-t-2xl" src="[URL_TO_MEMBER_IMAGE]" alt="ชื่อสมาชิก">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            
+                            <span class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full shadow-md">
+                                ประธาน
+                            </span>
+                        </div>
+                        
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-1">ชื่อ-นามสกุล สมาชิก</h3>
+                            <p class="text-lg text-indigo-600 font-medium">ชั้น ม.X/Y</p>
+                            <p class="text-sm text-gray-500 mt-2">รายละเอียดเพิ่มเติม / หน้าที่</p>
+                        </div>
+                    </div>
+                    
+                    </div>
+            </div>
+        </div>
+        </div>
 </div>
+
 
 <style>
 /* กำหนดสี Gradient Text แบบ Custom */
