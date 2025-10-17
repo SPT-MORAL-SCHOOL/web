@@ -1333,7 +1333,7 @@ function toggleMobileMenu() {
         }
 
         // =========================================================
-        // LINK FUNCTIONS
+        // LINK FUNCTIONS (เดิม)
         // =========================================================
         
         function showAddLinkModal() {
@@ -1409,6 +1409,9 @@ function toggleMobileMenu() {
                     const linkCard = createLinkCard(doc.id, link);
                     linksList.appendChild(linkCard);
                 });
+                
+                // *** เพิ่ม: เรียกโหลดเอกสารหลังจากโหลดลิงก์เสร็จ ***
+                loadDocuments(); 
             });
         }
 
@@ -1454,27 +1457,6 @@ function toggleMobileMenu() {
                 });
             }
         }
-                // =========================================================
-        // LINK FUNCTIONS (เดิม)
-        // =========================================================
-        
-        // ... (โค้ดฟังก์ชัน Link เดิมทั้งหมด) ... 
-        
-        // ในฟังก์ชัน loadLinks() เดิม 
-        function loadLinks() {
-            db.collection('links').orderBy('createdAt', 'desc').get().then((querySnapshot) => {
-                const linksList = document.getElementById('linksList');
-                linksList.innerHTML = '';
-                
-                querySnapshot.forEach((doc) => {
-                    const link = doc.data();
-                    const linkCard = createLinkCard(doc.id, link);
-                    linksList.appendChild(linkCard);
-                });
-            });
-            // เรียกโหลดเอกสารเมื่อโหลดลิงก์เสร็จ (หรือจะแยกก็ได้)
-            loadDocuments(); 
-        }
 
         // =========================================================
         // DOCUMENT FUNCTIONS (ใหม่)
@@ -1508,7 +1490,6 @@ function toggleMobileMenu() {
             const url = document.getElementById('documentUrl').value;
             const description = document.getElementById('documentDescription').value;
 
-            // บันทึกไปที่ Collection 'documents'
             db.collection('documents').add({ 
                 title: title,
                 url: url,
@@ -1530,7 +1511,6 @@ function toggleMobileMenu() {
             const url = document.getElementById('editDocumentUrl').value;
             const description = document.getElementById('editDocumentDescription').value;
 
-            // อัปเดตที่ Collection 'documents'
             db.collection('documents').doc(id).update({
                 title: title,
                 url: url,
@@ -1547,7 +1527,6 @@ function toggleMobileMenu() {
         
         function deleteDocument(id) {
             if (confirm('คุณต้องการลบเอกสารนี้หรือไม่?')) {
-                // ลบจาก Collection 'documents'
                 db.collection('documents').doc(id).delete().then(() => {
                     loadDocuments();
                     showToast('ลบเอกสารสำเร็จ', 'success');
@@ -1556,7 +1535,6 @@ function toggleMobileMenu() {
         }
         
         function loadDocuments() {
-            // โหลดจาก Collection 'documents'
             db.collection('documents').orderBy('createdAt', 'desc').get().then((querySnapshot) => { 
                 const documentsList = document.getElementById('documentsList');
                 documentsList.innerHTML = '';
@@ -1571,10 +1549,9 @@ function toggleMobileMenu() {
 
         function createDocumentCard(id, documentData) {
             const card = document.createElement('div');
-            // เปลี่ยนสี gradient เป็นสีเขียว-ฟ้า (teal-green) สำหรับเอกสาร
             card.className = 'bg-white shadow-xl rounded-2xl p-6 card-hover transform transition-all duration-300 border border-gray-100';
             
-            // กำหนดไอคอนตามชนิดไฟล์ ถ้าเป็น .pdf ให้ใช้ไอคอน PDF ถ้าไม่ใช้ไอคอนเอกสารทั่วไป
+            // ตรวจสอบว่าเป็น PDF หรือไม่เพื่อเลือกไอคอน
             const isPDF = documentData.url.toLowerCase().endsWith('.pdf');
             const iconSvg = isPDF ? 
                 `<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>` : 
@@ -1608,9 +1585,27 @@ function toggleMobileMenu() {
             `;
             return card;
         }
-        
-        // อย่าลืมเรียก loadLinks() ครั้งเดียวเมื่อหน้าเว็บโหลดเสร็จ (ปกติจะอยู่ในโค้ดหลักของหน้า)
-        // เพื่อให้มีการเรียก loadDocuments() ต่อไป
+
+        // *** สำคัญ: โค้ดสำหรับแสดง/ซ่อนปุ่มตามสถานะ isAdmin ***
+        // คุณต้องเพิ่มโค้ดส่วนนี้เข้าไปในฟังก์ชันที่ทำการตรวจสอบสถานะการเข้าสู่ระบบ/สิทธิ์ผู้ดูแลระบบ (isAdmin) 
+        // เมื่อการตรวจสอบเสร็จสิ้น ตัวอย่างเช่น:
+        /*
+        function checkAdminStatus(user) {
+            // ... ตรรกะการตรวจสอบสิทธิ์ผู้ดูแลระบบ ...
+            const isAdmin = // (true/false จากการตรวจสอบสิทธิ์)
+
+            if (isAdmin) {
+                // แสดงปุ่มสำหรับผู้ดูแลระบบทั้งหมด
+                document.getElementById('addLinkBtn').classList.remove('hidden');
+                document.getElementById('addDocumentBtn').classList.remove('hidden');
+            } else {
+                // ซ่อนปุ่มทั้งหมด
+                document.getElementById('addLinkBtn').classList.add('hidden');
+                document.getElementById('addDocumentBtn').classList.add('hidden');
+            }
+        }
+        */
+
 
 
         // Utility Functions
