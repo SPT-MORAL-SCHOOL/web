@@ -266,8 +266,9 @@
 </style>
 
 
-        <div id="linksPage" class="page hidden">
+<div id="linksPage" class="page hidden">
     <div class="max-w-6xl mx-auto px-4 py-12">
+        
         <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
             <div>
                 <h1 class="text-2xl md:text-3xl font-bold gradient-text">ลิงก์ที่เกี่ยวข้อง</h1>
@@ -289,6 +290,7 @@
             </div>
     </div>
 </div>
+
 
 <div id="addDocumentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
@@ -1678,6 +1680,25 @@ function hideLoginModal() {
         modal.classList.add('hidden');
     }, 300); // 300ms ตรงกับ duration-300 ใน CSS
 }
+        // สมมติว่านี่คือโค้ดที่คุณใช้ตรวจสอบสิทธิ์ผู้ดูแลระบบ
+function checkAdminStatus(user) {
+    // ... ตรรกะการตรวจสอบสิทธิ์ผู้ดูแลระบบ ...
+    const isAdmin = /* ค่าที่ได้จากการตรวจสอบสิทธิ์ (true/false) */;
+
+    if (isAdmin) {
+        // 1. แสดงปุ่มเพิ่มลิงก์
+        document.getElementById('addLinkBtn').classList.remove('hidden');
+        
+        // 2. แสดงปุ่มเพิ่มเอกสาร (ทำแบบเดียวกันกับปุ่มลิงก์)
+        document.getElementById('addDocumentBtn').classList.remove('hidden');
+
+    } else {
+        // ซ่อนปุ่มทั้งหมดเมื่อไม่ใช่ Admin
+        document.getElementById('addLinkBtn').classList.add('hidden');
+        document.getElementById('addDocumentBtn').classList.add('hidden');
+    }
+}
+
 
     </script>
 </body>
