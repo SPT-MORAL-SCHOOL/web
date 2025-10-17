@@ -267,18 +267,78 @@
 
 
         <div id="linksPage" class="page hidden">
-            <div class="max-w-6xl mx-auto px-4 py-12">
-                <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
-                    <div>
-                        <h1 class="text-2xl md:text-3xl font-bold gradient-text">ลิงก์ที่เกี่ยวข้อง</h1>
-                        <p class="text-lg text-gray-600 mt-2">ลิงก์และเว็บไซต์ที่เป็นประโยชน์</p>
-                    </div>
-                    <button id="addLinkBtn" onclick="showAddLinkModal()" class="hidden bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl text-base hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มลิงก์</button>
-                </div>
-                <div id="linksList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    </div>
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold gradient-text">ลิงก์ที่เกี่ยวข้อง</h1>
+                <p class="text-lg text-gray-600 mt-2">ลิงก์และเว็บไซต์ที่เป็นประโยชน์</p>
             </div>
+            <button id="addLinkBtn" onclick="showAddLinkModal()" class="hidden bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl text-base hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มลิงก์</button>
         </div>
+        <div id="linksList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            </div>
+
+        <div class="flex justify-between items-center mb-10 pt-6 pb-6 border-b-2 border-gradient-to-r from-green-600 to-teal-600">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600">เอกสารที่เกี่ยวข้อง</h2>
+                <p class="text-lg text-gray-600 mt-2">คู่มือ, ไฟล์, และเอกสารที่ดาวน์โหลดได้</p>
+            </div>
+            <button id="addDocumentBtn" onclick="showAddDocumentModal()" class="hidden bg-gradient-to-r from-teal-500 to-green-600 text-white px-6 py-3 rounded-xl text-base hover:from-teal-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มเอกสาร</button>
+        </div>
+        <div id="documentsList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+    </div>
+</div>
+
+<div id="addDocumentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+        <h2 class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-600">เพิ่มเอกสาร</h2>
+        <form id="addDocumentForm" onsubmit="handleAddDocument(event)">
+            <div class="mb-4">
+                <label for="documentTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อเอกสาร</label>
+                <input type="text" id="documentTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="mb-4">
+                <label for="documentUrl" class="block text-sm font-medium text-gray-700 mb-2">URL ไฟล์เอกสาร (เช่น Google Drive, Dropbox, ไฟล์บนเซิร์ฟเวอร์)</label>
+                <input type="url" id="documentUrl" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="https://example.com/file.pdf">
+            </div>
+            <div class="mb-6">
+                <label for="documentDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย (ไม่บังคับ)</label>
+                <textarea id="documentDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+            </div>
+            <div class="flex space-x-4">
+                <button type="submit" class="flex-1 bg-gradient-to-r from-teal-500 to-green-600 text-white py-2 rounded-lg hover:from-teal-600 hover:to-green-700">เพิ่มเอกสาร</button>
+                <button type="button" onclick="hideAddDocumentModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="editDocumentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+        <h2 class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-600">แก้ไขเอกสาร</h2>
+        <form id="editDocumentForm" onsubmit="handleEditDocument(event)">
+            <input type="hidden" id="editDocumentId">
+            <div class="mb-4">
+                <label for="editDocumentTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อเอกสาร</label>
+                <input type="text" id="editDocumentTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="mb-4">
+                <label for="editDocumentUrl" class="block text-sm font-medium text-gray-700 mb-2">URL ไฟล์เอกสาร</label>
+                <input type="url" id="editDocumentUrl" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="mb-6">
+                <label for="editDocumentDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย (ไม่บังคับ)</label>
+                <textarea id="editDocumentDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+            </div>
+            <div class="flex space-x-4">
+                <button type="submit" class="flex-1 bg-gradient-to-r from-teal-500 to-green-600 text-white py-2 rounded-lg hover:from-teal-600 hover:to-green-700">บันทึกการแก้ไข</button>
+                <button type="button" onclick="hideEditDocumentModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
         <div id="contactPage" class="page hidden">
             <div class="max-w-6xl mx-auto px-4 py-12">
@@ -370,9 +430,9 @@
         </div>
     </main>
 
-    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-start lg:items-center justify-center z-50 p-4 transition-opacity duration-300 overflow-y-auto">
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 transition-opacity duration-300 overflow-y-auto">
     
-    <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-sm w-full transform transition-transform duration-300 scale-100 mt-12 mb-12 lg:mt-0 lg:mb-0">
+    <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-sm w-full transform transition-transform duration-300 scale-100 mt-0 mb-0">
         
         <div class="p-6 bg-gradient-to-r from-purple-600 to-blue-500 text-white text-center">
             <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m3-4a3 3 0 00-3-3H6a3 3 0 00-3 3"></path></svg>
@@ -411,6 +471,7 @@
         </div>
     </div>
 </div>
+
 
     <div id="addActivityModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
@@ -1393,6 +1454,164 @@ function toggleMobileMenu() {
                 });
             }
         }
+                // =========================================================
+        // LINK FUNCTIONS (เดิม)
+        // =========================================================
+        
+        // ... (โค้ดฟังก์ชัน Link เดิมทั้งหมด) ... 
+        
+        // ในฟังก์ชัน loadLinks() เดิม 
+        function loadLinks() {
+            db.collection('links').orderBy('createdAt', 'desc').get().then((querySnapshot) => {
+                const linksList = document.getElementById('linksList');
+                linksList.innerHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const link = doc.data();
+                    const linkCard = createLinkCard(doc.id, link);
+                    linksList.appendChild(linkCard);
+                });
+            });
+            // เรียกโหลดเอกสารเมื่อโหลดลิงก์เสร็จ (หรือจะแยกก็ได้)
+            loadDocuments(); 
+        }
+
+        // =========================================================
+        // DOCUMENT FUNCTIONS (ใหม่)
+        // =========================================================
+
+        function showAddDocumentModal() {
+            document.getElementById('addDocumentModal').classList.remove('hidden');
+        }
+
+        function hideAddDocumentModal() {
+            document.getElementById('addDocumentModal').classList.add('hidden');
+            document.getElementById('addDocumentForm').reset();
+        }
+
+        function showEditDocumentModal(id, title, url, description) {
+            document.getElementById('editDocumentId').value = id;
+            document.getElementById('editDocumentTitle').value = title;
+            document.getElementById('editDocumentUrl').value = url;
+            document.getElementById('editDocumentDescription').value = description || '';
+            document.getElementById('editDocumentModal').classList.remove('hidden');
+        }
+
+        function hideEditDocumentModal() {
+            document.getElementById('editDocumentModal').classList.add('hidden');
+            document.getElementById('editDocumentForm').reset();
+        }
+
+        function handleAddDocument(event) {
+            event.preventDefault();
+            const title = document.getElementById('documentTitle').value;
+            const url = document.getElementById('documentUrl').value;
+            const description = document.getElementById('documentDescription').value;
+
+            // บันทึกไปที่ Collection 'documents'
+            db.collection('documents').add({ 
+                title: title,
+                url: url,
+                description: description,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideAddDocumentModal();
+                loadDocuments();
+                showToast('เพิ่มเอกสารสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+
+        function handleEditDocument(event) {
+            event.preventDefault();
+            const id = document.getElementById('editDocumentId').value;
+            const title = document.getElementById('editDocumentTitle').value;
+            const url = document.getElementById('editDocumentUrl').value;
+            const description = document.getElementById('editDocumentDescription').value;
+
+            // อัปเดตที่ Collection 'documents'
+            db.collection('documents').doc(id).update({
+                title: title,
+                url: url,
+                description: description,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideEditDocumentModal();
+                loadDocuments();
+                showToast('แก้ไขเอกสารสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+        
+        function deleteDocument(id) {
+            if (confirm('คุณต้องการลบเอกสารนี้หรือไม่?')) {
+                // ลบจาก Collection 'documents'
+                db.collection('documents').doc(id).delete().then(() => {
+                    loadDocuments();
+                    showToast('ลบเอกสารสำเร็จ', 'success');
+                });
+            }
+        }
+        
+        function loadDocuments() {
+            // โหลดจาก Collection 'documents'
+            db.collection('documents').orderBy('createdAt', 'desc').get().then((querySnapshot) => { 
+                const documentsList = document.getElementById('documentsList');
+                documentsList.innerHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const documentData = doc.data();
+                    const documentCard = createDocumentCard(doc.id, documentData);
+                    documentsList.appendChild(documentCard);
+                });
+            });
+        }
+
+        function createDocumentCard(id, documentData) {
+            const card = document.createElement('div');
+            // เปลี่ยนสี gradient เป็นสีเขียว-ฟ้า (teal-green) สำหรับเอกสาร
+            card.className = 'bg-white shadow-xl rounded-2xl p-6 card-hover transform transition-all duration-300 border border-gray-100';
+            
+            // กำหนดไอคอนตามชนิดไฟล์ ถ้าเป็น .pdf ให้ใช้ไอคอน PDF ถ้าไม่ใช้ไอคอนเอกสารทั่วไป
+            const isPDF = documentData.url.toLowerCase().endsWith('.pdf');
+            const iconSvg = isPDF ? 
+                `<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>` : 
+                `<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`;
+
+            card.innerHTML = `
+                <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-r from-teal-500 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+                            ${iconSvg}
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-600">${documentData.title}</h3>
+                            <p class="text-sm text-gray-500 break-all">${documentData.url.split('/').pop() || 'ไฟล์เอกสาร'}</p>
+                        </div>
+                    </div>
+                    ${isAdmin ? `
+                        <div class="flex space-x-2">
+                            <button onclick="showEditDocumentModal('${id}', '${documentData.title.replace(/'/g, "\\'")}', '${documentData.url}', '${documentData.description ? documentData.description.replace(/'/g, "\\'") : ''}')" class="text-sm text-green-600 hover:text-green-800 bg-green-50 px-3 py-1 rounded-full hover:bg-green-100 transition-all duration-300">แก้ไข</button>
+                            <button onclick="deleteDocument('${id}')" class="text-sm text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded-full hover:bg-red-100 transition-all duration-300">ลบ</button>
+                        </div>
+                    ` : ''}
+                </div>
+                ${documentData.description ? `<p class="text-base text-gray-600 mb-4 leading-relaxed">${documentData.description}</p>` : ''}
+                <a href="${documentData.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 bg-gradient-to-r from-teal-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm hover:from-teal-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <span>ดาวน์โหลด/เปิดเอกสาร</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                </a>
+            `;
+            return card;
+        }
+        
+        // อย่าลืมเรียก loadLinks() ครั้งเดียวเมื่อหน้าเว็บโหลดเสร็จ (ปกติจะอยู่ในโค้ดหลักของหน้า)
+        // เพื่อให้มีการเรียก loadDocuments() ต่อไป
+
 
         // Utility Functions
         function formatDate(dateString) {
