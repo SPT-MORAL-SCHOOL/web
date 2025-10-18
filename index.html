@@ -980,7 +980,7 @@ function toggleMobileMenu() {
             card.innerHTML = `
                 <div>
                     <h3 class="text-lg font-bold text-gray-900 mb-3 gradient-text">${activity.title}</h3>
-                    <p class="text-base text-gray-600 mb-4 leading-relaxed line-clamp-3">${activity.description}</p>
+                    <p class="text-base text-gray-600 mb-4 leading-relaxed >${activity.description}</p>
                     ${activity.featured ? '<span class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-sm px-3 py-1 rounded-full shadow-md">⭐ กิจกรรมเด่น</span>' : ''}
                 </div>
                 <div class="mt-4 pt-4 border-t border-gray-100">
@@ -1121,7 +1121,7 @@ function toggleMobileMenu() {
             card.innerHTML = `
                 <div>
                     <h3 class="text-lg font-bold text-gray-900 mb-3 gradient-text">${news.title}</h3>
-                    <p class="text-base text-gray-600 mb-4 leading-relaxed line-clamp-3">${news.content}</p>
+                    <p class="text-base text-gray-600 mb-4 leading-relaxed ">${news.content}</p>
                 </div>
                 <div class="mt-4 pt-4 border-t border-gray-100">
                     <span class="text-sm text-purple-600 font-medium bg-purple-50 px-3 py-1 rounded-full">ประชาสัมพันธ์: ${formatDate(news.date)}</span>
