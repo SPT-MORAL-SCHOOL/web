@@ -935,16 +935,7 @@ function showPage(pageId) {
     
     // 6. Hide mobile menu
     document.getElementById('mobileMenu').classList.add('hidden');
-// ** การแก้ไขขันสุดท้าย : เลื่อนลง 64px เพื่อให้พ้น Navbar *
-// 64px คือความสูงของ Navbar h-1
-const NAVBAR_HEIGHT = 64;
-setTimeout ( () = (
-window.scrollTo({
-op: NAVBAR HEIGHT, // เลื่อนลง 64px จากบนสุด
-behavior:
-instant
-) ;
-}, 1) :
+    setTimeout(() => { window.scrollTo(0, 0); }, 50);
 }
 
 function toggleMobileMenu() {
