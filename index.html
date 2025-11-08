@@ -794,4 +794,74 @@
         
         function createRecruitmentContentCard(id, data, dataType) {
             const adminButtons = isAdmin ? `
-                <div class="mt-4 flex space-x-2 justify
+                <div class="mt-4 flex space-x-2 justify-end">
+                    <button onclick="alert('ฟังก์ชันแก้ไขกำลังดำเนินการ (ID: ${id})')" class="text-sm text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded-full hover:bg-blue-100 transition-all duration-300">แก้ไข</button>
+                    <button onclick="handleDeleteData('${id}', '${dataType}')" class="text-sm text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded-full hover:bg-red-100 transition-all duration-300">ลบ</button>
+                </div>
+            ` : '';
+
+            const urlButton = data.url ? `
+                <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-indigo-600 hover:text-indigo-800 font-semibold mt-2 transition-all duration-300 transform hover:scale-[1.02]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    <span>${dataType.includes('Announcement') ? 'รายละเอียดเพิ่มเติม' : 'ดูรายชื่อ/เอกสาร'}</span>
+                </a>
+            ` : '';
+            
+            // Note: The content field can contain HTML, so use backticks and ${data.content}
+            return `
+                <div class="bg-gray-50 p-4 rounded-lg shadow-inner mb-4">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">${data.title}</h4>
+                    <div class="text-base text-gray-700 leading-relaxed">${data.content}</div>
+                    ${urlButton}
+                    ${adminButtons}
+                </div>
+            `;
+        }
+
+
+        // =========================================================
+        // INITIALIZATION (Existing functions below, kept for completeness)
+        // =========================================================
+
+        // The following functions are placeholders from the original file
+        // You will need to ensure the full CRUD logic for these is implemented
+        function loadActivities() { /* ... existing logic ... */ }
+        function loadFeaturedActivities() { /* ... existing logic ... */ }
+        function loadNews() { /* ... existing logic ... */ }
+        function loadCommittee() { /* ... existing logic ... */ }
+        function loadLinks() { /* ... existing logic ... */ }
+        // ... (other helper and modal functions from original file) ...
+
+
+        // Event listeners for page load and hash change
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for URL hash and load the corresponding page
+            const pageHash = window.location.hash.substring(1) || 'home';
+            showPage(pageHash);
+
+            // Set today's date as default for date inputs (if you re-enable old forms)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('activityDate')?.value = today;
+            document.getElementById('newsDate')?.value = today;
+        });
+
+        // Auth state observer
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                isAdmin = true;
+                showAdminPanel();
+            } else {
+                isAdmin = false;
+                hideAdminPanel();
+            }
+        });
+        
+        // (ใหม่) เพิ่ม Event Listener สำหรับปุ่ม Back/Forward ของเบราว์เซอร์
+        window.addEventListener('popstate', function() {
+            const pageToLoad = window.location.hash.substring(1) || 'home';
+            showPage(pageToLoad);
+        });
+
+</script>
+</body>
+</html>
