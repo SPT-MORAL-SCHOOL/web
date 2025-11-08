@@ -961,14 +961,14 @@
         // You MUST replace the placeholder values below with your actual Firebase project configuration.
         // =========================================================
         const firebaseConfig = {
-        apiKey: "AIzaSyCgWeRM9YppUP6zER1mHxWxxzsMu6ET7MI",
-        authDomain: "e-web-e73f4.firebaseapp.com",
-        projectId: "e-web-e73f4",
-        storageBucket: "e-web-e73f4.firebasestorage.app",
-        messagingSenderId: "49194142701",
-        appId: "1:49194142701:web:066a7a4240437ee5f935e4",
-        measurementId: "G-E36KT28YTQ"
-    };
+  apiKey: "AIzaSyBeh27zK1qUYP7tOU3MYNn_RobC8RaPZSM",
+  authDomain: "website-moral.firebaseapp.com",
+  projectId: "website-moral",
+  storageBucket: "website-moral.firebasestorage.app",
+  messagingSenderId: "450436753681",
+  appId: "1:450436753681:web:13eb5458b57950099984b0",
+  measurementId: "G-1GR9NTF8JB"
+};
 
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
@@ -1207,6 +1207,11 @@
         // Function to load all data relevant to all pages
         function loadAllPagesData() {
             // loadFeaturedActivities(); // REMOVED as per user request
+            loadFeaturedActivities();
+            loadActivities();
+            loadNews();
+            loadCommittee();
+            loadLinks();
             loadCoreStudentRecruitmentData(); 
             loadCommitteeRecruitmentData(); 
             
