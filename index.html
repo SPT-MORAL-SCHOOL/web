@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง - ระบบรับสมัคร</title>
+    <title>โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง </title>
     <link rel="icon" type="image/png" href="favicon.PNG"> 
     
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> 
@@ -76,10 +76,14 @@
                         <p class="text-sm text-gray-500">โรงเรียนสตรีพัทลุง</p>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-2">
+                <div class="hidden md:flex space-x-6">
                     <a href="#home" onclick="showPage('home')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">หน้าหลัก</a>
-                    <a href="#coreStudentRecruit" onclick="showPage('coreStudentRecruit')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">นักเรียนแกนนำ</a>
-                    <a href="#committeeRecruit" onclick="showPage('committeeRecruit')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">คณะกรรมการ</a>
+                    <a href="#about" onclick="showPage('about')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">เกี่ยวกับ</a>
+                    <a href="#activities" onclick="showPage('activities')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">กิจกรรม</a>
+                    <a href="#news" onclick="showPage('news')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">ประชาสัมพันธ์</a>
+                    <a href="#committee" onclick="showPage('committee')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">คณะกรรมการ</a>
+                    <a href="#links" onclick="showPage('links')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">ลิงก์</a>
+                    <a href="#recruit" onclick="showPage('recruit')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">รับสมัคร</a>
                     <a href="#contact" onclick="showPage('contact')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">ติดต่อ</a>
                     <button onclick="showLoginModal()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-base hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เข้าสู่ระบบ</button>
                 </div>
@@ -100,18 +104,47 @@
                         class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
                     หน้าหลัก
                 </a>
-                <a id="coreStudentRecruit-mobile-btn" 
-                        href="#coreStudentRecruit"
-                        onclick="showPage('coreStudentRecruit')" 
+                <a id="home-mobile-btn" 
+                        href="#about"
+                        onclick="showPage('about')" 
                         class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
-                    นักเรียนแกนนำ
+                    เกี่ยวกับ
                 </a>
-                <a id="committeeRecruit-mobile-btn" 
-                        href="#committeeRecruit"
-                        onclick="showPage('committeeRecruit')" 
+                
+                <a id="activities-mobile-btn" 
+                        href="#activities"
+                        onclick="showPage('activities')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    กิจกรรม
+                </a>
+                
+                <a id="news-mobile-btn" 
+                        href="#news"
+                        onclick="showPage('news')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    ประชาสัมพันธ์
+                </a>
+                
+                <a id="committee-mobile-btn" 
+                        href="#committee"
+                        onclick="showPage('committee')" 
                         class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
                     คณะกรรมการ
                 </a>
+                
+                <a id="links-mobile-btn" 
+                        href="#links"
+                        onclick="showPage('links')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    ลิงก์
+                </a>
+                <a id="recruit-mobile-btn" 
+                        href="#recruit"
+                        onclick="showPage('recruit')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    รับสมัคร
+                </a>
+                
                 <a id="contact-mobile-btn" 
                         href="#contact"
                         onclick="showPage('contact')" 
@@ -123,6 +156,7 @@
                         class="block px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-base hover:from-purple-700 hover:to-blue-700 w-full text-left shadow-lg transition-all duration-300">
                     เข้าสู่ระบบ
                 </button>
+                
             </div>
         </div>
     </nav>
@@ -151,12 +185,25 @@
                     <h2 class="text-xl md:text-2xl text-gray-700 mb-8 font-medium">โรงเรียนสตรีพัทลุง</h2>
                     <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">รักสามัคคี ซื่อสัตย์สุจริต รับผิดชอบ สู่จิตสาธารณะ</p>
                     <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="showPage('coreStudentRecruit')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl text-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg pulse-glow">สมัครนักเรียนแกนนำ</button>
-                        <button onclick="showPage('committeeRecruit')" class="bg-white text-gray-700 px-8 py-3 rounded-xl text-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg border border-gray-200">สมัครคณะกรรมการ</button>
+                        <button onclick="showPage('activities')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl text-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg pulse-glow">ดูกิจกรรม</button>
+                        <button onclick="showPage('contact')" class="bg-white text-gray-700 px-8 py-3 rounded-xl text-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg border border-gray-200">ติดต่อเรา</button>
                     </div>
                 </div>
             </section>
-            
+
+            <section class="py-16 bg-white">
+                <div class="max-w-6xl mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-3">กิจกรรมเด่น</h2>
+                        <p class="text-lg text-gray-600">กิจกรรมที่น่าสนใจของโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</p>
+                        <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mt-4 rounded-full"></div>
+                    </div>
+                    <div id="featuredActivities" class="grid md:grid-cols-3 gap-8">
+                        </div>
+                </div>
+            </section>
+        </div>
+        <div id="recruitPage" class="page hidden">
             <section class="py-16 bg-gray-50">
                 <div class="max-w-6xl mx-auto px-4">
                     <div class="text-center mb-12">
@@ -194,7 +241,155 @@
                     </div>
                 </div>
             </section>
+        </div>
+        <div id="activitiesPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold gradient-text">กิจกรรม</h1>
+                        <p class="text-lg text-gray-600 mt-2">กิจกรรมทั้งหมดของโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</p>
+                    </div>
+                    <button id="addActivityBtn" onclick="showAddActivityModal()" class="hidden bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl text-base hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มกิจกรรม</button>
+                </div>
+                <div id="activitiesList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    </div>
             </div>
+        </div>
+
+        <div id="newsPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold gradient-text">ประชาสัมพันธ์</h1>
+                        <p class="text-lg text-gray-600 mt-2">ข่าวสารและประกาศต่างๆของโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</p>
+                    </div>
+                    <button id="addNewsBtn" onclick="showAddNewsModal()" class="hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-xl text-base hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มข่าว</button>
+                </div>
+                <div id="newsList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    </div>
+            </div>
+        </div>
+
+        <div id="committeePage" class="page hidden">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        
+        <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold gradient-text">คณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม สพฐ.</h1>
+                <p class="text-lg text-gray-600 mt-2">โรงเรียนสตรีพัทลุง</p>
+            </div>
+            <button id="addMemberBtn" onclick="showAddMemberModal()" class="hidden bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-xl text-base hover:from-purple-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มสมาชิก</button>
+        </div>
+        
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
+        
+            <div class="space-y-12">
+                <div id="committeeStructure" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 border border-gray-100">
+        <div class="relative">
+            <img class="w-full h-48 object-cover object-center rounded-t-2xl" src="[URL_TO_MEMBER_IMAGE]" alt="ชื่อสมาชิก">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            
+            <span class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full shadow-md">
+                ประธาน
+            </span>
+        </div>
+        
+        <div class="p-6 text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-1">ชื่อ-นามสกุล สมาชิก</h3>
+            <p class="text-lg text-indigo-600 font-medium">ชั้น ม.X/Y</p>
+            <p class="text-sm text-gray-500 mt-2">รายละเอียดเพิ่มเติม / หน้าที่</p>
+        </div>
+        
+    </div>
+    
+</div>
+
+                    
+                    </div>
+            </div>
+        </div>
+        </div>
+</div>
+
+
+<style>
+/* กำหนดสี Gradient Text แบบ Custom */
+.gradient-text {
+    /* การตั้งค่านี้ถูกรวมอยู่ใน Tailwind Classes ข้างบนแล้ว (bg-clip-text, bg-gradient-to-r...) */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+</style>
+
+
+        <div id="linksPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="flex justify-between items-center mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold gradient-text">ลิงก์ที่เกี่ยวข้อง</h1>
+                        <p class="text-lg text-gray-600 mt-2">ลิงก์และเว็บไซต์ที่เป็นประโยชน์</p>
+                    </div>
+                    <button id="addLinkBtn" onclick="showAddLinkModal()" class="hidden bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl text-base hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เพิ่มลิงก์</button>
+                </div>
+                <div id="linksList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    </div>
+            </div>
+        </div>
+        <div id="aboutPage" class="page hidden">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        
+        <div class="mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+            <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-2">เกี่ยวกับโครงการและประวัติโรงเรียน</h1>
+            <p class="text-lg text-gray-600">รากฐานอันมั่นคงของโรงเรียนสตรีพัทลุง สู่การขับเคลื่อนโครงการโรงเรียนคุณธรรม สพฐ.</p>
+        </div>
+
+        <div class="bg-white shadow-xl rounded-2xl p-8 mb-10 card-hover">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 gradient-text">ประวัติความเป็นมาของโรงเรียนสตรีพัทลุง</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2 border-l-4 border-purple-500 pl-3">การก่อตั้งและรากฐาน</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    โรงเรียนสตรีพัทลุงมีรากฐานมาจากโรงเรียนประชาบาล คือ โรงเรียนโสภณพัทลุงกุล ซึ่งจัดตั้งชั้นมัธยมปีละชั้น จนถึงชั้นมัธยมศึกษาปีที่ 4 โดยมี นายจรัล ดิสรา ครูใหญ่ฝ่ายประชาบาลเป็นผู้ดูแล และได้เรียนรวมกันเรื่อยมาจนกระทั่งปี พ.ศ. 2471 กระทรวงศึกษาธิการได้แต่งตั้ง นางสาวปริก เด่นดาวเสือ รักษาการในตำแหน่งครูใหญ่คนแรก
+                </p>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2 border-l-4 border-blue-500 pl-3">การสร้างอาคารและสถานที่ตั้งปัจจุบัน</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    เมื่อปี พ.ศ. 2482 กระทรวงศึกษาธิการได้ให้งบประมาณก่อสร้างอาคารโรงเรียนสตรีพัทลุงหลังแรก (สมัยขุนวิจารณ์จรรยา เป็นศึกษาธิการจังหวัดพัทลุง) ด้วยงบประมาณ 6,000 บาท ลักษณะเป็นอาคารไม้สองชั้น 12 ห้องเรียน
+                    นักเรียนในระดับมัธยมจึงได้ย้ายมาอยู่ ณ สถานที่แห่งใหม่ คือสถานที่ในปัจจุบันเมื่อวันที่ 17 พฤษภาคม 2482 ในขณะนั้นมีนักเรียนหญิงทั้งหมด 70 คน เปิดสอนตั้งแต่ชั้นมัธยมศึกษาปีที่ 1 ถึงชั้นมัธยมศึกษาปีที่ 6 จำนวน 6 ห้องเรียน (อาคาร 1 นี้ได้รื้อถอนไปเมื่อเดือนธันวาคม พ.ศ. 2529)
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2 border-l-4 border-green-500 pl-3">การเจริญเติบโตและการเปิดรับนักเรียนชาย</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    โรงเรียนสตรีพัทลุงได้เจริญขึ้นเป็นลำดับ โดยในปี พ.ศ. 2502 โรงเรียนได้รับงบประมาณก่อสร้างอาคารเรียนหลังที่ 2 และมีการต่อเติมอาคารอย่างต่อเนื่อง รวมถึงการเพิ่มอัตรากำลังครูและปริมาณนักเรียน
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    ในระยะแรกทางโรงเรียนรับเฉพาะนักเรียนหญิง ต่อมาเริ่มรับนักเรียนชายในระดับชั้นมัธยมศึกษาตอนปลาย ตั้งแต่ปีการศึกษา พ.ศ. 2505 และเริ่มรับนักเรียนชายในระดับชั้นมัธยมศึกษาปีที่ 1 ตั้งแต่ปีการศึกษา พ.ศ. 2528 จนถึงปัจจุบัน
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-xl rounded-2xl p-8 card-hover">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 gradient-text">โครงการโรงเรียนคุณธรรม สพฐ.</h2>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-md" role="alert">
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                    <p class="font-bold">ข้อมูลกำลังดำเนินการ</p>
+                </div>
+                <p class="mt-2 text-sm text-yellow-700">รายละเอียดเกี่ยวกับโครงการโรงเรียนคุณธรรม สพฐ. ของโรงเรียนสตรีพัทลุงกำลังอยู่ในระหว่างการจัดทำและรวบรวมข้อมูล.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+        
 
         <div id="coreStudentRecruitPage" class="page hidden">
             <div class="max-w-6xl mx-auto px-4 py-12">
@@ -365,7 +560,261 @@
         </div>
         
     </main>
+    <div id="addActivityModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">เพิ่มกิจกรรม</h2>
+            <form id="addActivityForm" onsubmit="handleAddActivity(event)">
+                <div class="mb-4">
+                    <label for="activityTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อกิจกรรม</label>
+                    <input type="text" id="activityTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="activityDescription" class="block text-sm font-medium text-gray-700 mb-2">รายละเอียด</label>
+                    <textarea id="activityDescription" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="activityUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ลงทะเบียน/ข้อมูลเพิ่มเติม (URL)</label>
+                    <input type="url" id="activityUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://forms.gle/XXXXX หรือ https://... (ไม่บังคับ)">
+                </div>
+                <div class="mb-4">
+                    <label for="activityDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    <input type="date" id="activityDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="activityFeatured" class="mr-2">
+                        <span class="text-sm text-gray-700">แสดงในหน้าหลัก (กิจกรรมเด่น)</span>
+                    </label>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มกิจกรรม</button>
+                    <button type="button" onclick="hideAddActivityModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
     
+    <div id="editActivityModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขกิจกรรม</h2>
+            <form id="editActivityForm" onsubmit="handleEditActivity(event)">
+                <input type="hidden" id="editActivityId">
+                <div class="mb-4">
+                    <label for="editActivityTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อกิจกรรม</label>
+                    <input type="text" id="editActivityTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="editActivityDescription" class="block text-sm font-medium text-gray-700 mb-2">รายละเอียด</label>
+                    <textarea id="editActivityDescription" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="editActivityUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ลงทะเบียน/ข้อมูลเพิ่มเติม (URL)</label>
+                    <input type="url" id="editActivityUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://forms.gle/XXXXX หรือ https://... (ไม่บังคับ)">
+                </div>
+                <div class="mb-4">
+                    <label for="editActivityDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    <input type="date" id="editActivityDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="editActivityFeatured" class="mr-2">
+                        <span class="text-sm text-gray-700">แสดงในหน้าหลัก (กิจกรรมเด่น)</span>
+                    </label>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>
+                    <button type="button" onclick="hideEditActivityModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="addNewsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">เพิ่มข่าวประชาสัมพันธ์</h2>
+            <form id="addNewsForm" onsubmit="handleAddNews(event)">
+                <div class="mb-4">
+                    <label for="newsTitle" class="block text-sm font-medium text-gray-700 mb-2">หัวข้อข่าว</label>
+                    <input type="text" id="newsTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="newsContent" class="block text-sm font-medium text-gray-700 mb-2">เนื้อหา</label>
+                    <textarea id="newsContent" rows="6" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="newsUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ข้อมูลเพิ่มเติม/ไฟล์เอกสาร (URL)</label>
+                    <input type="url" id="newsUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://docs.google.com/... หรือ https://... (ไม่บังคับ)">
+                </div>
+                <div class="mb-6">
+                    <label for="newsDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    <input type="date" id="newsDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มข่าว</button>
+                    <button type="button" onclick="hideAddNewsModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="editNewsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขข่าวประชาสัมพันธ์</h2>
+            <form id="editNewsForm" onsubmit="handleEditNews(event)">
+                <input type="hidden" id="editNewsId">
+                <div class="mb-4">
+                    <label for="editNewsTitle" class="block text-sm font-medium text-gray-700 mb-2">หัวข้อข่าว</label>
+                    <input type="text" id="editNewsTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="editNewsContent" class="block text-sm font-medium text-gray-700 mb-2">เนื้อหา</label>
+                    <textarea id="editNewsContent" rows="6" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="editNewsUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ข้อมูลเพิ่มเติม/ไฟล์เอกสาร (URL)</label>
+                    <input type="url" id="editNewsUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://docs.google.com/... หรือ https://... (ไม่บังคับ)">
+                </div>
+                <div class="mb-6">
+                    <label for="editNewsDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    <input type="date" id="editNewsDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>
+                    <button type="button" onclick="hideEditNewsModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addLinkModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">เพิ่มลิงก์</h2>
+            <form id="addLinkForm" onsubmit="handleAddLink(event)">
+                <div class="mb-4">
+                    <label for="linkTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อลิงก์</label>
+                    <input type="text" id="linkTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="linkUrl" class="block text-sm font-medium text-gray-700 mb-2">URL ลิงก์</label>
+                    <input type="url" id="linkUrl" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://example.com">
+                </div>
+                <div class="mb-6">
+                    <label for="linkDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย (ไม่บังคับ)</label>
+                    <textarea id="linkDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มลิงก์</button>
+                    <button type="button" onclick="hideAddLinkModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editLinkModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขลิงก์</h2>
+            <form id="editLinkForm" onsubmit="handleEditLink(event)">
+                <input type="hidden" id="editLinkId">
+                <div class="mb-4">
+                    <label for="editLinkTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อลิงก์</label>
+                    <input type="text" id="editLinkTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="editLinkUrl" class="block text-sm font-medium text-gray-700 mb-2">URL ลิงก์</label>
+                    <input type="url" id="editLinkUrl" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label for="editLinkDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย (ไม่บังคับ)</label>
+                    <textarea id="editLinkDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>
+                    <button type="button" onclick="hideEditLinkModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addMemberModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">เพิ่มสมาชิกคณะกรรมการ</h2>
+            <form id="addMemberForm" onsubmit="handleAddMember(event)">
+                <div class="mb-4">
+                    <label for="memberName" class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล</label>
+                    <input type="text" id="memberName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="memberPosition" class="block text-sm font-medium text-gray-700 mb-2">ตำแหน่ง</label>
+                    <select id="memberPosition" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">เลือกตำแหน่ง</option>
+                        <option value="ประธาน">ประธาน</option>
+                        <option value="รองประธาน">รองประธาน</option>
+                        <option value="กรรมการ">กรรมการ</option>
+                        <option value="กรรมการและเลขานุการ">กรรมการและเลขานุการ</option>
+                        <option value="กรรมการและผู้ช่วยเลขานุการ">กรรมการและผู้ช่วยเลขานุการ</option>
+                        <option value="ที่ปรึกษา">ที่ปรึกษา</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="memberDepartment" class="block text-sm font-medium text-gray-700 mb-2">ฝ่าย</label>
+                    <select id="memberDepartment" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">เลือกฝ่าย</option>
+                        <option value="ฝ่ายบริหาร">ฝ่ายบริหาร</option>
+                        <option value="ฝ่ายเผยแพร่และประชาสัมพันธ์">ฝ่ายเผยแพร่และประชาสัมพันธ์</option>
+                        <option value="ฝ่ายแผนงานและโครงการ">ฝ่ายแผนงานและโครงการ</option>
+                        <option value="ฝ่ายขับเคลื่อนโครงงาน">ฝ่ายขับเคลื่อนโครงงาน</option>
+                        <option value="ฝ่ายครูที่ปรึกษา">ฝ่ายครูที่ปรึกษา</option>
+                    </select>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มสมาชิก</button>
+                    <button type="button" onclick="hideAddMemberModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="editMemberModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขสมาชิกคณะกรรมการ</h2>
+            <form id="editMemberForm" onsubmit="handleEditMember(event)">
+                <input type="hidden" id="editMemberId">
+                <div class="mb-4">
+                    <label for="editMemberName" class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล</label>
+                    <input type="text" id="editMemberName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="editMemberPosition" class="block text-sm font-medium text-gray-700 mb-2">ตำแหน่ง</label>
+                    <select id="editMemberPosition" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">เลือกตำแหน่ง</option>
+                        <option value="ประธาน">ประธาน</option>
+                        <option value="รองประธาน">รองประธาน</option>
+                        <option value="กรรมการ">กรรมการ</option>
+                        <option value="กรรมการและเลขานุการ">กรรมการและเลขานุการ</option>
+                        <option value="กรรมการและผู้ช่วยเลขานุการ">กรรมการและผู้ช่วยเลขานุการ</option>
+                        <option value="ที่ปรึกษา">ที่ปรึกษา</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="editMemberDepartment" class="block text-sm font-medium text-gray-700 mb-2">ฝ่าย</label>
+                    <select id="editMemberDepartment" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">เลือกฝ่าย</option>
+                        <option value="ฝ่ายบริหาร">ฝ่ายบริหาร</option>
+                        <option value="ฝ่ายเผยแพร่และประชาสัมพันธ์">ฝ่ายเผยแพร่และประชาสัมพันธ์</option>
+                        <option value="ฝ่ายแผนงานและโครงการ">ฝ่ายแผนงานและโครงการ</option>
+                        <option value="ฝ่ายขับเคลื่อนโครงงาน">ฝ่ายขับเคลื่อนโครงงาน</option>
+                        <option value="ฝ่ายครูที่ปรึกษา">ฝ่ายครูที่ปรึกษา</option>
+                    </select>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>
+                    <button type="button" onclick="hideEditMemberModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-xl p-8 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-transform duration-300 scale-100" id="addModalContent">
             <h2 class="text-2xl font-bold mb-6" id="addModalTitle">เพิ่มข้อมูล</h2>
@@ -457,8 +906,12 @@
             <h4 class="text-xl font-bold mb-4 border-b-2 border-purple-500 pb-2">แผนผังเว็บไซต์</h4>
             <div class="grid grid-cols-2 gap-y-2 text-sm">
                 <a href="#home" class="text-gray-400 hover:text-purple-400 transition duration-300">หน้าหลัก</a>
-                <a href="#coreStudentRecruit" class="text-gray-400 hover:text-purple-400 transition duration-300">นักเรียนแกนนำ</a>
-                <a href="#committeeRecruit" class="text-gray-400 hover:text-purple-400 transition duration-300">คณะกรรมการ</a>
+                <a href="#about" class="text-gray-400 hover:text-purple-400 transition duration-300">เกี่ยวกับโครงการ</a>
+                <a href="#activities" class="text-gray-400 hover:text-purple-400 transition duration-300">กิจกรรม</a>
+                <a href="#news" class="text-gray-400 hover:text-purple-400 transition duration-300">ข่าวสาร</a>
+                <a href="#committee" class="text-gray-400 hover:text-purple-400 transition duration-300">คณะกรรมการ</a>
+                <a href="#links" class="text-gray-400 hover:text-purple-400 transition duration-300">ลิงก์ที่เกี่ยวข้อง</a>
+                <a href="#recruit" class="text-gray-400 hover:text-purple-400 transition duration-300">รับสมัคร</a>
                 <a href="#contact" class="text-gray-400 hover:text-purple-400 transition duration-300">ติดต่อเรา</a>
             </div>
         </div>
@@ -467,7 +920,7 @@
             <h4 class="text-xl font-bold mb-4 border-b-2 border-purple-500 pb-2">ติดตามเรา</h4>
             
             <div class="flex items-center space-x-4 mb-6">
-                <img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" alt="Logo" class="w-16 h-16 rounded-full shadow-lg flex-shrink-0">
+                <img src="favicon.PNG" alt="Logo" class="w-16 h-16 rounded-full shadow-lg flex-shrink-0">
                 
                 <div class="text-left">
                     <p class="text-lg font-semibold leading-tight text-purple-400">โรงเรียนคุณธรรม สพฐ.</p>
@@ -502,21 +955,20 @@
         &copy; 2024 SPT MORAL SCHOOL - โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง | All Rights Reserved
     </div>
 </footer>
-
     <script>
         // =========================================================
         // 🚨 ALERT: FIREBASE CONFIGURATION REQUIRED
         // You MUST replace the placeholder values below with your actual Firebase project configuration.
         // =========================================================
         const firebaseConfig = {
-  apiKey: "AIzaSyBeh27zK1qUYP7tOU3MYNn_RobC8RaPZSM",
-  authDomain: "website-moral.firebaseapp.com",
-  projectId: "website-moral",
-  storageBucket: "website-moral.firebasestorage.app",
-  messagingSenderId: "450436753681",
-  appId: "1:450436753681:web:13eb5458b57950099984b0",
-  measurementId: "G-1GR9NTF8JB"
-};
+        apiKey: "AIzaSyCgWeRM9YppUP6zER1mHxWxxzsMu6ET7MI",
+        authDomain: "e-web-e73f4.firebaseapp.com",
+        projectId: "e-web-e73f4",
+        storageBucket: "e-web-e73f4.firebasestorage.app",
+        messagingSenderId: "49194142701",
+        appId: "1:49194142701:web:066a7a4240437ee5f935e4",
+        measurementId: "G-E36KT28YTQ"
+    };
 
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
@@ -559,6 +1011,24 @@
         const mobileInactiveClasses = 'block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300';
         const mobileActiveClass = 'block px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-base w-full text-left shadow-lg transition-all duration-300';
 
+        // **Committee Sorting Configuration**
+    const departmentOrder = {
+        "ฝ่ายบริหาร": 1,
+        "ฝ่ายเผยแพร่และประชาสัมพันธ์": 2, // แก้ไขชื่อฝ่ายแล้ว
+        "ฝ่ายแผนงานและโครงการ": 3,
+        "ฝ่ายขับเคลื่อนโครงงาน": 4,
+        "ฝ่ายครูที่ปรึกษา": 5
+    };
+
+    const positionOrder = {
+        "ประธาน": 1,
+        "รองประธาน": 2,
+        "กรรมการ": 3,
+        "กรรมการและเลขานุการ": 4,
+        "กรรมการและผู้ช่วยเลขานุการ": 5,
+        "ที่ปรึกษา": 6 // เพิ่มที่ปรึกษาเพื่อความยืดหยุ่นหากมีตำแหน่งที่ปรึกษาใน db
+    };
+        
         function showPage(pageId) {
             // 1. Hide all pages
             pages.forEach(page => page.classList.add('hidden'));
@@ -614,7 +1084,22 @@
             // 5. Load page content (Calling all relevant load functions)
             switch(pageId) {
                 case 'home':
-                    // No data loading needed for the new home page
+                    loadFeaturedActivities();
+                    break;
+                     case 'activities':
+            loadActivities();
+            break;
+        case 'news':
+            loadNews();
+            break;
+        case 'committee':
+            loadCommittee();
+            break;
+        case 'links':
+            loadLinks();
+            break;
+                    case 'recruit':
+                    
                     break;
                 case 'coreStudentRecruit':
                     loadCoreStudentRecruitmentData();
@@ -704,6 +1189,10 @@
         function hideAdminPanel() {
             document.getElementById('adminPanel').classList.add('hidden');
             
+            document.getElementById('addActivityBtn').classList.add('hidden');
+            document.getElementById('addNewsBtn').classList.add('hidden');
+            document.getElementById('addMemberBtn').classList.add('hidden');
+            document.getElementById('addLinkBtn').classList.add('hidden');
             // NEW Admin buttons
             document.getElementById('addCoreStudentAnnouncementBtn')?.classList.add('hidden');
             document.getElementById('addCoreStudentEligibleBtn')?.classList.add('hidden');
@@ -722,7 +1211,559 @@
             loadCommitteeRecruitmentData(); 
             
         }
+// =========================================================
+        // ACTIVITY FUNCTIONS
+        // =========================================================
 
+        function showAddActivityModal() {
+            document.getElementById('addActivityModal').classList.remove('hidden');
+        }
+
+        function hideAddActivityModal() {
+            document.getElementById('addActivityModal').classList.add('hidden');
+            document.getElementById('addActivityForm').reset();
+        }
+        
+        function showEditActivityModal(id, title, desc, date, featured, url) {
+            document.getElementById('editActivityId').value = id;
+            document.getElementById('editActivityTitle').value = title;
+            document.getElementById('editActivityDescription').value = desc;
+            document.getElementById('editActivityDate').value = date;
+            document.getElementById('editActivityFeatured').checked = featured;
+            document.getElementById('editActivityUrl').value = url || ''; // เพิ่มช่องใส่ลิงก์
+            document.getElementById('editActivityModal').classList.remove('hidden');
+        }
+
+        function hideEditActivityModal() {
+            document.getElementById('editActivityModal').classList.add('hidden');
+            document.getElementById('editActivityForm').reset();
+        }
+
+
+        function handleAddActivity(event) {
+            event.preventDefault();
+            const title = document.getElementById('activityTitle').value;
+            const description = document.getElementById('activityDescription').value;
+            const date = document.getElementById('activityDate').value;
+            const featured = document.getElementById('activityFeatured').checked;
+            const url = document.getElementById('activityUrl').value; // ดึงค่าลิงก์
+
+            db.collection('activities').add({
+                title: title,
+                description: description,
+                date: date,
+                featured: featured,
+                url: url, // บันทึกลิงก์
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideAddActivityModal();
+                loadActivities();
+                loadFeaturedActivities();
+                showToast('เพิ่มกิจกรรมสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+        
+        function handleEditActivity(event) {
+            event.preventDefault();
+            const id = document.getElementById('editActivityId').value;
+            const title = document.getElementById('editActivityTitle').value;
+            const description = document.getElementById('editActivityDescription').value;
+            const date = document.getElementById('editActivityDate').value;
+            const featured = document.getElementById('editActivityFeatured').checked;
+            const url = document.getElementById('editActivityUrl').value; // ดึงค่าลิงก์
+
+            db.collection('activities').doc(id).update({
+                title: title,
+                description: description,
+                date: date,
+                featured: featured,
+                url: url, // อัปเดตลิงก์
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideEditActivityModal();
+                loadActivities();
+                loadFeaturedActivities();
+                showToast('แก้ไขกิจกรรมสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+
+        function loadActivities() {
+            db.collection('activities').orderBy('date', 'desc').get().then((querySnapshot) => {
+                const activitiesList = document.getElementById('activitiesList');
+                activitiesList.innerHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const activity = doc.data();
+                    const activityCard = createActivityCard(doc.id, activity);
+                    activitiesList.appendChild(activityCard);
+                });
+            });
+        }
+
+        function loadFeaturedActivities() {
+            db.collection('activities').where('featured', '==', true).limit(3).get().then((querySnapshot) => {
+                const featuredActivities = document.getElementById('featuredActivities');
+                featuredActivities.innerHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const activity = doc.data();
+                    const activityCard = createFeaturedActivityCard(activity);
+                    featuredActivities.appendChild(activityCard);
+                });
+            });
+        }
+
+        function createActivityCard(id, activity) {
+            const card = document.createElement('div');
+            card.className = 'bg-white shadow-lg rounded-2xl p-6 card-hover transform transition-all duration-300 flex flex-col justify-between';
+            
+            const editButton = isAdmin ? 
+                `<button onclick="showEditActivityModal('${id}', '${activity.title.replace(/'/g, "\\'")}', '${activity.description.replace(/'/g, "\\'")}', '${activity.date}', ${activity.featured}, '${activity.url || ''}')" class="text-sm text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded-full hover:bg-blue-100 transition-all duration-300">แก้ไข</button>` : '';
+
+            const deleteButton = isAdmin ? 
+                `<button onclick="deleteActivity('${id}')" class="text-sm text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded-full hover:bg-red-100 transition-all duration-300">ลบ</button>` : '';
+                
+            const urlButton = activity.url ? 
+                `<a href="${activity.url}" target="_blank" rel="noopener noreferrer" class="text-sm text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1 rounded-full hover:bg-indigo-100 transition-all duration-300">รายละเอียด/ลงทะเบียน</a>` : '';
+
+            card.innerHTML = `
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 gradient-text">${activity.title}</h3>
+                    <p class="text-base text-gray-600 mb-4 leading-relaxed ">${activity.description}</p>
+                    ${activity.featured ? '<span class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-sm px-3 py-1 rounded-full shadow-md">⭐ กิจกรรมเด่น</span>' : ''}
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-100">
+                    <span class="text-sm text-purple-600 font-medium bg-purple-50 px-3 py-1 rounded-full">${formatDate(activity.date)}</span>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        ${urlButton}
+                        ${editButton}
+                        ${deleteButton}
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        function createFeaturedActivityCard(activity) {
+            const card = document.createElement('div');
+            card.className = 'bg-white border border-gray-100 rounded p-4 hover:border-gray-200 transition card-hover';
+            card.innerHTML = `
+                <h3 class="text-base font-medium text-gray-900 mb-2">${activity.title}</h3>
+                <p class="text-sm text-gray-600 mb-3 line-clamp-2">${activity.description}</p>
+                <div class="flex justify-between items-center text-xs text-gray-500">
+                    <span>${formatDate(activity.date)}</span>
+                    ${activity.url ? `<a href="${activity.url}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 font-medium">ดูรายละเอียด »</a>` : ''}
+                </div>
+            `;
+            return card;
+        }
+
+        function deleteActivity(id) {
+            if (confirm('คุณต้องการลบกิจกรรมนี้หรือไม่?')) {
+                db.collection('activities').doc(id).delete().then(() => {
+                    loadActivities();
+                    loadFeaturedActivities();
+                    showToast('ลบกิจกรรมสำเร็จ', 'success');
+                });
+            }
+        }
+
+        // =========================================================
+        // NEWS FUNCTIONS (ปรับปรุงให้แสดงผลเป็นแบบแผ่นๆ)
+        // =========================================================
+        
+        function showAddNewsModal() {
+            document.getElementById('addNewsModal').classList.remove('hidden');
+        }
+
+        function hideAddNewsModal() {
+            document.getElementById('addNewsModal').classList.add('hidden');
+            document.getElementById('addNewsForm').reset();
+        }
+        
+        function showEditNewsModal(id, title, content, date, url) {
+            document.getElementById('editNewsId').value = id;
+            document.getElementById('editNewsTitle').value = title;
+            document.getElementById('editNewsContent').value = content;
+            document.getElementById('editNewsDate').value = date;
+            document.getElementById('editNewsUrl').value = url || '';
+            document.getElementById('editNewsModal').classList.remove('hidden');
+        }
+
+        function hideEditNewsModal() {
+            document.getElementById('editNewsModal').classList.add('hidden');
+            document.getElementById('editNewsForm').reset();
+        }
+
+        function handleAddNews(event) {
+            event.preventDefault();
+            const title = document.getElementById('newsTitle').value;
+            const content = document.getElementById('newsContent').value;
+            const date = document.getElementById('newsDate').value;
+            const url = document.getElementById('newsUrl').value;
+
+            db.collection('news').add({
+                title: title,
+                content: content,
+                date: date,
+                url: url,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideAddNewsModal();
+                loadNews();
+                showToast('เพิ่มข่าวสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+        
+        function handleEditNews(event) {
+            event.preventDefault();
+            const id = document.getElementById('editNewsId').value;
+            const title = document.getElementById('editNewsTitle').value;
+            const content = document.getElementById('editNewsContent').value;
+            const date = document.getElementById('editNewsDate').value;
+            const url = document.getElementById('editNewsUrl').value;
+
+            db.collection('news').doc(id).update({
+                title: title,
+                content: content,
+                date: date,
+                url: url,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideEditNewsModal();
+                loadNews();
+                showToast('แก้ไขข่าวสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+
+        function loadNews() {
+            db.collection('news').orderBy('date', 'desc').get().then((querySnapshot) => {
+                const newsList = document.getElementById('newsList');
+                newsList.innerHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const news = doc.data();
+                    const newsCard = createNewsCard(doc.id, news);
+                    newsList.appendChild(newsCard);
+                });
+            });
+        }
+
+        function createNewsCard(id, news) {
+            const card = document.createElement('div');
+            // ใช้ class สไตล์เดียวกับ activity card เพื่อให้เป็น "แผ่นๆ"
+            card.className = 'bg-white shadow-lg rounded-2xl p-6 card-hover transform transition-all duration-300 flex flex-col justify-between';
+            
+            const editButton = isAdmin ? 
+                `<button onclick="showEditNewsModal('${id}', '${news.title.replace(/'/g, "\\'")}', '${news.content.replace(/'/g, "\\'")}', '${news.date}', '${news.url || ''}')" class="text-sm text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded-full hover:bg-blue-100 transition-all duration-300">แก้ไข</button>` : '';
+
+            const deleteButton = isAdmin ? 
+                `<button onclick="deleteNews('${id}')" class="text-sm text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded-full hover:bg-red-100 transition-all duration-300">ลบ</button>` : '';
+
+            const urlButton = news.url ? 
+                `<a href="${news.url}" target="_blank" rel="noopener noreferrer" class="text-sm text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1 rounded-full hover:bg-indigo-100 transition-all duration-300">ดูรายละเอียดเพิ่มเติม</a>` : '';
+
+            card.innerHTML = `
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 gradient-text">${news.title}</h3>
+                    <p class="text-base text-gray-600 mb-4 leading-relaxed ">${news.content}</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-100">
+                    <span class="text-sm text-purple-600 font-medium bg-purple-50 px-3 py-1 rounded-full">ประชาสัมพันธ์: ${formatDate(news.date)}</span>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        ${urlButton}
+                        ${editButton}
+                        ${deleteButton}
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        function deleteNews(id) {
+            if (confirm('คุณต้องการลบข่าวนี้หรือไม่?')) {
+                db.collection('news').doc(id).delete().then(() => {
+                    loadNews();
+                    showToast('ลบข่าวสำเร็จ', 'success');
+                });
+            }
+        }
+        // =========================================================
+        // COMMITTEE FUNCTIONS
+        // =========================================================
+
+        function showAddMemberModal() {
+            document.getElementById('addMemberModal').classList.remove('hidden');
+        }
+
+        function hideAddMemberModal() {
+            document.getElementById('addMemberModal').classList.add('hidden');
+            document.getElementById('addMemberForm').reset();
+        }
+        
+        function showEditMemberModal(id, name, position, department) {
+            document.getElementById('editMemberId').value = id;
+            document.getElementById('editMemberName').value = name;
+            document.getElementById('editMemberPosition').value = position;
+            document.getElementById('editMemberDepartment').value = department;
+            document.getElementById('editMemberModal').classList.remove('hidden');
+        }
+        
+        function hideEditMemberModal() {
+            document.getElementById('editMemberModal').classList.add('hidden');
+            document.getElementById('editMemberForm').reset();
+        }
+
+        function handleAddMember(event) {
+            event.preventDefault();
+            const name = document.getElementById('memberName').value;
+            const position = document.getElementById('memberPosition').value;
+            const department = document.getElementById('memberDepartment').value;
+
+            db.collection('committee').add({
+                name: name,
+                position: position,
+                department: department,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideAddMemberModal();
+                loadCommittee();
+                showToast('เพิ่มสมาชิกสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+        
+        function handleEditMember(event) {
+            event.preventDefault();
+            const id = document.getElementById('editMemberId').value;
+            const name = document.getElementById('editMemberName').value;
+            const position = document.getElementById('editMemberPosition').value;
+            const department = document.getElementById('editMemberDepartment').value;
+
+            db.collection('committee').doc(id).update({
+                name: name,
+                position: position,
+                department: department,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideEditMemberModal();
+                loadCommittee();
+                showToast('แก้ไขสมาชิกสำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+
+        function loadCommittee() {
+            db.collection('committee').get().then((querySnapshot) => {
+                const committeeStructure = document.getElementById('committeeStructure');
+                committeeStructure.innerHTML = '';
+                
+                const departments = {};
+                
+                querySnapshot.forEach((doc) => {
+                    const member = doc.data();
+                    if (departmentOrder.hasOwnProperty(member.department)) { 
+                        if (!departments[member.department]) {
+                            departments[member.department] = [];
+                        }
+                        departments[member.department].push({id: doc.id, ...member});
+                    }
+                });
+                
+                const sortedDeptNames = Object.keys(departments).sort((a, b) => {
+                    return departmentOrder[a] - departmentOrder[b];
+                });
+                
+                sortedDeptNames.forEach(dept => {
+                    const sortedMembers = departments[dept].sort((a, b) => {
+                        const posA = positionOrder[a.position] || 99;
+                        const posB = positionOrder[b.position] || 99;
+                        return posA - posB;
+                    });
+                    
+                    const deptSection = createDepartmentSection(dept, sortedMembers);
+                    committeeStructure.appendChild(deptSection);
+                });
+            });
+        }
+
+        function createDepartmentSection(department, members) {
+            const section = document.createElement('div');
+            section.className = 'bg-white border border-gray-100 rounded p-4 mb-4 shadow-sm';
+            
+            let membersHTML = '';
+            members.forEach(member => {
+                const editButton = isAdmin ? 
+                    `<button onclick="showEditMemberModal('${member.id}', '${member.name.replace(/'/g, "\\'")}', '${member.position}', '${member.department}')" class="text-xs text-blue-600 hover:text-blue-800 bg-blue-50 px-2 py-1 rounded-full hover:bg-blue-100 transition-all duration-300">แก้ไข</button>` : '';
+
+                const deleteButton = isAdmin ? 
+                    `<button onclick="deleteMember('${member.id}')" class="text-xs text-red-600 hover:text-red-800 bg-red-50 px-2 py-1 rounded-full hover:bg-red-100 transition-all duration-300">ลบ</button>` : '';
+                    
+                membersHTML += `
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                        <div>
+                            <h4 class="text-base font-medium text-gray-900">${member.name}</h4>
+                            <p class="text-sm text-gray-600">${member.position}</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            ${editButton}
+                            ${deleteButton}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            section.innerHTML = `
+                <h3 class="text-xl font-bold text-gray-900 mb-3 gradient-text">${department}</h3>
+                <div class="space-y-1">
+                    ${membersHTML}
+                </div>
+            `;
+            
+            return section;
+        }
+
+        function deleteMember(id) {
+            if (confirm('คุณต้องการลบสมาชิกนี้หรือไม่?')) {
+                db.collection('committee').doc(id).delete().then(() => {
+                    loadCommittee();
+                    showToast('ลบสมาชิกสำเร็จ', 'success');
+                });
+            }
+        }
+
+        // =========================================================
+        // LINK FUNCTIONS
+        // =========================================================
+        
+        function showAddLinkModal() {
+            document.getElementById('addLinkModal').classList.remove('hidden');
+        }
+
+        function hideAddLinkModal() {
+            document.getElementById('addLinkModal').classList.add('hidden');
+            document.getElementById('addLinkForm').reset();
+        }
+
+        function showEditLinkModal(id, title, url, description) {
+            document.getElementById('editLinkId').value = id;
+            document.getElementById('editLinkTitle').value = title;
+            document.getElementById('editLinkUrl').value = url;
+            document.getElementById('editLinkDescription').value = description || '';
+            document.getElementById('editLinkModal').classList.remove('hidden');
+        }
+
+        function hideEditLinkModal() {
+            document.getElementById('editLinkModal').classList.add('hidden');
+            document.getElementById('editLinkForm').reset();
+        }
+
+        function handleAddLink(event) {
+            event.preventDefault();
+            const title = document.getElementById('linkTitle').value;
+            const url = document.getElementById('linkUrl').value;
+            const description = document.getElementById('linkDescription').value;
+
+            db.collection('links').add({
+                title: title,
+                url: url,
+                description: description,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideAddLinkModal();
+                loadLinks();
+                showToast('เพิ่มลิงก์สำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+
+        function handleEditLink(event) {
+            event.preventDefault();
+            const id = document.getElementById('editLinkId').value;
+            const title = document.getElementById('editLinkTitle').value;
+            const url = document.getElementById('editLinkUrl').value;
+            const description = document.getElementById('editLinkDescription').value;
+
+            db.collection('links').doc(id).update({
+                title: title,
+                url: url,
+                description: description,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideEditLinkModal();
+                loadLinks();
+                showToast('แก้ไขลิงก์สำเร็จ', 'success');
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            });
+        }
+
+        function loadLinks() {
+            db.collection('links').orderBy('createdAt', 'desc').get().then((querySnapshot) => {
+                const linksList = document.getElementById('linksList');
+                linksList.innerHTML = '';
+                
+                querySnapshot.forEach((doc) => {
+                    const link = doc.data();
+                    const linkCard = createLinkCard(doc.id, link);
+                    linksList.appendChild(linkCard);
+                });
+            });
+        }
+
+        function createLinkCard(id, link) {
+            const card = document.createElement('div');
+            card.className = 'bg-white shadow-xl rounded-2xl p-6 card-hover transform transition-all duration-300 border border-gray-100';
+            card.innerHTML = `
+                <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 gradient-text">${link.title}</h3>
+                            <p class="text-sm text-gray-500 break-all">${link.url}</p>
+                        </div>
+                    </div>
+                    ${isAdmin ? `
+                        <div class="flex space-x-2">
+                            <button onclick="showEditLinkModal('${id}', '${link.title.replace(/'/g, "\\'")}', '${link.url}', '${link.description ? link.description.replace(/'/g, "\\'") : ''}')" class="text-sm text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded-full hover:bg-blue-100 transition-all duration-300">แก้ไข</button>
+                            <button onclick="deleteLink('${id}')" class="text-sm text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded-full hover:bg-red-100 transition-all duration-300">ลบ</button>
+                        </div>
+                    ` : ''}
+                </div>
+                ${link.description ? `<p class="text-base text-gray-600 mb-4 leading-relaxed">${link.description}</p>` : ''}
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <span>เยี่ยมชมเว็บไซต์</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
+            `;
+            return card;
+        }
+
+        function deleteLink(id) {
+            if (confirm('คุณต้องการลบลิงก์นี้หรือไม่?')) {
+                db.collection('links').doc(id).delete().then(() => {
+                    loadLinks();
+                    showToast('ลบลิงก์สำเร็จ', 'success');
+                });
+            }
+        }
         // =========================================================
         // CRUD & DATA LOADING FUNCTIONS FOR RECRUITMENT (Unmodified)
         // =========================================================
@@ -939,13 +1980,27 @@
         // INITIALIZATION
         // =========================================================
 
-        document.addEventListener('DOMContentLoaded', () => {
-             // Set current year for footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', function() {
+            // ตรวจสอบว่ามี Hash ใน URL หรือไม่เมื่อหน้าโหลดครั้งแรก
+            const initialHash = window.location.hash.substring(1);
+            const defaultPage = 'home';
+            
+            let pageToLoad = defaultPage;
 
-            // Load the correct page based on URL hash
-            const pageHash = window.location.hash.substring(1) || 'home';
-            showPage(pageHash);
+            // หากมี Hash และ Hash นั้นไม่ใช่ค่าว่าง
+            if (initialHash) {
+                pageToLoad = initialHash;
+            } else {
+                // หากไม่มี Hash ให้ใส่ Hash ของหน้าเริ่มต้นใน URL โดยไม่บันทึกประวัติการเข้าชม
+                history.replaceState(null, null, '#' + defaultPage);
+            }
+
+            showPage(pageToLoad);
+            
+            // Set today's date as default for date inputs
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('activityDate').value = today;
+            document.getElementById('newsDate').value = today;
         });
 
         // Auth state observer to manage isAdmin state and update UI
