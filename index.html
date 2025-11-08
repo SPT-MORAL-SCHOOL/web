@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง - ระบบรับสมัคร</title>
+    <link rel="icon" type="image/png" href="favicon.PNG"> 
+    
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> 
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.PNG">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.PNG">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700;800&family=Prompt:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Prompt', 'Kanit', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.6); }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <nav class="bg-white shadow-lg sticky top-0 z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="https://img5.pic.in.th/file/secure-sv1/IMG_0310f4b22b3a3a8d0946.jpeg" alt="โลโก้โรงเรียนสตรีพัทลุง" class="h-10 w-10 object-contain shadow-lg rounded-full bg-white p-1">
+                    <img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" alt="โลโก้โรงเรียนคุณธรรม" class="h-10 w-10 object-contain shadow-lg rounded-full bg-white p-1">
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">โรงเรียนคุณธรรม สพฐ.</h1>
+                        <p class="text-sm text-gray-500">โรงเรียนสตรีพัทลุง</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" onclick="showPage('home')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">หน้าหลัก</a>
+                    <a href="#coreStudentRecruit" onclick="showPage('coreStudentRecruit')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">นักเรียนแกนนำ</a>
+                    <a href="#committeeRecruit" onclick="showPage('committeeRecruit')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">คณะกรรมการ</a>
+                    <a href="#contact" onclick="showPage('contact')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">ติดต่อ</a>
+                    <button onclick="showLoginModal()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-base hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เข้าสู่ระบบ</button>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg glass-effect">
+            <div class="px-4 pt-3 pb-4 space-y-2">
+                <a id="home-mobile-btn" 
+                        href="#home"
+                        onclick="showPage('home')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    หน้าหลัก
+                </a>
+                <a id="coreStudentRecruit-mobile-btn" 
+                        href="#coreStudentRecruit"
+                        onclick="showPage('coreStudentRecruit')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    นักเรียนแกนนำ
+                </a>
+                <a id="committeeRecruit-mobile-btn" 
+                        href="#committeeRecruit"
+                        onclick="showPage('committeeRecruit')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    คณะกรรมการ
+                </a>
+                <a id="contact-mobile-btn" 
+                        href="#contact"
+                        onclick="showPage('contact')" 
+                        class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">
+                    ติดต่อ
+                </a>
+                
+                <button onclick="showLoginModal()" 
+                        class="block px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-base hover:from-purple-700 hover:to-blue-700 w-full text-left shadow-lg transition-all duration-300">
+                    เข้าสู่ระบบ
+                </button>
+                
+                </div>
+        </div>
+    </nav>
+    
+    <img src="Top_ribbon.png" 
+     alt="Black mourning ribbon for websites, top left corner, ริบบิ้นไว้ทุกข์สีดำ มุมบนซ้าย สำหรับแสดงความอาลัยบนเว็บไซต์" 
+     style="position:fixed; top:0; left:0; width:80px; opacity:0.9; z-index:9999; pointer-events:none;">
+
+
+    <div id="adminPanel" class="hidden bg-yellow-100 border-b border-yellow-200">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+            <span class="text-yellow-800 font-medium">โหมดผู้ดูแล</span>
+            <button onclick="logout()" class="text-yellow-800 hover:text-yellow-900 font-medium">ออกจากระบบ</button>
+        </div>
+    </div>
+
+    <main id="mainContent">
+        <div id="homePage" class="page">
+            <section class="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 shadow-inner">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <div class="flex justify-center items-center space-x-6 mb-10 floating">
+                        <img src="https://img5.pic.in.th/file/secure-sv1/IMG_0310f4b22b3a3a8d0946.jpeg" alt="โลโก้โรงเรียนสตรีพัทลุง" class="h-20 w-20 object-contain shadow-lg rounded-full bg-white p-2">
+                        <img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" alt="โลโก้โรงเรียนคุณธรรม" class="h-20 w-20 object-contain shadow-lg rounded-full bg-white p-2">
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-bold gradient-text mb-3">โรงเรียนคุณธรรม สพฐ.</h1>
+                    <h2 class="text-xl md:text-2xl text-gray-700 mb-8 font-medium">โรงเรียนสตรีพัทลุง</h2>
+                    <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">รักสามัคคี ซื่อสัตย์สุจริต รับผิดชอบ สู่จิตสาธารณะ</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="showPage('activities')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl text-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg pulse-glow">ดูกิจกรรม</button>
+                        <button onclick="showPage('contact')" class="bg-white text-gray-700 px-8 py-3 rounded-xl text-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg border border-gray-200">ติดต่อเรา</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 bg-white">
+                <div class="max-w-6xl mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-3">กิจกรรมเด่น</h2>
+                        <p class="text-lg text-gray-600">กิจกรรมที่น่าสนใจของโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</p>
+                        <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mt-4 rounded-full"></div>
+                    </div>
+                    <div id="featuredActivities" class="grid md:grid-cols-3 gap-8">
+                        </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="coreStudentRecruitPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">รับสมัครนักเรียนแกนนำโรงเรียนคุณธรรม สพฐ.</h1>
+
+                <section id="coreStudentAnnouncementSection" class="mb-10 p-6 bg-white shadow-xl rounded-2xl border-l-4 border-indigo-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-gray-900">1. ประกาศรับสมัครนักเรียนแกนนำ</h2>
+                        <button id="addCoreStudentAnnouncementBtn" onclick="showAddModal('coreStudentAnnouncement')" class="hidden bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-600 transition-colors shadow-md">เพิ่มประกาศ</button>
+                    </div>
+                    <div id="coreStudentAnnouncementContent" class="text-gray-700 leading-relaxed">
+                        <p>กำลังโหลดข้อมูลประกาศรับสมัคร...</p>
+                    </div>
+                </section>
+
+                <section id="coreStudentEligibleSection" class="mb-10 p-6 bg-white shadow-xl rounded-2xl border-l-4 border-green-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-gray-900">2. รายชื่อผู้มีสิทธิ์เข้าร่วม</h2>
+                        <button id="addCoreStudentEligibleBtn" onclick="showAddModal('coreStudentEligible')" class="hidden bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors shadow-md">เพิ่มรายชื่อ/ลิงก์</button>
+                    </div>
+                    <div id="coreStudentEligibleContent" class="text-gray-700 leading-relaxed">
+                        <p>กำลังโหลดรายชื่อ...</p>
+                    </div>
+                </section>
+
+                <section class="p-6 bg-indigo-50 shadow-xl rounded-2xl text-center">
+                    <h2 class="text-xl font-bold gradient-text mb-4">3. ระบบรับสมัครนักเรียนแกนนำ</h2>
+                    <a href="https://spt-moral-school.github.io/registers" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                        คลิกเพื่อเข้าสู่ระบบรับสมัคร
+                    </a>
+                    <p class="text-sm text-gray-500 mt-2">ลิงก์: https://spt-moral-school.github.io/registers</p>
+                </section>
+
+            </div>
+        </div>
+
+        <div id="committeeRecruitPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">รับสมัครคณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม</h1>
+
+                <section id="committeeRecruitAnnouncementSection" class="mb-10 p-6 bg-white shadow-xl rounded-2xl border-l-4 border-purple-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-gray-900">1. ประกาศรับสมัครคณะกรรมการ</h2>
+                        <button id="addCommitteeRecruitAnnouncementBtn" onclick="showAddModal('committeeRecruitAnnouncement')" class="hidden bg-purple-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-600 transition-colors shadow-md">เพิ่มประกาศ</button>
+                    </div>
+                    <div id="committeeRecruitAnnouncementContent" class="text-gray-700 leading-relaxed">
+                        <p>กำลังโหลดข้อมูลประกาศรับสมัคร...</p>
+                    </div>
+                </section>
+
+                <section id="committeeEligibleInterviewSection" class="mb-10 p-6 bg-white shadow-xl rounded-2xl border-l-4 border-yellow-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-gray-900">2. รายชื่อผู้มีสิทธิ์สัมภาษณ์</h2>
+                        <button id="addCommitteeEligibleInterviewBtn" onclick="showAddModal('committeeEligibleInterview')" class="hidden bg-yellow-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-yellow-600 transition-colors shadow-md">เพิ่มรายชื่อ/ลิงก์</button>
+                    </div>
+                    <div id="committeeEligibleInterviewContent" class="text-gray-700 leading-relaxed">
+                        <p>กำลังโหลดรายชื่อ...</p>
+                    </div>
+                </section>
+
+                <section id="committeePassedInterviewSection" class="mb-10 p-6 bg-white shadow-xl rounded-2xl border-l-4 border-red-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-gray-900">3. รายชื่อผู้ผ่านสัมภาษณ์</h2>
+                        <button id="addCommitteePassedInterviewBtn" onclick="showAddModal('committeePassedInterview')" class="hidden bg-red-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-600 transition-colors shadow-md">เพิ่มรายชื่อ/ลิงก์</button>
+                    </div>
+                    <div id="committeePassedInterviewContent" class="text-gray-700 leading-relaxed">
+                        <p>กำลังโหลดรายชื่อ...</p>
+                    </div>
+                </section>
+                
+                <section class="p-6 bg-purple-50 shadow-xl rounded-2xl text-center">
+                    <h2 class="text-xl font-bold gradient-text mb-4">4. ระบบรับสมัครคณะกรรมการ</h2>
+                    <a href="https://spt-moral-school.io/register-smlc" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                        คลิกเพื่อเข้าสู่ระบบรับสมัคร
+                    </a>
+                    <p class="text-sm text-gray-500 mt-2">ลิงก์: https://spt-moral-school.io/register-smlc</p>
+                </section>
+
+            </div>
+        </div>
+
+        <div id="activitiesPage" class="page hidden">
+            </div>
+        <div id="newsPage" class="page hidden">
+            </div>
+        <div id="committeePage" class="page hidden">
+             </div>
+        <div id="linksPage" class="page hidden">
+             </div>
+        <div id="aboutPage" class="page hidden">
+             </div>
+        
+        <div id="contactPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="mb-10 pb-6 border-b-2 border-gradient-to-r from-purple-600 to-blue-600">
+                    <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-2">ข้อมูลโรงเรียนและช่องทางการติดต่อ</h1>
+                    <p class="text-lg text-gray-600">ติดต่อเราได้ผ่านช่องทางต่างๆของโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white shadow-xl rounded-2xl p-8 card-hover">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6 gradient-text">ข้อมูลทั่วไป</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+                                <svg class="w-6 h-6 text-purple-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-base font-semibold text-gray-900">ที่อยู่</p>
+                                    <p class="text-base text-gray-700 leading-relaxed">250 ถนนราเมศวร์ ตำบลคูหาสวรรค์ อำเภอเมือง จังหวัดพัทลุง 93000</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
+                                <svg class="w-6 h-6 text-green-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-base font-semibold text-gray-900">คุณธรรมอัตลักษณ์</p>
+                                    <p class="text-base text-gray-700 leading-relaxed">รักสามัคคี ซื่อสัตย์สุจริต รับผิดชอบ สู่จิตสาธารณะ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white shadow-xl rounded-2xl p-8 card-hover">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6 gradient-text">ช่องทางการติดต่อ</h2>
+                        <div class="space-y-4">
+                            <a href="https://www.facebook.com/sptmoralschool" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold text-gray-900">Facebook</p>
+                                    <p class="text-sm text-gray-600">sptmoralschool</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.instagram.com/spt_moral_school/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-100 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold text-gray-900">Instagram</p>
+                                    <p class="text-sm text-gray-600">spt_moral_school</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.tiktok.com/@spt.moral.school" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                <div class="w-12 h-12 bg-gradient-to-r from-gray-800 to-black rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold text-gray-900">TikTok</p>
+                                    <p class="text-sm text-gray-600">spt.moral.school</p>
+                                </div>
+                            </a>
+                            
+                            <a href="mailto:sptmorral@spt.ac.th" class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-100 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                                <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-base font-semibold text-gray-900">Email</p>
+                                    <p class="text-sm text-gray-600">sptmorral@spt.ac.th</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    
+    <div id="addModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-transform duration-300 scale-100" id="addModalContent">
+            <h2 class="text-2xl font-bold mb-6" id="addModalTitle">เพิ่มข้อมูล</h2>
+            <p class="mb-4 text-sm text-gray-600">
+                เนื่องจากส่วนรับสมัครใหม่มีความหลากหลาย ผู้ดูแลสามารถเพิ่มข้อมูลได้ทั้งในรูปแบบของข้อความ HTML หรือ URL ลิงก์ไปยังเอกสาร/รายชื่อต่างๆ
+            </p>
+            <form id="addForm" onsubmit="handleAddData(event)">
+                <input type="hidden" id="dataType">
+                
+                <div class="mb-4">
+                    <label for="dataTitle" class="block text-sm font-medium text-gray-700 mb-2">หัวข้อ/ชื่อประกาศ</label>
+                    <input type="text" id="dataTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="dataContent" class="block text-sm font-medium text-gray-700 mb-2">เนื้อหา (รองรับ HTML) หรือ คำอธิบาย</label>
+                    <textarea id="dataContent" rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="dataUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์เอกสาร/รายชื่อ (URL) (ไม่บังคับ)</label>
+                    <input type="url" id="dataUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://docs.google.com/... หรือ https://...">
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มข้อมูล</button>
+                    <button type="button" onclick="hideAddModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-sm w-full transform transition-transform duration-300 scale-100" id="loginModalContent">
+            <div class="p-8">
+                <h2 class="text-3xl font-bold text-center gradient-text mb-6">เข้าสู่ระบบผู้ดูแล</h2>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">อีเมล</label>
+                        <input type="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="admin@sptmoral.ac.th">
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-2">รหัสผ่าน</label>
+                        <input type="password" id="password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-md">
+                        เข้าสู่ระบบ
+                    </button>
+                </form>
+            </div>
+            <div class="p-4 bg-gray-50 border-t border-gray-100 text-center">
+                <button onclick="hideLoginModal()" class="text-sm text-gray-500 hover:text-gray-700 transition-colors">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast" class="fixed bottom-5 right-5 z-[100] transition-all duration-300 transform translate-x-full">
+        <div id="toastMessage" class="px-6 py-3 rounded-lg shadow-xl text-white font-medium"></div>
+    </div>
+    
+    <footer class="bg-gray-900 text-white p-8 md:p-12 mt-12"> 
+        </footer>
+
+    <script>
+        // Initialize Firebase (Assuming you have configured your Firebase project)
+        const firebaseConfig = {
+            // Your Firebase config goes here
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let isAdmin = false;
+        
+        // Helper function for Toast notifications
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            // Set styles based on type
+            let bgColor = 'bg-blue-500';
+            if (type === 'success') {
+                bgColor = 'bg-green-500';
+            } else if (type === 'error') {
+                bgColor = 'bg-red-500';
+            }
+            
+            toastMessage.className = `px-6 py-3 rounded-lg shadow-xl text-white font-medium ${bgColor}`;
+            toastMessage.textContent = message;
+            
+            // Show toast
+            toast.classList.remove('translate-x-full');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
+        }
+
+        // =========================================================
+        // PAGE & NAVIGATION FUNCTIONS
+        // =========================================================
+        const pages = document.querySelectorAll('.page');
+        const desktopInactiveClasses = 'text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105';
+        const desktopActiveClass = 'bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-base shadow-lg';
+        
+        const mobileInactiveClasses = 'block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300';
+        const mobileActiveClass = 'block px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-base w-full text-left shadow-lg transition-all duration-300';
+
+        function showPage(pageId) {
+            // 1. Hide all pages
+            pages.forEach(page => page.classList.add('hidden'));
+
+            // 2. Show the selected page with fade-in effect
+            const selectedPage = document.getElementById(pageId + 'Page');
+            if (selectedPage) {
+                selectedPage.classList.remove('hidden');
+                selectedPage.classList.add('fade-in');
+            } else {
+                // Fallback to home if pageId is invalid
+                document.getElementById('homePage').classList.remove('hidden');
+                document.getElementById('homePage').classList.add('fade-in');
+                pageId = 'home';
+            }
+            
+            // 3. Update the URL hash
+            window.history.pushState(null, null, `#${pageId}`);
+
+            // 4. Highlight active navigation buttons
+            
+            // Reset all desktop buttons to inactive state
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove(...desktopActiveClass.split(' '));
+                btn.classList.add(...desktopInactiveClasses.split(' '));
+            });
+            
+            // Highlight active button (Desktop: nav-btn)
+            const activeDesktopButton = document.querySelector(`.nav-btn[href="#${pageId}"]`);
+            if (activeDesktopButton) {
+                activeDesktopButton.classList.remove(...desktopInactiveClasses.split(' '));
+                activeDesktopButton.classList.add(...desktopActiveClass.split(' '));
+            }
+            
+            // Reset all mobile buttons to inactive state
+            document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+                btn.classList.remove(...mobileActiveClass.split(' '));
+                btn.classList.add(...mobileInactiveClasses.split(' '));
+            });
+
+            // Highlight active buttons (Mobile: mobile-nav-btn) โดยใช้ href attribute
+            const activeMobileButton = document.querySelector(`.mobile-nav-btn[href="#${pageId}"]`);
+            if (activeMobileButton) {
+                activeMobileButton.classList.remove(...mobileInactiveClasses.split(' '));
+                activeMobileButton.classList.add(...mobileActiveClass.split(' '));
+            }
+
+            // 5. Load page content
+            switch(pageId) {
+                case 'home':
+                    loadFeaturedActivities(); // Re-use existing
+                    break;
+                case 'coreStudentRecruit':
+                    loadCoreStudentRecruitmentData(); // NEW
+                    break;
+                case 'committeeRecruit':
+                    loadCommitteeRecruitmentData(); // NEW
+                    break;
+                // Existing pages below (removed from main nav but functional)
+                case 'activities': 
+                    loadActivities(); 
+                    break;
+                case 'news': 
+                    loadNews(); 
+                    break;
+                case 'committee': 
+                    loadCommittee(); 
+                    break;
+                case 'links': 
+                    loadLinks(); 
+                    break;
+            }
+
+            // 6. Hide mobile menu
+            document.getElementById('mobileMenu').classList.add('hidden');
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 50);
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // =========================================================
+        // AUTHENTICATION FUNCTIONS
+        // =========================================================
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+            }, 10); 
+        }
+
+        function hideLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    isAdmin = true;
+                    showAdminPanel();
+                    hideLoginModal();
+                    showToast('เข้าสู่ระบบสำเร็จ', 'success');
+                })
+                .catch((error) => {
+                    showToast('เข้าสู่ระบบไม่สำเร็จ: ' + error.message, 'error');
+                });
+        }
+
+        function logout() {
+            auth.signOut().then(() => {
+                isAdmin = false;
+                hideAdminPanel();
+                showToast('ออกจากระบบสำเร็จ', 'success');
+            });
+        }
+
+        function showAdminPanel() {
+            document.getElementById('adminPanel').classList.remove('hidden');
+            
+            // Existing buttons
+            document.getElementById('addActivityBtn')?.classList.remove('hidden');
+            document.getElementById('addNewsBtn')?.classList.remove('hidden');
+            document.getElementById('addMemberBtn')?.classList.remove('hidden');
+            document.getElementById('addLinkBtn')?.classList.remove('hidden');
+            
+            // NEW Admin buttons
+            document.getElementById('addCoreStudentAnnouncementBtn')?.classList.remove('hidden');
+            document.getElementById('addCoreStudentEligibleBtn')?.classList.remove('hidden');
+            document.getElementById('addCommitteeRecruitAnnouncementBtn')?.classList.remove('hidden');
+            document.getElementById('addCommitteeEligibleInterviewBtn')?.classList.remove('hidden');
+            document.getElementById('addCommitteePassedInterviewBtn')?.classList.remove('hidden');
+
+            // Re-load current page content to display edit/delete buttons
+            const pageId = window.location.hash.substring(1) || 'home';
+            showPage(pageId); 
+        }
+
+        function hideAdminPanel() {
+            document.getElementById('adminPanel').classList.add('hidden');
+            
+            // Existing buttons
+            document.getElementById('addActivityBtn')?.classList.add('hidden');
+            document.getElementById('addNewsBtn')?.classList.add('hidden');
+            document.getElementById('addMemberBtn')?.classList.add('hidden');
+            document.getElementById('addLinkBtn')?.classList.add('hidden');
+            
+            // NEW Admin buttons
+            document.getElementById('addCoreStudentAnnouncementBtn')?.classList.add('hidden');
+            document.getElementById('addCoreStudentEligibleBtn')?.classList.add('hidden');
+            document.getElementById('addCommitteeRecruitAnnouncementBtn')?.classList.add('hidden');
+            document.getElementById('addCommitteeEligibleInterviewBtn')?.classList.add('hidden');
+            document.getElementById('addCommitteePassedInterviewBtn')?.classList.add('hidden');
+
+            // Re-load current page content to hide edit/delete buttons
+            const pageId = window.location.hash.substring(1) || 'home';
+            showPage(pageId); 
+        }
+
+        // =========================================================
+        // NEW RECRUITMENT CRUD FUNCTIONS (PLACEHOLDERS)
+        // ต้องสร้าง Collections ใน Firestore:
+        // 1. coreStudentAnnouncements
+        // 2. coreStudentEligible
+        // 3. committeeRecruitAnnouncements
+        // 4. committeeEligibleInterview
+        // 5. committeePassedInterview
+        // =========================================================
+        
+        function getCollectionName(dataType) {
+            switch(dataType) {
+                case 'coreStudentAnnouncement': return 'coreStudentAnnouncements';
+                case 'coreStudentEligible': return 'coreStudentEligible';
+                case 'committeeRecruitAnnouncement': return 'committeeRecruitAnnouncements';
+                case 'committeeEligibleInterview': return 'committeeEligibleInterview';
+                case 'committeePassedInterview': return 'committeePassedInterview';
+                default: return null;
+            }
+        }
+
+        function showAddModal(dataType) {
+            document.getElementById('dataType').value = dataType;
+            let title = '';
+            switch(dataType) {
+                case 'coreStudentAnnouncement': title = 'เพิ่มประกาศรับสมัครนักเรียนแกนนำ'; break;
+                case 'coreStudentEligible': title = 'เพิ่มรายชื่อผู้มีสิทธิ์เข้าร่วม (นักเรียนแกนนำ)'; break;
+                case 'committeeRecruitAnnouncement': title = 'เพิ่มประกาศรับสมัครคณะกรรมการ'; break;
+                case 'committeeEligibleInterview': title = 'เพิ่มรายชื่อผู้มีสิทธิ์สัมภาษณ์ (คณะกรรมการ)'; break;
+                case 'committeePassedInterview': title = 'เพิ่มรายชื่อผู้ผ่านสัมภาษณ์ (คณะกรรมการ)'; break;
+            }
+            document.getElementById('addModalTitle').textContent = title;
+            document.getElementById('addForm').reset();
+            document.getElementById('addModal').classList.remove('hidden');
+        }
+
+        function hideAddModal() {
+            document.getElementById('addModal').classList.add('hidden');
+        }
+
+        function handleAddData(event) {
+            event.preventDefault();
+            const dataType = document.getElementById('dataType').value;
+            const title = document.getElementById('dataTitle').value;
+            const content = document.getElementById('dataContent').value;
+            const url = document.getElementById('dataUrl').value;
+            
+            const collectionName = getCollectionName(dataType);
+            if (!collectionName) return showToast('ข้อมูลประเภทนี้ไม่ถูกต้อง', 'error');
+
+            db.collection(collectionName).add({
+                title: title,
+                content: content,
+                url: url,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                hideAddModal();
+                showToast('เพิ่มข้อมูลสำเร็จ', 'success');
+                // Re-load the correct page
+                if (dataType.includes('coreStudent')) {
+                    loadCoreStudentRecruitmentData();
+                } else if (dataType.includes('committeeRecruit')) {
+                    loadCommitteeRecruitmentData();
+                }
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาดในการเพิ่มข้อมูล: ' + error.message, 'error');
+            });
+        }
+        
+        function handleDeleteData(id, dataType) {
+            if (!confirm('ยืนยันการลบข้อมูลนี้หรือไม่?')) return;
+            const collectionName = getCollectionName(dataType);
+            
+            if (!collectionName) return showToast('ข้อมูลประเภทนี้ไม่ถูกต้อง', 'error');
+
+            db.collection(collectionName).doc(id).delete().then(() => {
+                showToast('ลบข้อมูลสำเร็จ', 'success');
+                // Re-load the correct page
+                if (dataType.includes('coreStudent')) {
+                    loadCoreStudentRecruitmentData();
+                } else if (dataType.includes('committeeRecruit')) {
+                    loadCommitteeRecruitmentData();
+                }
+            }).catch((error) => {
+                showToast('เกิดข้อผิดพลาดในการลบข้อมูล: ' + error.message, 'error');
+            });
+        }
+        
+        // --- Core Student Load Function ---
+        function loadCoreStudentRecruitmentData() {
+            // Load Announcement
+            db.collection('coreStudentAnnouncements').orderBy('createdAt', 'desc').limit(1).get().then(snapshot => {
+                const contentDiv = document.getElementById('coreStudentAnnouncementContent');
+                contentDiv.innerHTML = '';
+                if (snapshot.empty) {
+                    contentDiv.innerHTML = '<p class="text-red-500">ยังไม่มีประกาศรับสมัคร</p>';
+                }
+                snapshot.forEach(doc => {
+                    contentDiv.innerHTML += createRecruitmentContentCard(doc.id, doc.data(), 'coreStudentAnnouncement');
+                });
+            });
+
+            // Load Eligible List
+            db.collection('coreStudentEligible').orderBy('createdAt', 'desc').limit(1).get().then(snapshot => {
+                const contentDiv = document.getElementById('coreStudentEligibleContent');
+                contentDiv.innerHTML = '';
+                if (snapshot.empty) {
+                    contentDiv.innerHTML = '<p class="text-red-500">ยังไม่มีการประกาศรายชื่อผู้มีสิทธิ์เข้าร่วม</p>';
+                }
+                snapshot.forEach(doc => {
+                    contentDiv.innerHTML += createRecruitmentContentCard(doc.id, doc.data(), 'coreStudentEligible');
+                });
+            });
+        }
+        
+        // --- Committee Recruit Load Function ---
+        function loadCommitteeRecruitmentData() {
+             // Load Announcement
+             db.collection('committeeRecruitAnnouncements').orderBy('createdAt', 'desc').limit(1).get().then(snapshot => {
+                const contentDiv = document.getElementById('committeeRecruitAnnouncementContent');
+                contentDiv.innerHTML = '';
+                if (snapshot.empty) {
+                    contentDiv.innerHTML = '<p class="text-red-500">ยังไม่มีประกาศรับสมัคร</p>';
+                }
+                snapshot.forEach(doc => {
+                    contentDiv.innerHTML += createRecruitmentContentCard(doc.id, doc.data(), 'committeeRecruitAnnouncement');
+                });
+            });
+
+            // Load Eligible Interview List
+            db.collection('committeeEligibleInterview').orderBy('createdAt', 'desc').limit(1).get().then(snapshot => {
+                const contentDiv = document.getElementById('committeeEligibleInterviewContent');
+                contentDiv.innerHTML = '';
+                if (snapshot.empty) {
+                    contentDiv.innerHTML = '<p class="text-red-500">ยังไม่มีการประกาศรายชื่อผู้มีสิทธิ์สัมภาษณ์</p>';
+                }
+                snapshot.forEach(doc => {
+                    contentDiv.innerHTML += createRecruitmentContentCard(doc.id, doc.data(), 'committeeEligibleInterview');
+                });
+            });
+
+            // Load Passed Interview List
+            db.collection('committeePassedInterview').orderBy('createdAt', 'desc').limit(1).get().then(snapshot => {
+                const contentDiv = document.getElementById('committeePassedInterviewContent');
+                contentDiv.innerHTML = '';
+                if (snapshot.empty) {
+                    contentDiv.innerHTML = '<p class="text-red-500">ยังไม่มีการประกาศรายชื่อผู้ผ่านสัมภาษณ์</p>';
+                }
+                snapshot.forEach(doc => {
+                    contentDiv.innerHTML += createRecruitmentContentCard(doc.id, doc.data(), 'committeePassedInterview');
+                });
+            });
+        }
+        
+        function createRecruitmentContentCard(id, data, dataType) {
+            const adminButtons = isAdmin ? `
+                <div class="mt-4 flex space-x-2 justify
