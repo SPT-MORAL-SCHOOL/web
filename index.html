@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงเรียนคุณธรรม สพฐ. [span_0](start_span)โรงเรียนสตรีพัทลุง</title>[span_0](end_span)
+    <link rel="icon" type="image/png" href="favicon.PNG"> 
+    
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> 
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.PNG">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.PNG">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700;800&family=Prompt:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            [span_1](start_span)font-family: 'Prompt', 'Kanit', sans-serif;[span_1](end_span)
+        }
+        .fade-in {
+            [span_2](start_span)animation: fadeIn 0.5s ease-in;[span_2](end_span)
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); [span_3](start_span)}
+            to { opacity: 1; transform: translateY(0); }[span_3](end_span)
+        }
+        .hero-gradient {
+            [span_4](start_span)background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);[span_4](end_span)
+        }
+        .card-hover {
+            [span_5](start_span)transition: all 0.3s ease;[span_5](end_span)
+        }
+        .card-hover:hover {
+            [span_6](start_span)transform: translateY(-8px);[span_6](end_span)
+            [span_7](start_span)box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);[span_7](end_span)
+        }
+        .glass-effect {
+            [span_8](start_span)backdrop-filter: blur(10px);[span_8](end_span)
+            [span_9](start_span)background: rgba(255, 255, 255, 0.9);[span_9](end_span)
+        }
+        .gradient-text {
+            [span_10](start_span)background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);[span_10](end_span)
+            -[span_11](start_span)webkit-background-clip: text;[span_11](end_span)
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .floating {
+            [span_12](start_span)animation: floating 3s ease-in-out infinite;[span_12](end_span)
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); [span_13](start_span)}
+            50% { transform: translateY(-10px); }[span_13](end_span)
+        }
+        .pulse-glow {
+            [span_14](start_span)animation: pulse-glow 2s infinite;[span_14](end_span)
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); [span_15](start_span)}
+            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.6); }[span_15](end_span)
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <nav class="bg-white shadow-lg sticky top-0 z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    [span_16](start_span)<img src="https://img5.pic.in.th/file/secure-sv1/IMG_0310f4b22b3a3a8d0946.jpeg" alt="โลโก้โรงเรียนสตรีพัทลุง" class="h-10 w-10 object-contain shadow-lg rounded-full bg-white p-1">[span_16](end_span)
+                    [span_17](start_span)<img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" alt="โลโก้โรงเรียนคุณธรรม" class="h-10 w-10 object-contain shadow-lg rounded-full bg-white p-1">[span_17](end_span)
+                    <div>
+                        <h1 class="text-lg font-semibold text-gray-900">โรงเรียนคุณธรรม สพฐ.</h1>
+                        [span_18](start_span)<p class="text-sm text-gray-500">โรงเรียนสตรีพัทลุง</p>[span_18](end_span)
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    [span_19](start_span)<a href="#home" onclick="showPage('home')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">หน้าหลัก</a>[span_19](end_span)
+                    [span_20](start_span)<a href="#about" onclick="showPage('about')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">เกี่ยวกับ</a>[span_20](end_span)
+                    [span_21](start_span)<a href="#activities" onclick="showPage('activities')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">กิจกรรม</a>[span_21](end_span)
+                    [span_22](start_span)<a href="#news" onclick="showPage('news')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">ประชาสัมพันธ์</a>[span_22](end_span)
+                    [span_23](start_span)<a href="#committee" onclick="showPage('committee')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">คณะกรรมการ</a>[span_23](end_span)
+                    [span_24](start_span)<a href="#links" onclick="showPage('links')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">ลิงก์</a>[span_24](end_span)
+                    [span_25](start_span)<a href="#contact" onclick="showPage('contact')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">ติดต่อ</a>[span_25](end_span)
+                    [span_26](start_span)<button onclick="showLoginModal()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-base hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg">เข้าสู่ระบบ</button>[span_26](end_span)
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            [span_27](start_span)<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>[span_27](end_span)
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg glass-effect">
+            <div class="px-4 pt-3 pb-4 space-y-2">
+                [span_28](start_span)<a id="home-mobile-btn" href="#home" onclick="showPage('home')" class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">หน้าหลัก</a>[span_28](end_span)
+                [span_29](start_span)<a id="about-mobile-btn" href="#about" onclick="showPage('about')" class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">เกี่ยวกับ</a>[span_29](end_span)
+                [span_30](start_span)<a id="activities-mobile-btn" href="#activities" onclick="showPage('activities')" class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">กิจกรรม</a>[span_30](end_span)
+                [span_31](start_span)<a id="news-mobile-btn" href="#news" onclick="showPage('news')" class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">ประชาสัมพันธ์</a>[span_31](end_span)
+                [span_32](start_span)<a id="committee-mobile-btn" href="#committee" onclick="showPage('committee')" class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">คณะกรรมการ</a>[span_32](end_span)
+                [span_33](start_span)<a id="links-mobile-btn" href="#links" onclick="showPage('links')" class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">ลิงก์</a>[span_33](end_span)
+                [span_34](start_span)<a id="contact-mobile-btn" href="#contact" onclick="showPage('contact')" class="mobile-nav-btn block px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 w-full text-left text-base rounded-lg transition-all duration-300">ติดต่อ</a>[span_34](end_span)
+                [span_35](start_span)<button onclick="showLoginModal()" class="block px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-base hover:from-purple-700 hover:to-blue-700 w-full text-left shadow-lg transition-all duration-300">เข้าสู่ระบบ</button>[span_35](end_span)
+            </div>
+        </div>
+    </nav>
+    
+    <img src="Top_ribbon.png" 
+     alt="Black mourning ribbon for websites, top left corner, ริบบิ้นไว้ทุกข์สีดำ มุมบนซ้าย สำหรับแสดงความอาลัยบนเว็บไซต์" 
+     [span_36](start_span)style="position:fixed; top:0; left:0; width:80px; opacity:0.9; z-index:9999; pointer-events:none;">[span_36](end_span)
+
+    <div id="adminPanel" class="hidden bg-yellow-100 border-b border-yellow-200">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+            <span class="text-yellow-800 font-medium">โหมดผู้ดูแล</span>
+            <button onclick="logout()" class="text-yellow-800 hover:text-yellow-900 font-medium">ออกจากระบบ</button>
+        </div>
+    </div>
+
+    <main id="mainContent">
+        <div class="p-10 text-center text-gray-500">
+            กำลังโหลดเนื้อหา...
+        </div>
+    </main>
+    
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0"> 
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-sm w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="loginModalInner">
+            <h2 class="text-2xl font-bold p-6 text-center bg-gradient-to-r from-purple-600 to-blue-600 text-white">เข้าสู่ระบบผู้ดูแล</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)" class="p-8">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">อีเมล</label>
+                    <input type="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">รหัสผ่าน</label>
+                    <input type="password" id="password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl text-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg">เข้าสู่ระบบ</button>
+            </form>
+            <button onclick="hideLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+    <script>
+        // Modal Opacity Management (Keep this style tag here for modal animation)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fixed.inset-0.bg-black.bg-opacity-50').forEach(modal => {
+                modal.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
+                modal.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+            });
+            document.querySelectorAll('.fixed.inset-0.bg-black.bg-opacity-50 > div:first-child').forEach(inner => {
+                inner.classList.remove('scale-95', 'opacity-0', 'transition-all', 'duration-300');
+                inner.classList.add('scale-95', 'opacity-0', 'transition-all', 'duration-300');
+            });
+        });
+
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const modalInner = modal.querySelector('div:first-child');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalInner.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        }
+
+        function hideModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const modalInner = modal.querySelector('div:first-child');
+            modal.classList.add('opacity-0');
+            modalInner.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById(modalId.replace('Modal', 'Form'))?.reset();
+            }, 300);
+        }
+
+        function showLoginModal() { showModal('loginModal'); }
+        function hideLoginModal() { hideModal('loginModal'); }
+        // ... Other modal functions (to be defined in main.js, but the show/hide wrappers use the base logic)
+    </script>
+    
+    <div id="addActivityModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="addActivityModalInner">
+            <h2 class="text-2xl font-bold mb-6">เพิ่มกิจกรรมใหม่</h2>
+            <form id="addActivityForm" onsubmit="handleAddActivity(event)">
+                <div class="mb-4">
+                    <label for="activityTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อกิจกรรม</label>
+                    <input type="text" id="activityTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="activityDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย</label>
+                    [span_37](start_span)<textarea id="activityDescription" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>[span_37](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="activityUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ลงทะเบียน/ข้อมูลเพิ่มเติม (URL)</label>
+                    [span_38](start_span)<input type="url" id="activityUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://forms.gle/XXXXX หรือ https://... (ไม่บังคับ)">[span_38](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="activityDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    [span_39](start_span)<input type="date" id="activityDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_39](end_span)
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="activityFeatured" class="mr-2">
+                        [span_40](start_span)<span class="text-sm text-gray-700">แสดงในหน้าหลัก (กิจกรรมเด่น)</span>[span_40](end_span)
+                    </label>
+                </div>
+                <div class="flex space-x-4">
+                    [span_41](start_span)<button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มกิจกรรม</button>[span_41](end_span)
+                    [span_42](start_span)<button type="button" onclick="hideAddActivityModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>[span_42](end_span)
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editActivityModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="editActivityModalInner">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขกิจกรรม</h2>
+            <form id="editActivityForm" onsubmit="handleEditActivity(event)">
+                [span_43](start_span)<input type="hidden" id="editActivityId">[span_43](end_span)
+                <div class="mb-4">
+                    <label for="editActivityTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อกิจกรรม</label>
+                    [span_44](start_span)<input type="text" id="editActivityTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_44](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="editActivityDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย</label>
+                    <textarea id="editActivityDescription" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="editActivityUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ลงทะเบียน/ข้อมูลเพิ่มเติม (URL)</label>
+                    <input type="url" id="editActivityUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://forms.gle/XXXXX หรือ https://... (ไม่บังคับ)">
+                </div>
+                <div class="mb-4">
+                    <label for="editActivityDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    <input type="date" id="editActivityDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="editActivityFeatured" class="mr-2">
+                        <span class="text-sm text-gray-700">แสดงในหน้าหลัก (กิจกรรมเด่น)</span>
+                    </label>
+                </div>
+                <div class="flex space-x-4">
+                    [span_45](start_span)<button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>[span_45](end_span)
+                    [span_46](start_span)<button type="button" onclick="hideEditActivityModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>[span_46](end_span)
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addNewsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="addNewsModalInner">
+            <h2 class="text-2xl font-bold mb-6">เพิ่มข่าวประชาสัมพันธ์</h2>
+            <form id="addNewsForm" onsubmit="handleAddNews(event)">
+                <div class="mb-4">
+                    <label for="newsTitle" class="block text-sm font-medium text-gray-700 mb-2">หัวข้อข่าว</label>
+                    [span_47](start_span)<input type="text" id="newsTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_47](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="newsContent" class="block text-sm font-medium text-gray-700 mb-2">เนื้อหา</label>
+                    [span_48](start_span)<textarea id="newsContent" rows="6" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>[span_48](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="newsUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ข้อมูลเพิ่มเติม/ไฟล์เอกสาร (URL)</label>
+                    <input type="url" id="newsUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://docs.google.com/... หรือ https://... (ไม่บังคับ)">
+                </div>
+                <div class="mb-4">
+                    <label for="newsDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    [span_49](start_span)<input type="date" id="newsDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_49](end_span)
+                </div>
+                <div class="flex space-x-4">
+                    [span_50](start_span)<button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มข่าว</button>[span_50](end_span)
+                    [span_51](start_span)<button type="button" onclick="hideAddNewsModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>[span_51](end_span)
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editNewsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="editNewsModalInner">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขข่าวประชาสัมพันธ์</h2>
+            <form id="editNewsForm" onsubmit="handleEditNews(event)">
+                <input type="hidden" id="editNewsId">
+                <div class="mb-4">
+                    <label for="editNewsTitle" class="block text-sm font-medium text-gray-700 mb-2">หัวข้อข่าว</label>
+                    [span_52](start_span)<input type="text" id="editNewsTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_52](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="editNewsContent" class="block text-sm font-medium text-gray-700 mb-2">เนื้อหา</label>
+                    [span_53](start_span)<textarea id="editNewsContent" rows="6" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>[span_53](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="editNewsUrl" class="block text-sm font-medium text-gray-700 mb-2">ลิงก์ข้อมูลเพิ่มเติม/ไฟล์เอกสาร (URL)</label>
+                    [span_54](start_span)<input type="url" id="editNewsUrl" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://docs.google.com/... หรือ https://... (ไม่บังคับ)">[span_54](end_span)
+                </div>
+                <div class="mb-6">
+                    <label for="editNewsDate" class="block text-sm font-medium text-gray-700 mb-2">วันที่</label>
+                    <input type="date" id="editNewsDate" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>
+                    <button type="button" onclick="hideEditNewsModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addLinkModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="addLinkModalInner">
+            <h2 class="text-2xl font-bold mb-6">เพิ่มลิงก์ใหม่</h2>
+            <form id="addLinkForm" onsubmit="handleAddLink(event)">
+                <div class="mb-4">
+                    <label for="linkTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อลิงก์</label>
+                    [span_55](start_span)<input type="text" id="linkTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_55](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="linkUrl" class="block text-sm font-medium text-gray-700 mb-2">URL ลิงก์</label>
+                    [span_56](start_span)<input type="url" id="linkUrl" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_56](end_span)
+                </div>
+                <div class="mb-6">
+                    <label for="linkDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย (ไม่บังคับ)</label>
+                    <textarea id="linkDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มลิงก์</button>
+                    <button type="button" onclick="hideAddLinkModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editLinkModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="editLinkModalInner">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขลิงก์</h2>
+            <form id="editLinkForm" onsubmit="handleEditLink(event)">
+                <input type="hidden" id="editLinkId">
+                <div class="mb-4">
+                    <label for="editLinkTitle" class="block text-sm font-medium text-gray-700 mb-2">ชื่อลิงก์</label>
+                    [span_57](start_span)<input type="text" id="editLinkTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_57](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="editLinkUrl" class="block text-sm font-medium text-gray-700 mb-2">URL ลิงก์</label>
+                    [span_58](start_span)<input type="url" id="editLinkUrl" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_58](end_span)
+                </div>
+                <div class="mb-6">
+                    <label for="editLinkDescription" class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย (ไม่บังคับ)</label>
+                    [span_59](start_span)<textarea id="editLinkDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>[span_59](end_span)
+                </div>
+                <div class="flex space-x-4">
+                    [span_60](start_span)<button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>[span_60](end_span)
+                    [span_61](start_span)<button type="button" onclick="hideEditLinkModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>[span_61](end_span)
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addMemberModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="addMemberModalInner">
+            [span_62](start_span)<h2 class="text-2xl font-bold mb-6">เพิ่มสมาชิกคณะกรรมการ</h2>[span_62](end_span)
+            <form id="addMemberForm" onsubmit="handleAddMember(event)">
+                <div class="mb-4">
+                    <label for="memberName" class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล</label>
+                    [span_63](start_span)<input type="text" id="memberName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">[span_63](end_span)
+                </div>
+                <div class="mb-4">
+                    <label for="memberPosition" class="block text-sm font-medium text-gray-700 mb-2">ตำแหน่ง</label>
+                    <select id="memberPosition" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        [span_64](start_span)<option value="">เลือกตำแหน่ง</option>[span_64](end_span)
+                        <option value="ประธาน">ประธาน</option>
+                        <option value="รองประธาน">รองประธาน</option>
+                        <option value="เลขานุการ">เลขานุการ</option>
+                        <option value="ประชาสัมพันธ์">ประชาสัมพันธ์</option>
+                        <option value="กรรมการ">กรรมการ</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="memberDepartment" class="block text-sm font-medium text-gray-700 mb-2">ฝ่าย/กลุ่ม</label>
+                    <select id="memberDepartment" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">เลือกฝ่าย</option>
+                        <option value="ฝ่ายบริหาร">ฝ่ายบริหาร</option>
+                        <option value="ฝ่ายกิจกรรม">ฝ่ายกิจกรรม</option>
+                        <option value="ฝ่ายสารสนเทศ">ฝ่ายสารสนเทศ</option>
+                        <option value="ฝ่ายประชาสัมพันธ์">ฝ่ายประชาสัมพันธ์</option>
+                        <option value="ฝ่ายอื่นๆ">ฝ่ายอื่นๆ</option>
+                    </select>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มสมาชิก</button>
+                    <button type="button" onclick="hideAddMemberModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editMemberModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="editMemberModalInner">
+            <h2 class="text-2xl font-bold mb-6">แก้ไขสมาชิกคณะกรรมการ</h2>
+            <form id="editMemberForm" onsubmit="handleEditMember(event)">
+                <input type="hidden" id="editMemberId">
+                <div class="mb-4">
+                    <label for="editMemberName" class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล</label>
+                    <input type="text" id="editMemberName" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="editMemberPosition" class="block text-sm font-medium text-gray-700 mb-2">ตำแหน่ง</label>
+                    <select id="editMemberPosition" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">เลือกตำแหน่ง</option>
+                        <option value="ประธาน">ประธาน</option>
+                        <option value="รองประธาน">รองประธาน</option>
+                        <option value="เลขานุการ">เลขานุการ</option>
+                        <option value="ประชาสัมพันธ์">ประชาสัมพันธ์</option>
+                        <option value="กรรมการ">กรรมการ</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="editMemberDepartment" class="block text-sm font-medium text-gray-700 mb-2">ฝ่าย/กลุ่ม</label>
+                    <select id="editMemberDepartment" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">เลือกฝ่าย</option>
+                        <option value="ฝ่ายบริหาร">ฝ่ายบริหาร</option>
+                        <option value="ฝ่ายกิจกรรม">ฝ่ายกิจกรรม</option>
+                        <option value="ฝ่ายสารสนเทศ">ฝ่ายสารสนเทศ</option>
+                        <option value="ฝ่ายประชาสัมพันธ์">ฝ่ายประชาสัมพันธ์</option>
+                        <option value="ฝ่ายอื่นๆ">ฝ่ายอื่นๆ</option>
+                    </select>
+                </div>
+                <div class="flex space-x-4">
+                    [span_65](start_span)<button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">บันทึกการแก้ไข</button>[span_65](end_span)
+                    [span_66](start_span)<button type="button" onclick="hideEditMemberModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>[span_66](end_span)
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    [span_67](start_span)<footer class="bg-gray-900 text-white p-8 md:p-12 mt-12">[span_67](end_span)
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="footer-contact">
+                [span_68](start_span)<h4 class="text-xl font-bold mb-4 border-b-2 border-purple-500 pb-2">ติดต่อเรา / สถานที่ตั้ง</h4>[span_68](end_span)
+                <p class="mb-2 text-lg font-semibold">โรงเรียนคุณธรรม สพฐ. [span_69](start_span)โรงเรียนสตรีพัทลุง</p>[span_69](end_span)
+                <p class="text-gray-400 mb-4 leading-relaxed">
+                    250 ถนนราเมศวร์ ตำบลคูหาสวรรค์ อำเภอเมือง จังหวัดพัทลุง 93000
+                </p>
+                <div class="flex items-center mb-2">
+                    <svg class="w-5 h-5 mr-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <a href="mailto:sptmorral@spt.ac.th" class="text-gray-300 hover:text-purple-400 transition duration-300">
+                        Email: sptmorral@spt.ac.th
+                    [span_70](start_span)</a>[span_70](end_span)
+                </div>
+                <div class="mt-4 pt-2 border-t border-gray-700">
+                    <p class="text-sm font-semibold text-purple-400">คุณธรรมอัตลักษณ์:</p>
+                    [span_71](start_span)<p class="text-sm text-gray-400">รักสามัคคี ซื่อสัตย์สุจริต รับผิดชอบ สู่จิตสาธารณะ</p>[span_71](end_span)
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4 class="text-xl font-bold mb-4 border-b-2 border-purple-500 pb-2">เมนูหลัก</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#home" onclick="showPage('home')" class="hover:text-purple-400 transition duration-300">หน้าหลัก</a></li>
+                    <li><a href="#activities" onclick="showPage('activities')" class="hover:text-purple-400 transition duration-300">กิจกรรม</a></li>
+                    <li><a href="#news" onclick="showPage('news')" class="hover:text-purple-400 transition duration-300">ประชาสัมพันธ์</a></li>
+                    <li><a href="#committee" onclick="showPage('committee')" class="hover:text-purple-400 transition duration-300">คณะกรรมการ</a></li>
+                    <li><a href="#links" onclick="showPage('links')" class="hover:text-purple-400 transition duration-300">ลิงก์ที่เกี่ยวข้อง</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4 class="text-xl font-bold mb-4 border-b-2 border-purple-500 pb-2">โซเชียลมีเดีย</h4>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/sptmoralschool" target="_blank" rel="noopener noreferrer" title="Facebook" class="text-gray-400 hover:text-blue-600 transition duration-300 transform hover:scale-110">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        [span_72](start_span)</svg>[span_72](end_span)
+                    </a>
+                    <a href="https://www.instagram.com/spt_moral_school/" target="_blank" rel="noopener noreferrer" title="Instagram" class="text-gray-400 hover:text-pink-500 transition duration-300 transform hover:scale-110">
+                        <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        [span_73](start_span)</svg>[span_73](end_span)
+                    </a>
+                    <a href="https://www.tiktok.com/@spt.moral.school" target="_blank" rel="noopener noreferrer" title="TikTok" class="text-gray-400 hover:text-black transition duration-300 transform hover:scale-110">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        [span_74](start_span)</svg>[span_74](end_span)
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+            <p class="text-sm text-gray-500">&copy; 2024 โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script> 
+</body>
+</html>
