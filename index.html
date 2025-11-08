@@ -35,8 +35,8 @@
             transition: all 0.3s ease;
         }
         .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(-5px); /* Adjusted for subtle lift */
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15); /* Lighter shadow on hover */
         }
         .glass-effect {
             backdrop-filter: blur(10px);
@@ -76,7 +76,7 @@
                         <p class="text-sm text-gray-500">โรงเรียนสตรีพัทลุง</p>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-6">
+                <div class="hidden md:flex space-x-2">
                     <a href="#home" onclick="showPage('home')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">หน้าหลัก</a>
                     <a href="#coreStudentRecruit" onclick="showPage('coreStudentRecruit')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">นักเรียนแกนนำ</a>
                     <a href="#committeeRecruit" onclick="showPage('committeeRecruit')" class="nav-btn text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105">คณะกรรมการ</a>
@@ -123,8 +123,7 @@
                         class="block px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg text-base hover:from-purple-700 hover:to-blue-700 w-full text-left shadow-lg transition-all duration-300">
                     เข้าสู่ระบบ
                 </button>
-                
-                </div>
+            </div>
         </div>
     </nav>
     
@@ -152,24 +151,50 @@
                     <h2 class="text-xl md:text-2xl text-gray-700 mb-8 font-medium">โรงเรียนสตรีพัทลุง</h2>
                     <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">รักสามัคคี ซื่อสัตย์สุจริต รับผิดชอบ สู่จิตสาธารณะ</p>
                     <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="showPage('activities')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl text-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg pulse-glow">ดูกิจกรรม</button>
-                        <button onclick="showPage('contact')" class="bg-white text-gray-700 px-8 py-3 rounded-xl text-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg border border-gray-200">ติดต่อเรา</button>
+                        <button onclick="showPage('coreStudentRecruit')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl text-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg pulse-glow">สมัครนักเรียนแกนนำ</button>
+                        <button onclick="showPage('committeeRecruit')" class="bg-white text-gray-700 px-8 py-3 rounded-xl text-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg border border-gray-200">สมัครคณะกรรมการ</button>
                     </div>
                 </div>
             </section>
-
-            <section class="py-16 bg-white">
+            
+            <section class="py-16 bg-gray-50">
                 <div class="max-w-6xl mx-auto px-4">
                     <div class="text-center mb-12">
-                        <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-3">กิจกรรมเด่น</h2>
-                        <p class="text-lg text-gray-600">กิจกรรมที่น่าสนใจของโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</p>
-                        <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mt-4 rounded-full"></div>
+                        <h2 class="text-3xl font-extrabold gradient-text mb-4">ช่องทางสมัครกิจกรรมโรงเรียนคุณธรรม</h2>
+                        <p class="text-xl text-gray-600">เลือกประเภทการรับสมัครที่คุณสนใจเพื่อดูรายละเอียดและยื่นใบสมัคร</p>
+                        <div class="w-32 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mt-4 rounded-full"></div>
                     </div>
-                    <div id="featuredActivities" class="grid md:grid-cols-3 gap-8">
-                        </div>
+                    
+                    <div class="grid lg:grid-cols-2 gap-10">
+                        <a href="#coreStudentRecruit" onclick="showPage('coreStudentRecruit')" class="block p-8 bg-white rounded-2xl shadow-2xl card-hover border-t-8 border-indigo-500 transition-all duration-500">
+                            <div class="flex items-start space-x-6">
+                                <div class="p-4 bg-indigo-100 rounded-full">
+                                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.65-.187-1.293-.5-1.819M7 20v-2c0-.65.187-1.293.5-1.819L14 10l-4-4l-4 4-7 10h14"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">รับสมัครนักเรียนแกนนำ</h3>
+                                    <p class="text-lg text-gray-600">โครงการส่งเสริมนักเรียนที่มีจิตสาธารณะและเป็นผู้นำด้านคุณธรรม</p>
+                                    <span class="mt-4 inline-block text-indigo-600 font-semibold hover:underline">ดูรายละเอียดและสมัคร &rarr;</span>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="#committeeRecruit" onclick="showPage('committeeRecruit')" class="block p-8 bg-white rounded-2xl shadow-2xl card-hover border-t-8 border-purple-500 transition-all duration-500">
+                            <div class="flex items-start space-x-6">
+                                <div class="p-4 bg-purple-100 rounded-full">
+                                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H9a1 1 0 01-1-1v-1a2 2 0 012-2h4a2 2 0 012 2v1a1 1 0 01-1 1zM7 10h10a2 2 0 002-2V4a2 2 0 00-2-2H7a2 2 0 00-2 2v4a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">รับสมัครคณะกรรมการนักเรียน</h3>
+                                    <p class="text-lg text-gray-600">คณะกรรมการขับเคลื่อนและบริหารจัดการโครงการโรงเรียนคุณธรรม</p>
+                                    <span class="mt-4 inline-block text-purple-600 font-semibold hover:underline">ดูรายละเอียดและสมัคร &rarr;</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </section>
-        </div>
+            </div>
 
         <div id="coreStudentRecruitPage" class="page hidden">
             <div class="max-w-6xl mx-auto px-4 py-12">
@@ -252,13 +277,37 @@
         </div>
 
         <div id="activitiesPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">กิจกรรมทั้งหมด</h1>
+                <div class="flex justify-end mb-4">
+                    <button id="addActivityBtn" onclick="showAddActivityModal()" class="hidden bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">เพิ่มกิจกรรม</button>
+                </div>
+                <div id="activitiesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
             </div>
+        </div>
         <div id="newsPage" class="page hidden">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">ประชาสัมพันธ์และข่าวสาร</h1>
+                <div class="flex justify-end mb-4">
+                    <button id="addNewsBtn" onclick="showAddNewsModal()" class="hidden bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">เพิ่มข่าวสาร</button>
+                </div>
+                <div id="newsContainer" class="space-y-6">
+                    </div>
             </div>
+        </div>
         <div id="committeePage" class="page hidden">
              </div>
         <div id="linksPage" class="page hidden">
-             </div>
+             <div class="max-w-4xl mx-auto px-4 py-12">
+                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">ลิงก์ที่เกี่ยวข้อง</h1>
+                <div class="flex justify-end mb-4">
+                    <button id="addLinkBtn" onclick="showAddLinkModal()" class="hidden bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">เพิ่มลิงก์</button>
+                </div>
+                <div id="linksContainer" class="space-y-4">
+                    </div>
+            </div>
+        </div>
         <div id="aboutPage" class="page hidden">
              </div>
         
@@ -313,7 +362,7 @@
                             <a href="https://www.instagram.com/spt_moral_school/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-100 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
                                 <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                        <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                        <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                     </svg>
                                 </div>
                                 <div>
@@ -357,10 +406,11 @@
         <div class="bg-white rounded-xl p-8 max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto transform transition-transform duration-300 scale-100" id="addModalContent">
             <h2 class="text-2xl font-bold mb-6" id="addModalTitle">เพิ่มข้อมูล</h2>
             <p class="mb-4 text-sm text-gray-600">
-                เนื่องจากส่วนรับสมัครใหม่มีความหลากหลาย ผู้ดูแลสามารถเพิ่มข้อมูลได้ทั้งในรูปแบบของข้อความ HTML หรือ URL ลิงก์ไปยังเอกสาร/รายชื่อต่างๆ
+                ผู้ดูแลสามารถเพิ่มข้อมูลได้ทั้งในรูปแบบของข้อความ HTML หรือ URL ลิงก์ไปยังเอกสาร/รายชื่อต่างๆ
             </p>
             <form id="addForm" onsubmit="handleAddData(event)">
                 <input type="hidden" id="dataType">
+                <input type="hidden" id="docId">
                 
                 <div class="mb-4">
                     <label for="dataTitle" class="block text-sm font-medium text-gray-700 mb-2">หัวข้อ/ชื่อประกาศ</label>
@@ -378,7 +428,7 @@
                 </div>
                 
                 <div class="flex space-x-4">
-                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">เพิ่มข้อมูล</button>
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700" id="addModalSubmitBtn">เพิ่มข้อมูล</button>
                     <button type="button" onclick="hideAddModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400">ยกเลิก</button>
                 </div>
             </form>
@@ -414,19 +464,26 @@
     </div>
     
     <footer class="bg-gray-900 text-white p-8 md:p-12 mt-12"> 
-        </footer>
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm">&copy; <span id="currentYear"></span> โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง. สงวนลิขสิทธิ์.</p>
+        </div>
+    </footer>
 
     <script>
-        // Initialize Firebase (Assuming you have configured your Firebase project)
+        // =========================================================
+        // 🚨 ALERT: FIREBASE CONFIGURATION REQUIRED
+        // You MUST replace the placeholder values below with your actual Firebase project configuration.
+        // =========================================================
         const firebaseConfig = {
-            // Your Firebase config goes here
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
+  apiKey: "AIzaSyBeh27zK1qUYP7tOU3MYNn_RobC8RaPZSM",
+  authDomain: "website-moral.firebaseapp.com",
+  projectId: "website-moral",
+  storageBucket: "website-moral.firebasestorage.app",
+  messagingSenderId: "450436753681",
+  appId: "1:450436753681:web:13eb5458b57950099984b0",
+  measurementId: "G-1GR9NTF8JB"
+};
+
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
@@ -459,7 +516,7 @@
         }
 
         // =========================================================
-        // PAGE & NAVIGATION FUNCTIONS
+        // PAGE & NAVIGATION FUNCTIONS (IMPROVED)
         // =========================================================
         const pages = document.querySelectorAll('.page');
         const desktopInactiveClasses = 'text-gray-600 hover:text-gray-900 px-3 py-2 text-base transition-all duration-300 hover:scale-105';
@@ -485,13 +542,18 @@
             }
             
             // 3. Update the URL hash
-            window.history.pushState(null, null, `#${pageId}`);
+            if (window.location.hash !== `#${pageId}`) {
+                 window.history.pushState(null, null, `#${pageId}`);
+            }
+
 
             // 4. Highlight active navigation buttons
             
             // Reset all desktop buttons to inactive state
             document.querySelectorAll('.nav-btn').forEach(btn => {
+                // Remove active classes
                 btn.classList.remove(...desktopActiveClass.split(' '));
+                // Add inactive classes
                 btn.classList.add(...desktopInactiveClasses.split(' '));
             });
             
@@ -508,25 +570,24 @@
                 btn.classList.add(...mobileInactiveClasses.split(' '));
             });
 
-            // Highlight active buttons (Mobile: mobile-nav-btn) โดยใช้ href attribute
+            // Highlight active buttons (Mobile: mobile-nav-btn)
             const activeMobileButton = document.querySelector(`.mobile-nav-btn[href="#${pageId}"]`);
             if (activeMobileButton) {
                 activeMobileButton.classList.remove(...mobileInactiveClasses.split(' '));
                 activeMobileButton.classList.add(...mobileActiveClass.split(' '));
             }
 
-            // 5. Load page content
+            // 5. Load page content (Calling all relevant load functions)
             switch(pageId) {
                 case 'home':
-                    loadFeaturedActivities(); // Re-use existing
+                    // No data loading needed for the new home page
                     break;
                 case 'coreStudentRecruit':
-                    loadCoreStudentRecruitmentData(); // NEW
+                    loadCoreStudentRecruitmentData();
                     break;
                 case 'committeeRecruit':
-                    loadCommitteeRecruitmentData(); // NEW
+                    loadCommitteeRecruitmentData();
                     break;
-                // Existing pages below (removed from main nav but functional)
                 case 'activities': 
                     loadActivities(); 
                     break;
@@ -534,7 +595,7 @@
                     loadNews(); 
                     break;
                 case 'committee': 
-                    loadCommittee(); 
+                    loadCommittee(); // Placeholder load function
                     break;
                 case 'links': 
                     loadLinks(); 
@@ -544,7 +605,10 @@
             // 6. Hide mobile menu
             document.getElementById('mobileMenu').classList.add('hidden');
             setTimeout(() => {
-                window.scrollTo(0, 0);
+                // Scroll to top of the page if it's not a hash navigation within the page
+                if (!pageId.includes('-')) {
+                    window.scrollTo(0, 0);
+                }
             }, 50);
         }
         
@@ -578,8 +642,7 @@
             const password = document.getElementById('password').value;
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    isAdmin = true;
-                    showAdminPanel();
+                    // isAdmin is set by auth.onAuthStateChanged
                     hideLoginModal();
                     showToast('เข้าสู่ระบบสำเร็จ', 'success');
                 })
@@ -590,8 +653,7 @@
 
         function logout() {
             auth.signOut().then(() => {
-                isAdmin = false;
-                hideAdminPanel();
+                // isAdmin is set by auth.onAuthStateChanged
                 showToast('ออกจากระบบสำเร็จ', 'success');
             });
         }
@@ -602,19 +664,18 @@
             // Existing buttons
             document.getElementById('addActivityBtn')?.classList.remove('hidden');
             document.getElementById('addNewsBtn')?.classList.remove('hidden');
-            document.getElementById('addMemberBtn')?.classList.remove('hidden');
+            document.getElementById('addMemberBtn')?.classList.remove('hidden'); // Assuming this button exists on committeePage
             document.getElementById('addLinkBtn')?.classList.remove('hidden');
             
-            // NEW Admin buttons
+            // NEW Admin buttons for recruitment pages
             document.getElementById('addCoreStudentAnnouncementBtn')?.classList.remove('hidden');
             document.getElementById('addCoreStudentEligibleBtn')?.classList.remove('hidden');
             document.getElementById('addCommitteeRecruitAnnouncementBtn')?.classList.remove('hidden');
             document.getElementById('addCommitteeEligibleInterviewBtn')?.classList.remove('hidden');
             document.getElementById('addCommitteePassedInterviewBtn')?.classList.remove('hidden');
 
-            // Re-load current page content to display edit/delete buttons
-            const pageId = window.location.hash.substring(1) || 'home';
-            showPage(pageId); 
+            // Re-load all necessary page content to display edit/delete buttons
+            loadAllPagesData(); 
         }
 
         function hideAdminPanel() {
@@ -633,19 +694,23 @@
             document.getElementById('addCommitteeEligibleInterviewBtn')?.classList.add('hidden');
             document.getElementById('addCommitteePassedInterviewBtn')?.classList.add('hidden');
 
-            // Re-load current page content to hide edit/delete buttons
-            const pageId = window.location.hash.substring(1) || 'home';
-            showPage(pageId); 
+            // Re-load all necessary page content to hide edit/delete buttons
+            loadAllPagesData();
+        }
+
+        // Function to load all data relevant to all pages
+        function loadAllPagesData() {
+            // loadFeaturedActivities(); // REMOVED as per user request
+            loadCoreStudentRecruitmentData(); 
+            loadCommitteeRecruitmentData(); 
+            loadActivities();
+            loadNews();
+            loadCommittee();
+            loadLinks();
         }
 
         // =========================================================
-        // NEW RECRUITMENT CRUD FUNCTIONS (PLACEHOLDERS)
-        // ต้องสร้าง Collections ใน Firestore:
-        // 1. coreStudentAnnouncements
-        // 2. coreStudentEligible
-        // 3. committeeRecruitAnnouncements
-        // 4. committeeEligibleInterview
-        // 5. committeePassedInterview
+        // CRUD & DATA LOADING FUNCTIONS FOR RECRUITMENT (Unmodified)
         // =========================================================
         
         function getCollectionName(dataType) {
@@ -661,6 +726,9 @@
 
         function showAddModal(dataType) {
             document.getElementById('dataType').value = dataType;
+            document.getElementById('docId').value = ''; // Reset for Add
+            document.getElementById('addModalSubmitBtn').textContent = 'เพิ่มข้อมูล';
+
             let title = '';
             switch(dataType) {
                 case 'coreStudentAnnouncement': title = 'เพิ่มประกาศรับสมัครนักเรียนแกนนำ'; break;
@@ -674,6 +742,22 @@
             document.getElementById('addModal').classList.remove('hidden');
         }
 
+        function showEditModal(id, data, dataType) {
+            document.getElementById('dataType').value = dataType;
+            document.getElementById('docId').value = id; // Set ID for Edit
+            document.getElementById('addModalSubmitBtn').textContent = 'บันทึกการแก้ไข';
+
+            let title = 'แก้ไขข้อมูล';
+            document.getElementById('addModalTitle').textContent = title;
+            
+            document.getElementById('dataTitle').value = data.title || '';
+            document.getElementById('dataContent').value = data.content || '';
+            document.getElementById('dataUrl').value = data.url || '';
+            
+            document.getElementById('addModal').classList.remove('hidden');
+        }
+
+
         function hideAddModal() {
             document.getElementById('addModal').classList.add('hidden');
         }
@@ -681,6 +765,7 @@
         function handleAddData(event) {
             event.preventDefault();
             const dataType = document.getElementById('dataType').value;
+            const docId = document.getElementById('docId').value;
             const title = document.getElementById('dataTitle').value;
             const content = document.getElementById('dataContent').value;
             const url = document.getElementById('dataUrl').value;
@@ -688,34 +773,46 @@
             const collectionName = getCollectionName(dataType);
             if (!collectionName) return showToast('ข้อมูลประเภทนี้ไม่ถูกต้อง', 'error');
 
-            db.collection(collectionName).add({
+            const data = {
                 title: title,
                 content: content,
                 url: url,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(() => {
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            let promise;
+            if (docId) {
+                // Edit existing document
+                promise = db.collection(collectionName).doc(docId).update(data);
+            } else {
+                // Add new document
+                data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+                promise = db.collection(collectionName).add(data);
+            }
+            
+            promise.then(() => {
                 hideAddModal();
-                showToast('เพิ่มข้อมูลสำเร็จ', 'success');
-                // Re-load the correct page
+                showToast(docId ? 'แก้ไขข้อมูลสำเร็จ' : 'เพิ่มข้อมูลสำเร็จ', 'success');
+                // Re-load the correct page content
                 if (dataType.includes('coreStudent')) {
                     loadCoreStudentRecruitmentData();
                 } else if (dataType.includes('committeeRecruit')) {
                     loadCommitteeRecruitmentData();
                 }
             }).catch((error) => {
-                showToast('เกิดข้อผิดพลาดในการเพิ่มข้อมูล: ' + error.message, 'error');
+                showToast('เกิดข้อผิดพลาด: ' + error.message, 'error');
             });
         }
         
         function handleDeleteData(id, dataType) {
-            if (!confirm('ยืนยันการลบข้อมูลนี้หรือไม่?')) return;
+            if (!confirm('ยืนยันการลบข้อมูลนี้หรือไม่? การกระทำนี้ไม่สามารถยกเลิกได้')) return;
             const collectionName = getCollectionName(dataType);
             
             if (!collectionName) return showToast('ข้อมูลประเภทนี้ไม่ถูกต้อง', 'error');
 
             db.collection(collectionName).doc(id).delete().then(() => {
                 showToast('ลบข้อมูลสำเร็จ', 'success');
-                // Re-load the correct page
+                // Re-load the correct page content
                 if (dataType.includes('coreStudent')) {
                     loadCoreStudentRecruitmentData();
                 } else if (dataType.includes('committeeRecruit')) {
@@ -795,7 +892,7 @@
         function createRecruitmentContentCard(id, data, dataType) {
             const adminButtons = isAdmin ? `
                 <div class="mt-4 flex space-x-2 justify-end">
-                    <button onclick="alert('ฟังก์ชันแก้ไขกำลังดำเนินการ (ID: ${id})')" class="text-sm text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded-full hover:bg-blue-100 transition-all duration-300">แก้ไข</button>
+                    <button onclick="showEditModal('${id}', ${JSON.stringify(data).replace(/"/g, '&quot;')}, '${dataType}')" class="text-sm text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded-full hover:bg-blue-100 transition-all duration-300">แก้ไข</button>
                     <button onclick="handleDeleteData('${id}', '${dataType}')" class="text-sm text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded-full hover:bg-red-100 transition-all duration-300">ลบ</button>
                 </div>
             ` : '';
@@ -807,7 +904,6 @@
                 </a>
             ` : '';
             
-            // Note: The content field can contain HTML, so use backticks and ${data.content}
             return `
                 <div class="bg-gray-50 p-4 rounded-lg shadow-inner mb-4">
                     <h4 class="text-lg font-semibold text-gray-800 mb-2">${data.title}</h4>
@@ -818,45 +914,80 @@
             `;
         }
 
+        // =========================================================
+        // PLACEHOLDER FUNCTIONS FOR OLD PAGES 
+        // =========================================================
+
+        // The loadFeaturedActivities is now removed as the home page layout changed.
+        
+        function loadActivities() {
+             // Load all activities for the activities page (Placeholder)
+             const container = document.getElementById('activitiesContainer');
+             container.innerHTML = `<div class="md:col-span-3 text-center text-gray-500">
+                <p>⚠️ โหลดข้อมูลกิจกรรมไม่สมบูรณ์</p>
+                <p class="text-sm mt-1">โปรดตรวจสอบฟังก์ชัน <code>loadActivities()</code> และคอลเลกชัน <code>activities</code> ใน Firestore</p>
+            </div>`;
+        }
+
+        function loadNews() {
+             // Load all news for the news page (Placeholder)
+             const container = document.getElementById('newsContainer');
+             container.innerHTML = `<div class="text-center text-gray-500">
+                <p>⚠️ โหลดข้อมูลข่าวสารไม่สมบูรณ์</p>
+                <p class="text-sm mt-1">โปรดตรวจสอบฟังก์ชัน <code>loadNews()</code> และคอลเลกชัน <code>news</code> ใน Firestore</p>
+            </div>`;
+        }
+
+        function loadCommittee() {
+            // Load old committee members for committeePage (Placeholder)
+             const pageDiv = document.getElementById('committeePage');
+             pageDiv.innerHTML = `<div class="max-w-4xl mx-auto px-4 py-12 text-center text-gray-500">
+                <h1 class="text-2xl font-bold gradient-text mb-4">ข้อมูลคณะกรรมการ (เก่า)</h1>
+                <p>⚠️ หน้านี้ถูกเปลี่ยนเป็นหน้า **รับสมัครคณะกรรมการ** แล้ว (เมนูด้านบน)</p>
+                <p class="text-sm mt-2">หากต้องการแสดงข้อมูลคณะกรรมการชุดเก่า โปรดตรวจสอบฟังก์ชัน <code>loadCommittee()</code> และคอลเลกชัน <code>committee</code> ใน Firestore</p>
+            </div>`;
+        }
+
+        function loadLinks() {
+            // Load external links for linksPage (Placeholder)
+             const container = document.getElementById('linksContainer');
+             container.innerHTML = `<div class="text-center text-gray-500">
+                <p>⚠️ โหลดข้อมูลลิงก์ไม่สมบูรณ์</p>
+                <p class="text-sm mt-1">โปรดตรวจสอบฟังก์ชัน <code>loadLinks()</code> และคอลเลกชัน <code>links</code> ใน Firestore</p>
+            </div>`;
+        }
+        
+        // Placeholder modal functions for old pages
+        function showAddActivityModal() { alert('ฟังก์ชันเพิ่มกิจกรรมยังไม่ได้ติดตั้ง'); }
+        function showAddNewsModal() { alert('ฟังก์ชันเพิ่มข่าวสารยังไม่ได้ติดตั้ง'); }
+        function showAddLinkModal() { alert('ฟังก์ชันเพิ่มลิงก์ยังไม่ได้ติดตั้ง'); }
+
 
         // =========================================================
-        // INITIALIZATION (Existing functions below, kept for completeness)
+        // INITIALIZATION
         // =========================================================
 
-        // The following functions are placeholders from the original file
-        // You will need to ensure the full CRUD logic for these is implemented
-        function loadActivities() { /* ... existing logic ... */ }
-        function loadFeaturedActivities() { /* ... existing logic ... */ }
-        function loadNews() { /* ... existing logic ... */ }
-        function loadCommittee() { /* ... existing logic ... */ }
-        function loadLinks() { /* ... existing logic ... */ }
-        // ... (other helper and modal functions from original file) ...
-
-
-        // Event listeners for page load and hash change
         document.addEventListener('DOMContentLoaded', () => {
-            // Check for URL hash and load the corresponding page
+             // Set current year for footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Load the correct page based on URL hash
             const pageHash = window.location.hash.substring(1) || 'home';
             showPage(pageHash);
-
-            // Set today's date as default for date inputs (if you re-enable old forms)
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('activityDate')?.value = today;
-            document.getElementById('newsDate')?.value = today;
         });
 
-        // Auth state observer
+        // Auth state observer to manage isAdmin state and update UI
         auth.onAuthStateChanged((user) => {
             if (user) {
                 isAdmin = true;
-                showAdminPanel();
+                showAdminPanel(); // Now calls loadAllPagesData() to update all pages
             } else {
                 isAdmin = false;
-                hideAdminPanel();
+                hideAdminPanel(); // Now calls loadAllPagesData() to update all pages
             }
         });
         
-        // (ใหม่) เพิ่ม Event Listener สำหรับปุ่ม Back/Forward ของเบราว์เซอร์
+        // Event Listener for browser's Back/Forward button
         window.addEventListener('popstate', function() {
             const pageToLoad = window.location.hash.substring(1) || 'home';
             showPage(pageToLoad);
