@@ -276,40 +276,6 @@
             </div>
         </div>
 
-        <div id="activitiesPage" class="page hidden">
-            <div class="max-w-6xl mx-auto px-4 py-12">
-                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">กิจกรรมทั้งหมด</h1>
-                <div class="flex justify-end mb-4">
-                    <button id="addActivityBtn" onclick="showAddActivityModal()" class="hidden bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">เพิ่มกิจกรรม</button>
-                </div>
-                <div id="activitiesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    </div>
-            </div>
-        </div>
-        <div id="newsPage" class="page hidden">
-            <div class="max-w-6xl mx-auto px-4 py-12">
-                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">ประชาสัมพันธ์และข่าวสาร</h1>
-                <div class="flex justify-end mb-4">
-                    <button id="addNewsBtn" onclick="showAddNewsModal()" class="hidden bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">เพิ่มข่าวสาร</button>
-                </div>
-                <div id="newsContainer" class="space-y-6">
-                    </div>
-            </div>
-        </div>
-        <div id="committeePage" class="page hidden">
-             </div>
-        <div id="linksPage" class="page hidden">
-             <div class="max-w-4xl mx-auto px-4 py-12">
-                <h1 class="text-2xl md:text-3xl font-bold gradient-text mb-6 pb-2 border-b-2 border-purple-500">ลิงก์ที่เกี่ยวข้อง</h1>
-                <div class="flex justify-end mb-4">
-                    <button id="addLinkBtn" onclick="showAddLinkModal()" class="hidden bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">เพิ่มลิงก์</button>
-                </div>
-                <div id="linksContainer" class="space-y-4">
-                    </div>
-            </div>
-        </div>
-        <div id="aboutPage" class="page hidden">
-             </div>
         
         <div id="contactPage" class="page hidden">
             <div class="max-w-6xl mx-auto px-4 py-12">
@@ -588,18 +554,7 @@
                 case 'committeeRecruit':
                     loadCommitteeRecruitmentData();
                     break;
-                case 'activities': 
-                    loadActivities(); 
-                    break;
-                case 'news': 
-                    loadNews(); 
-                    break;
-                case 'committee': 
-                    loadCommittee(); // Placeholder load function
-                    break;
-                case 'links': 
-                    loadLinks(); 
-                    break;
+                
             }
 
             // 6. Hide mobile menu
@@ -681,12 +636,6 @@
         function hideAdminPanel() {
             document.getElementById('adminPanel').classList.add('hidden');
             
-            // Existing buttons
-            document.getElementById('addActivityBtn')?.classList.add('hidden');
-            document.getElementById('addNewsBtn')?.classList.add('hidden');
-            document.getElementById('addMemberBtn')?.classList.add('hidden');
-            document.getElementById('addLinkBtn')?.classList.add('hidden');
-            
             // NEW Admin buttons
             document.getElementById('addCoreStudentAnnouncementBtn')?.classList.add('hidden');
             document.getElementById('addCoreStudentEligibleBtn')?.classList.add('hidden');
@@ -703,10 +652,7 @@
             // loadFeaturedActivities(); // REMOVED as per user request
             loadCoreStudentRecruitmentData(); 
             loadCommitteeRecruitmentData(); 
-            loadActivities();
-            loadNews();
-            loadCommittee();
-            loadLinks();
+            
         }
 
         // =========================================================
@@ -920,48 +866,6 @@
 
         // The loadFeaturedActivities is now removed as the home page layout changed.
         
-        function loadActivities() {
-             // Load all activities for the activities page (Placeholder)
-             const container = document.getElementById('activitiesContainer');
-             container.innerHTML = `<div class="md:col-span-3 text-center text-gray-500">
-                <p>⚠️ โหลดข้อมูลกิจกรรมไม่สมบูรณ์</p>
-                <p class="text-sm mt-1">โปรดตรวจสอบฟังก์ชัน <code>loadActivities()</code> และคอลเลกชัน <code>activities</code> ใน Firestore</p>
-            </div>`;
-        }
-
-        function loadNews() {
-             // Load all news for the news page (Placeholder)
-             const container = document.getElementById('newsContainer');
-             container.innerHTML = `<div class="text-center text-gray-500">
-                <p>⚠️ โหลดข้อมูลข่าวสารไม่สมบูรณ์</p>
-                <p class="text-sm mt-1">โปรดตรวจสอบฟังก์ชัน <code>loadNews()</code> และคอลเลกชัน <code>news</code> ใน Firestore</p>
-            </div>`;
-        }
-
-        function loadCommittee() {
-            // Load old committee members for committeePage (Placeholder)
-             const pageDiv = document.getElementById('committeePage');
-             pageDiv.innerHTML = `<div class="max-w-4xl mx-auto px-4 py-12 text-center text-gray-500">
-                <h1 class="text-2xl font-bold gradient-text mb-4">ข้อมูลคณะกรรมการ (เก่า)</h1>
-                <p>⚠️ หน้านี้ถูกเปลี่ยนเป็นหน้า **รับสมัครคณะกรรมการ** แล้ว (เมนูด้านบน)</p>
-                <p class="text-sm mt-2">หากต้องการแสดงข้อมูลคณะกรรมการชุดเก่า โปรดตรวจสอบฟังก์ชัน <code>loadCommittee()</code> และคอลเลกชัน <code>committee</code> ใน Firestore</p>
-            </div>`;
-        }
-
-        function loadLinks() {
-            // Load external links for linksPage (Placeholder)
-             const container = document.getElementById('linksContainer');
-             container.innerHTML = `<div class="text-center text-gray-500">
-                <p>⚠️ โหลดข้อมูลลิงก์ไม่สมบูรณ์</p>
-                <p class="text-sm mt-1">โปรดตรวจสอบฟังก์ชัน <code>loadLinks()</code> และคอลเลกชัน <code>links</code> ใน Firestore</p>
-            </div>`;
-        }
-        
-        // Placeholder modal functions for old pages
-        function showAddActivityModal() { alert('ฟังก์ชันเพิ่มกิจกรรมยังไม่ได้ติดตั้ง'); }
-        function showAddNewsModal() { alert('ฟังก์ชันเพิ่มข่าวสารยังไม่ได้ติดตั้ง'); }
-        function showAddLinkModal() { alert('ฟังก์ชันเพิ่มลิงก์ยังไม่ได้ติดตั้ง'); }
-
 
         // =========================================================
         // INITIALIZATION
