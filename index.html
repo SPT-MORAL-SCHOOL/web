@@ -944,11 +944,31 @@
         // INITIALIZATION
         // =========================================================
 
-        document.addEventListener('DOMContentLoaded', () => {
-             // Set current year for footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', function() {
+            // ตรวจสอบว่ามี Hash ใน URL หรือไม่เมื่อหน้าโหลดครั้งแรก
+            const initialHash = window.location.hash.substring(1);
+            const defaultPage = 'home';
+            
+            let pageToLoad = defaultPage;
 
-            // Load the correct page based on URL hash
+            // หากมี Hash และ Hash นั้นไม่ใช่ค่าว่าง
+            if (initialHash) {
+                pageToLoad = initialHash;
+            } else {
+                // หากไม่มี Hash ให้ใส่ Hash ของหน้าเริ่มต้นใน URL โดยไม่บันทึกประวัติการเข้าชม
+                history.replaceState(null, null, '#' + defaultPage);
+            }
+
+            showPage(pageToLoad);
+            
+            // Set today's date as default for date inputs
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('activityDate').value = today;
+            document.getElementById('newsDate').value = today;
+        });
+        
+        // (ใหม่) เพิ่ม Event Listener สำหรับปุ่ม Back/Forward ของเบราว์เซอร์
+        window.addEventListener('popstate', function(event) {
             const pageHash = window.location.hash.substring(1) || 'home';
             showPage(pageHash);
         });
