@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f0f9ff;
+            color: #334155;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Blobs */
+        .blob {
+            position: fixed;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: move 20s infinite alternate;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #bfdbfe; animation-duration: 25s; }
+        .blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background: #e9d5ff; animation-duration: 30s; }
+        .blob-3 { top: 40%; left: 40%; width: 300px; height: 300px; background: #fecaca; animation-duration: 35s; transform: translate(-50%, -50%); }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(20px, -20px) scale(1.1); }
+        }
+
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px -5px rgba(59, 130, 246, 0.15);
+            border-color: #93c5fd;
+        }
+
+        /* Active Menu State */
+        .nav-active {
+            color: #2563eb !important; /* blue-600 */
+            background-color: rgba(239, 246, 255, 0.8) !important; /* blue-50 */
+            font-weight: 600 !important;
+            box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Inputs */
+        .input-soft {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .input-soft:focus {
+            outline: none;
+            border-color: #60a5fa;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15);
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .fade-in {
+            animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Dropdown: Adjusted for better hover interaction */
+        .dropdown-wrapper {
+            position: relative;
+            height: 100%;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            padding-top: 10px; /* Increased bridge */
+            margin-top: -5px; /* Pull up closer */
+            z-index: 50;
+            animation: fadeInScale 0.2s ease-out;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+        }
+        
+        @media (max-width: 1024px) {
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+                padding-top: 0;
+                margin-top: 0;
+                animation: none;
+            }
+        }
+        
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #1d4ed8, #06b6d4);
+        }
+        
+        /* Custom Scroll */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-700 antialiased selection:bg-blue-200 selection:text-blue-900">
+<img src="Top_ribbon.png" 
+     alt="Black mourning ribbon for websites, top left corner, ริบบิ้นไว้ทุกข์สีดำ มุมบนซ้าย สำหรับแสดงความอาลัยบนเว็บไซต์" 
+     style="position:fixed; top:0; left:0; width:80px; opacity:0.9; z-index:9999; pointer-events:none;">
+    <div class="blob blob-1 rounded-full"></div>
+    <div class="blob blob-2 rounded-full"></div>
+    <div class="blob blob-3 rounded-full"></div>
+
+    <nav class="fixed w-full z-50 nav-glass transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="flex items-center gap-3 group transition-all duration-300 hover:opacity-80 active:scale-95 cursor-pointer">
+                    <div class="flex items-center space-x-2 transition-transform duration-300 group-hover:scale-105">
+                        <img src="https://img2.pic.in.th/pic/Untitled-design-2c4975a4504ceb210.png" alt="School Logo" class="h-10 w-10 md:h-12 md:w-12 rounded-full shadow-md object-cover border-2 border-white">
+                        <img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" alt="Moral Logo" class="h-10 w-10 md:h-12 md:w-12 rounded-full shadow-md object-cover border-2 border-white">
+                    </div>
+                    <div class="flex flex-col transition-colors duration-300 group-hover:text-blue-700">
+                        <span class="text-sm md:text-base font-bold text-slate-800 leading-tight group-hover:text-blue-800">โรงเรียนคุณธรรม สพฐ.</span>
+                        <span class="text-xs md:text-sm text-blue-600 font-medium group-hover:text-blue-500">โรงเรียนสตรีพัทลุง</span>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="#home" class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium">หน้าหลัก</a>
+                    
+                    <div class="relative group dropdown-wrapper">
+                        <button class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium flex items-center">
+                            เกี่ยวกับ <i class="fas fa-chevron-down ml-1.5 text-[10px] opacity-70"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="glass rounded-2xl p-2 shadow-xl border border-white/60">
+                                <a href="#about-school" class="block px-4 py-2.5 rounded-xl hover:bg-blue-50 text-sm text-slate-600 hover:text-blue-600 transition mb-1 whitespace-nowrap">
+                                    <i class="fas fa-school mr-2 opacity-50"></i>โรงเรียนสตรีพัทลุง
+                                </a>
+                                <a href="#about-moral" class="block px-4 py-2.5 rounded-xl hover:bg-blue-50 text-sm text-slate-600 hover:text-blue-600 transition whitespace-nowrap">
+                                    <i class="fas fa-star mr-2 opacity-50"></i>โรงเรียนคุณธรรม สพฐ.
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#activities" class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium">กิจกรรม</a>
+                    <a href="#pr" class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium">ประชาสัมพันธ์</a>
+                    
+                    <div class="relative group dropdown-wrapper">
+                        <button class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium flex items-center">
+                            รับสมัคร <i class="fas fa-chevron-down ml-1.5 text-[10px] opacity-70"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="glass rounded-2xl p-2 shadow-xl border border-white/60">
+                                <a href="#admission-leader" class="block px-4 py-2.5 rounded-xl hover:bg-blue-50 text-sm text-slate-600 hover:text-blue-600 transition mb-1 whitespace-nowrap">
+                                    <i class="fas fa-user-tag mr-2 opacity-50"></i>นักเรียนแกนนำ
+                                </a>
+                                <a href="#admission-smlc" class="block px-4 py-2.5 rounded-xl hover:bg-blue-50 text-sm text-slate-600 hover:text-blue-600 transition mb-1 whitespace-nowrap">
+                                    <i class="fas fa-users mr-2 opacity-50"></i>คณะกรรมการ SMLC
+                                </a>
+                                <a href="#admission-project" class="block px-4 py-2.5 rounded-xl hover:bg-blue-50 text-sm text-slate-600 hover:text-blue-600 transition whitespace-nowrap">
+                                    <i class="fas fa-lightbulb mr-2 opacity-50"></i>๑ ห้องเรียน ๑ โครงงาน
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#committee" class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium">คณะกรรมการ</a>
+                    <a href="#documents" class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium">เอกสาร</a>
+                    <a href="#links" class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium">ลิงก์</a>
+                    <a href="#contact" class="nav-link px-4 py-2 rounded-xl hover:bg-white/50 hover:text-blue-600 transition text-sm font-medium">ติดต่อ</a>
+                    
+                    <div id="auth-container-desktop" class="ml-2 pl-2 border-l border-slate-300/50"></div>
+                </div>
+
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-blue-900 focus:outline-none bg-blue-50 rounded-lg hover:bg-blue-100 transition">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden fixed left-0 top-[70px] w-full z-40 bg-white/95 backdrop-blur-xl shadow-2xl border-t border-slate-200 max-h-[calc(100vh-70px)] overflow-y-auto pb-10 transition-all duration-300">
+            <div class="flex flex-col p-4 space-y-1">
+                <a href="#home" class="mobile-link block px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700">หน้าหลัก</a>
+                
+                <div class="mobile-group">
+                    <button class="w-full text-left px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700 flex justify-between items-center mobile-dropdown-toggle">
+                        <span>เกี่ยวกับ</span> <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden pl-2 mt-1 space-y-1 bg-slate-50/50 rounded-lg pb-1">
+                        <a href="#about-school" class="mobile-link block px-4 py-2.5 rounded-lg hover:text-blue-600 text-sm text-slate-600">โรงเรียนสตรีพัทลุง</a>
+                        <a href="#about-moral" class="mobile-link block px-4 py-2.5 rounded-lg hover:text-blue-600 text-sm text-slate-600">โรงเรียนคุณธรรม สพฐ.</a>
+                    </div>
+                </div>
+
+                <a href="#activities" class="mobile-link block px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700">กิจกรรม</a>
+                <a href="#pr" class="mobile-link block px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700">ประชาสัมพันธ์</a>
+
+                <div class="mobile-group">
+                    <button class="w-full text-left px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700 flex justify-between items-center mobile-dropdown-toggle">
+                        <span>รับสมัคร</span> <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden pl-2 mt-1 space-y-1 bg-slate-50/50 rounded-lg pb-1">
+                        <a href="#admission-leader" class="mobile-link block px-4 py-2.5 rounded-lg hover:text-blue-600 text-sm text-slate-600">นักเรียนแกนนำ</a>
+                        <a href="#admission-smlc" class="mobile-link block px-4 py-2.5 rounded-lg hover:text-blue-600 text-sm text-slate-600">คณะกรรมการ SMLC</a>
+                        <a href="#admission-project" class="mobile-link block px-4 py-2.5 rounded-lg hover:text-blue-600 text-sm text-slate-600">๑ ห้องเรียน ๑ โครงงาน</a>
+                    </div>
+                </div>
+
+                <a href="#committee" class="mobile-link block px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700">คณะกรรมการ</a>
+                <a href="#documents" class="mobile-link block px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700">เอกสาร</a>
+                <a href="#links" class="mobile-link block px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700">ลิงก์</a>
+                <a href="#contact" class="mobile-link block px-4 py-3 rounded-xl hover:bg-blue-50 text-sm font-medium text-slate-700">ติดต่อ</a>
+                 <div id="auth-container-mobile" class="mt-4 pt-4 border-t border-slate-200 px-4"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app" class="flex-grow pt-28 pb-12 px-4 container mx-auto relative z-10">
+        <div class="flex flex-col justify-center items-center h-64">
+            <div class="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-blue-600 mb-4"></div>
+            <p class="text-slate-400 animate-pulse">กำลังโหลดข้อมูล...</p>
+        </div>
+    </main>
+
+    <footer class="relative mt-20 bg-white border-t border-slate-200">
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 -translate-y-full z-0">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
+            </svg>
+        </div>
+
+        <div class="pt-16 pb-8 bg-gradient-to-b from-white to-blue-50/50">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
+                    
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="flex space-x-3 relative">
+                                <div class="relative p-1 bg-white rounded-full shadow-md hover:scale-105 transition-transform">
+                                    <img src="https://img2.pic.in.th/pic/Untitled-design-2c4975a4504ceb210.png" class="h-16 w-16 rounded-full object-cover">
+                                </div>
+                                <div class="relative p-1 bg-white rounded-full shadow-md hover:scale-105 transition-transform">
+                                    <img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" class="h-16 w-16 rounded-full object-cover">
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-slate-800 tracking-tight">SPT MORAL SCHOOL</h3>
+                                <p class="text-sm text-blue-600 font-medium">โรงเรียนคุณธรรม สพฐ.<br>โรงเรียนสตรีพัทลุง</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-500 leading-relaxed text-sm max-w-md">
+                            มุ่งมั่นพัฒนาผู้เรียนให้เป็นมนุษย์ที่สมบูรณ์ ภายใต้คุณธรรมอัตลักษณ์ 
+                            <span class="font-semibold text-slate-700">"รักสามัคคี ซื่อสัตย์สุจริต รับผิดชอบ สู่จิตสาธารณะ"</span>
+                            เพื่อสร้างสังคมแห่งความสุขอย่างยั่งยืน
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="https://www.facebook.com/sptmoralschool" target="_blank" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-blue-500/30 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/spt_moral_school" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 to-purple-600 text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-pink-500/30 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@spt.moral.school" target="_blank" class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-gray-500/30 transition duration-300">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-3">
+                        <h4 class="font-bold text-slate-800 mb-6 text-lg flex items-center">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full mr-3"></span>เมนูเว็บไซต์
+                        </h4>
+                        <ul class="space-y-3 text-sm text-slate-500">
+                            <li><a href="#home" class="hover:text-blue-600 transition flex items-center group"><i class="fas fa-angle-right mr-2 text-blue-200 group-hover:text-blue-500 transition"></i>หน้าหลัก</a></li>
+                            <li><a href="#activities" class="hover:text-blue-600 transition flex items-center group"><i class="fas fa-angle-right mr-2 text-blue-200 group-hover:text-blue-500 transition"></i>กิจกรรมทั้งหมด</a></li>
+                            <li><a href="#pr" class="hover:text-blue-600 transition flex items-center group"><i class="fas fa-angle-right mr-2 text-blue-200 group-hover:text-blue-500 transition"></i>ข่าวประชาสัมพันธ์</a></li>
+                            <li><a href="#documents" class="hover:text-blue-600 transition flex items-center group"><i class="fas fa-angle-right mr-2 text-blue-200 group-hover:text-blue-500 transition"></i>เอกสารเผยแพร่</a></li>
+                            <li><a href="#contact" class="hover:text-blue-600 transition flex items-center group"><i class="fas fa-angle-right mr-2 text-blue-200 group-hover:text-blue-500 transition"></i>ติดต่อเรา</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-4">
+                        <h4 class="font-bold text-slate-800 mb-6 text-lg flex items-center">
+                            <span class="w-1 h-6 bg-blue-500 rounded-full mr-3"></span>ข้อมูลติดต่อ
+                        </h4>
+                        <ul class="space-y-4 text-sm text-slate-500">
+                            <li class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mr-3 flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <span>โรงเรียนสตรีพัทลุง<br>250 ถนนราเมศวร์ ต.คูหาสวรรค์<br>อ.เมือง จ.พัทลุง 93000</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mr-3 flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <a href="mailto:sptmorral@spt.ac.th" class="hover:text-blue-600 transition">sptmorral@spt.ac.th</a>
+                            </li>
+                        </ul>
+                        <div class="mt-8 pt-6 border-t border-slate-200/50">
+                            <a href="#login" class="inline-flex items-center px-4 py-2 bg-slate-100 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-200 hover:text-slate-700 transition">
+                                <i class="fas fa-user-shield mr-2"></i> เข้าสู่ระบบผู้ดูแล
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+                    <p class="text-center md:text-left">&copy; 2024 SPT Moral School - โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง | All Rights Reserved.</p>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="#policy" class="hover:text-blue-600 transition">นโยบายความเป็นส่วนตัว</a>
+                        <span class="hidden md:inline text-slate-300">|</span>
+                        <a href="#terms" class="hover:text-blue-600 transition">ข้อกำหนดการใช้งาน</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-4 h-full max-h-[90vh] flex flex-col pointer-events-none">
+            <div class="glass bg-white rounded-3xl shadow-2xl p-6 relative animate-in fade-in zoom-in duration-300 flex flex-col w-full max-h-full border border-white/60 pointer-events-auto">
+                <div class="flex justify-between items-center mb-4 flex-shrink-0 border-b border-slate-100 pb-4">
+                    <div>
+                        <h3 id="modal-title" class="text-xl font-bold text-slate-800">Title</h3>
+                        <p class="text-xs text-slate-500" id="modal-subtitle">ข้อมูลรายละเอียด</p>
+                    </div>
+                    <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-400 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="modal-content" class="flex-1 min-h-0 overflow-y-auto pr-2 custom-scroll space-y-4 text-slate-700"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-8 right-5 z-[110] transform transition-all duration-500 translate-y-24 opacity-0 pointer-events-none">
+        <div class="glass bg-white/90 px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-4 border border-white/50 backdrop-blur-md">
+            <div id="toast-icon" class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                <i class="fas fa-check"></i>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-slate-800" id="toast-title">แจ้งเตือน</h4>
+                <p id="toast-message" class="text-xs text-slate-500">ทำรายการสำเร็จ</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, getDoc, doc, updateDoc, deleteDoc, query, where, Timestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJOE4-41I7SmDLv7R-S8t0mOlA_HJYQLs",
+            authDomain: "moral-spt-web.firebaseapp.com",
+            projectId: "moral-spt-web",
+            storageBucket: "moral-spt-web.firebasestorage.app",
+            messagingSenderId: "864263700046",
+            appId: "1:864263700046:web:37aa9a79cabb4e60988d1f",
+            measurementId: "G-BHWTHM77G6"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const APP_ID = "spt_moral_web_v1";
+        
+        let currentUser = null;
+        window.dataCache = {};
+
+        // --- CRUD Helpers ---
+        async function fetchAll(colName) {
+            try {
+                // Public read
+                const q = collection(db, 'artifacts', APP_ID, 'public', 'data', colName);
+                const querySnapshot = await getDocs(q);
+                let items = [];
+                querySnapshot.forEach((doc) => {
+                    const data = { id: doc.id, ...doc.data() };
+                    items.push(data);
+                    window.dataCache[doc.id] = data;
+                });
+                return items;
+            } catch (e) {
+                console.error("Fetch Error:", e);
+                return [];
+            }
+        }
+
+        async function createItem(colName, data) {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) return showToast("สำหรับผู้ดูแลระบบเท่านั้น", true);
+            try {
+                const colRef = collection(db, 'artifacts', APP_ID, 'public', 'data', colName);
+                await addDoc(colRef, { ...data, createdAt: Timestamp.now() });
+                showToast("บันทึกข้อมูลสำเร็จ");
+                handleHashChange(); 
+                closeModal();
+            } catch (e) {
+                showToast("เกิดข้อผิดพลาด", true);
+            }
+        }
+
+        async function updateItemData(colName, docId, data) {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) return showToast("สำหรับผู้ดูแลระบบเท่านั้น", true);
+            try {
+                const docRef = doc(db, 'artifacts', APP_ID, 'public', 'data', colName, docId);
+                await updateDoc(docRef, data);
+                showToast("อัปเดตข้อมูลสำเร็จ");
+                handleHashChange();
+                closeModal();
+            } catch (e) {
+                showToast("แก้ไขไม่สำเร็จ", true);
+            }
+        }
+
+        async function deleteItemData(colName, docId) {
+            if (!auth.currentUser || auth.currentUser.isAnonymous) return showToast("สำหรับผู้ดูแลระบบเท่านั้น", true);
+            if (!confirm("ยืนยันการลบข้อมูลนี้อย่างถาวร?")) return;
+            try {
+                const docRef = doc(db, 'artifacts', APP_ID, 'public', 'data', colName, docId);
+                await deleteDoc(docRef);
+                showToast("ลบข้อมูลสำเร็จ");
+                handleHashChange();
+            } catch (e) {
+                showToast("ลบไม่สำเร็จ", true);
+            }
+        }
+
+        // --- View Modal Logic ---
+        window.openViewModal = (id) => {
+            const item = window.dataCache[id];
+            if (!item) return;
+
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const sub = document.getElementById('modal-subtitle');
+            const content = document.getElementById('modal-content');
+
+            modal.classList.remove('hidden');
+            title.textContent = item.title || 'รายละเอียด';
+            sub.textContent = item.date ? `วันที่: ${item.date}` : '';
+            
+            let html = `<div class="prose text-slate-600 leading-relaxed text-sm md:text-base whitespace-pre-wrap">${item.details || 'ไม่มีรายละเอียดเพิ่มเติม'}</div>`;
+            
+            const hasLink = item.link && item.link !== '#' && item.link.trim() !== '';
+            if (hasLink) {
+                html += `
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+                        <a href="${item.link}" target="_blank" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition font-medium">
+                            <i class="fas fa-external-link-alt mr-2"></i> เปิดลิงก์
+                        </a>
+                    </div>
+                `;
+            }
+
+            content.innerHTML = html;
+        };
+
+        // --- Render Functions ---
+
+        async function renderHome() {
+            const identities = [
+                { title: "รักสามัคคี", icon: "fa-hand-holding-heart", color: "bg-red-100 text-red-500", desc: "ความกลมเกลียวเป็นหนึ่งเดียว ร่วมแรงร่วมใจ" },
+                { title: "ซื่อสัตย์สุจริต", icon: "fa-shield-alt", color: "bg-green-100 text-green-500", desc: "ยึดมั่นในความถูกต้อง จริงใจ โปร่งใส" },
+                { title: "รับผิดชอบ", icon: "fa-check-double", color: "bg-blue-100 text-blue-500", desc: "รู้หน้าที่ ทำหน้าที่ของตนให้สมบูรณ์" },
+                { title: "จิตสาธารณะ", icon: "fa-dove", color: "bg-yellow-100 text-yellow-500", desc: "เสียสละเพื่อส่วนรวม มีน้ำใจแบ่งปัน" }
+            ];
+
+            let activities = await fetchAll('activities');
+            const featured = activities.filter(a => a.isFeatured === true).slice(0, 3);
+
+            let featuredHTML = featured.map(item => {
+                return `
+                <div class="glass-card p-0 flex flex-col h-full overflow-hidden group cursor-pointer" onclick="openViewModal('${item.id}')">
+                    <div class="h-2 bg-gradient-to-r from-blue-400 to-cyan-300"></div>
+                    <div class="p-6 flex flex-col h-full">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold shadow-sm"><i class="far fa-calendar-alt mr-1"></i> ${item.date || '-'}</span>
+                            <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 line-clamp-2 group-hover:text-blue-600 transition">${item.title}</h3>
+                        <p class="text-sm text-slate-500 mb-4 flex-grow line-clamp-3 leading-relaxed">${item.details}</p>
+                        <div class="mt-auto flex items-center justify-center w-full py-2.5 rounded-xl bg-slate-50 text-slate-600 text-sm font-semibold group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
+                            อ่านเพิ่มเติม <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+
+            return `
+                <div class="text-center py-12 md:py-24 relative fade-in">
+                    <div class="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm mb-6 border border-white/50 animate-bounce">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        <span class="text-xs font-bold text-slate-600 tracking-wide">ยินดีต้อนรับสู่เว็บไซต์อย่างเป็นทางการ</span>
+                    </div>
+
+                    <div class="flex justify-center items-center gap-6 mb-10">
+    <img src="https://img2.pic.in.th/pic/Untitled-design-2c4975a4504ceb210.png" class="h-32 w-32 md:h-44 md:w-44 rounded-full shadow-2xl border-4 border-white p-1 bg-white hover:scale-105 transition duration-500 hover:rotate-3">
+    
+    <img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" class="h-32 w-32 md:h-44 md:w-44 rounded-full shadow-2xl border-4 border-white p-1 bg-white hover:scale-105 transition duration-500 hover:-rotate-3">
+</div>
+
+
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-sm gradient-text">โรงเรียนคุณธรรม สพฐ.</h1>
+                    <h2 class="text-xl md:text-3xl text-slate-500 font-medium mb-10 tracking-tight">โรงเรียนสตรีพัทลุง</h2>
+                    
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#about-moral" class="px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition font-bold flex items-center">
+                            <i class="fas fa-book-open mr-2"></i> เกี่ยวกับโครงการ
+                        </a>
+                        <a href="#activities" class="px-8 py-3 rounded-full glass text-slate-700 font-bold hover:bg-white hover:text-blue-600 transition flex items-center">
+                            <i class="fas fa-calendar-check mr-2"></i> กิจกรรมทั้งหมด
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-20 fade-in" style="animation-delay: 0.1s">
+                    <div class="text-center mb-10">
+                        <h3 class="text-2xl md:text-3xl font-bold text-slate-800">คุณธรรมอัตลักษณ์</h3>
+                        <div class="w-20 h-1.5 bg-blue-500 mx-auto mt-2 rounded-full"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${identities.map((id, index) => `
+                            <div class="glass-card p-8 text-center hover:bg-white transition duration-500 group" style="animation-delay: ${index * 100}ms">
+                                <div class="w-20 h-20 ${id.color} rounded-2xl mx-auto flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 transition duration-300 rotate-3 group-hover:rotate-0">
+                                    <i class="fas ${id.icon} text-3xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-slate-800 mb-3">${id.title}</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">${id.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                                <div class="mb-12 fade-in" style="animation-delay: 0.2s">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 px-2">
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-bold text-slate-800">กิจกรรมเด่น</h3>
+                            <p class="text-slate-500 text-sm mt-1">ภาพกิจกรรมและความเคลื่อนไหวล่าสุด</p>
+                        </div>
+                        <a href="#activities" class="text-sm font-bold text-blue-600 hover:text-blue-800 transition mt-4 md:mt-0 flex items-center bg-blue-50 px-4 py-2 rounded-full">
+                            ดูทั้งหมด <i class="fas fa-chevron-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        ${featuredHTML || `
+                            <div class="col-span-3 glass-card p-12 text-center border-dashed border-2 border-slate-300">
+                                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400"><i class="fas fa-camera text-2xl"></i></div>
+                                <p class="text-slate-400 font-medium">ยังไม่มีกิจกรรมเด่นในขณะนี้</p>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderListSection({ collection, title, icon, subtitle, cardTemplate, adminMode = false }) {
+            let items = await fetchAll(collection);
+            items.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+            // Controls only for ADMINS (Not anonymous)
+            const adminControls = (item) => (currentUser && !currentUser.isAnonymous) ? `
+                <div class="absolute top-3 right-3 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 p-1 rounded-lg backdrop-blur shadow-sm z-10">
+                    <button onclick="openEditModal('${collection}', '${item.id}')" class="w-8 h-8 flex items-center justify-center rounded-md bg-yellow-50 text-yellow-600 hover:bg-yellow-100 transition"><i class="fas fa-pen text-xs"></i></button>
+                    <button onclick="deleteItemData('${collection}', '${item.id}')" class="w-8 h-8 flex items-center justify-center rounded-md bg-red-50 text-red-600 hover:bg-red-100 transition"><i class="fas fa-trash-alt text-xs"></i></button>
+                </div>
+            ` : '';
+
+            // Add button only for ADMINS
+            // FIX: Escape double quotes for HTML attribute to prevent onClick conflict
+            const safeAdminMode = JSON.stringify(adminMode).replace(/"/g, '&quot;');
+            
+            const addButton = (currentUser && !currentUser.isAnonymous) ? `
+                <button onclick="openAddModal('${collection}', ${safeAdminMode})" class="mb-8 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 transition flex items-center font-bold">
+                    <i class="fas fa-plus-circle mr-2 text-lg"></i> เพิ่มข้อมูลใหม่
+                </button>
+            ` : '';
+
+            return `
+                <div class="fade-in max-w-7xl mx-auto">
+                    <div class="text-center mb-12">
+                         <div class="w-16 h-16 bg-blue-100 rounded-2xl mx-auto flex items-center justify-center mb-4 text-blue-600 text-3xl shadow-sm rotate-3">
+                            <i class="fas ${icon || 'fa-folder'}"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">${title}</h2>
+                        ${subtitle ? `<p class="text-slate-500">${subtitle}</p>` : ''}
+                    </div>
+                    
+                    ${addButton}
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${items.length > 0 ? items.map(item => `
+                            <div class="glass-card p-6 relative group h-full flex flex-col hover:border-blue-300">
+                                ${adminControls(item)}
+                                ${cardTemplate(item)}
+                            </div>
+                        `).join('') : `
+                            <div class="col-span-full py-20 text-center glass rounded-3xl">
+                                <div class="text-slate-300 text-5xl mb-4"><i class="far fa-folder-open"></i></div>
+                                <p class="text-slate-500">ไม่พบข้อมูลในขณะนี้</p>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderActivities() {
+            return renderListSection({
+                collection: 'activities',
+                title: 'กิจกรรมทั้งหมด',
+                icon: 'fa-calendar-alt',
+                subtitle: 'รวมภาพความประทับใจและกิจกรรมต่างๆ ของโรงเรียน',
+                cardTemplate: (item) => {
+                    return `
+                    ${item.isFeatured ? '<span class="absolute top-0 left-6 px-3 py-1 bg-yellow-400 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">แนะนำ</span>' : ''}
+                    <div class="mt-2 flex flex-col h-full cursor-pointer" onclick="openViewModal('${item.id}')">
+                         <div class="flex items-center text-xs font-bold text-blue-500 mb-2">
+                            <i class="far fa-clock mr-1.5"></i> ${item.date || 'ไม่ระบุวันที่'}
+                         </div>
+                         <h3 class="text-lg font-bold text-slate-800 mb-3 leading-snug group-hover:text-blue-600 transition">${item.title}</h3>
+                         <div class="h-1 w-10 bg-slate-200 rounded-full mb-3"></div>
+                         <p class="text-sm text-slate-600 mb-4 flex-grow line-clamp-3 leading-relaxed">${item.details}</p>
+                         <div class="mt-auto block text-center w-full py-2.5 rounded-xl bg-slate-50 text-slate-600 hover:bg-blue-600 hover:text-white text-sm font-semibold transition-all">
+                            อ่านเพิ่มเติม <i class="fas fa-chevron-right ml-1 text-xs opacity-70"></i>
+                         </div>
+                    </div>
+                `}
+            });
+        }
+
+        async function renderPR() {
+            return renderListSection({
+                collection: 'pr',
+                title: 'ข่าวประชาสัมพันธ์',
+                icon: 'fa-bullhorn',
+                subtitle: 'ติดตามข่าวสารและประกาศสำคัญจากทางโรงเรียน',
+                cardTemplate: (item) => `
+                    <div class="mt-2 flex flex-col h-full cursor-pointer" onclick="openViewModal('${item.id}')">
+                         <div class="flex items-center text-xs font-bold text-blue-500 mb-2">
+                            <i class="far fa-clock mr-1.5"></i> ${item.date || 'ไม่ระบุวันที่'}
+                         </div>
+                         <h3 class="text-lg font-bold text-slate-800 mb-3 leading-snug group-hover:text-blue-600 transition">${item.title}</h3>
+                         <div class="h-1 w-10 bg-slate-200 rounded-full mb-3"></div>
+                         <p class="text-sm text-slate-600 mb-4 flex-grow line-clamp-3 leading-relaxed">${item.details}</p>
+                         <div class="mt-auto block text-center w-full py-2.5 rounded-xl bg-slate-50 text-slate-600 hover:bg-blue-600 hover:text-white text-sm font-semibold transition-all">
+                            อ่านเพิ่มเติม <i class="fas fa-chevron-right ml-1 text-xs opacity-70"></i>
+                         </div>
+                    </div>
+                `
+            });
+        }
+
+        async function renderAboutSchool() {
+            return `
+                <div class="max-w-6xl mx-auto fade-in">
+                    <div class="glass-card p-8 md:p-12 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/3 -translate-y-1/3"></div>
+                        <div class="grid md:grid-cols-2 gap-12 items-start relative z-10">
+                            <div class="space-y-6 order-2 md:order-1">
+                                <div>
+                                    <span class="text-blue-600 font-bold tracking-wider text-sm bg-blue-50 px-3 py-1 rounded-full mb-2 inline-block">ประวัติโรงเรียน</span>
+                                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 leading-tight">โรงเรียนสตรีพัทลุง</h2>
+                                </div>
+                                <div class="prose text-slate-600 text-base leading-relaxed text-justify">
+                                    <p><strong class="text-blue-700">โรงเรียนสตรีพัทลุง</strong> มีรากฐานมาจากโรงเรียนประชาบาล คือ โรงเรียนโสภณพัทลุงกุลจัดตั้งชั้นมัธยมปีละชั้น จนถึงชั้นมัธยมศึกษาปีที่ 4 โดยมี นายจรัล ดิสรา ครูใหญ่ฝ่ายประชาบาลเป็นผู้ดูแล และได้เรียนรวมกันเรื่อยมาจนกระทั่งปี พ.ศ. 2471 กระทรวงศึกษาธิการได้แต่งตั้งนางสาวปริก เด่นดาวเสือ รักษาการในตำแหน่งครูใหญ่คนแรก</p>
+                                    
+                                    <div class="bg-blue-50/80 p-5 rounded-2xl border border-blue-100 my-4">
+                                        <h4 class="font-bold text-blue-900 mb-2"><i class="fas fa-building mr-2"></i>การสร้างอาคาร และย้ายสถานที่ตั้ง</h4>
+                                        <p class="text-sm">เมื่อ พ.ศ. 2482 กระทรวงศึกษาธิการได้ให้งบประมาณก่อสร้างอาคารโรงเรียนสตรีพัทลุงหลังแรก สมัยขุนวิจารณ์จรรยา เป็นศึกษาธิการจังหวัดพัทลุง งบประมาณก่อสร้าง 6,000 บาท ลักษณะอาคารเป็นอาคารไม้สองชั้นไม้ทาสีจำนวน 12 ห้องเรียน นักเรียนในระดับมัธยมจึงได้ย้ายมาอยู่ ณ สถานที่แห่งใหม่ คือสถานที่ในปัจจุบันเมื่อวันที่ 17 พฤษภาคม 2482 มีนักเรียนหญิงทั้งหมด 70 คน เปิดสอนตั้งแต่ชั้นมัธยมศึกษาปีที่ 1 ถึงชั้นมัธยมศึกษาปีที่ 6 จำนวน 6 ห้องเรียน (ในปัจจุบันอาคาร 1 หมดสภาพการใช้งานและได้รื้อถอน แล้วเมื่อ เดือนธันวาคม พ.ศ. 2529)</p>
+                                    </div>
+
+                                    <p>โรงเรียนสตรีพัทลุงได้เจริญขึ้นเป็นลำดับจนถึง พ.ศ. 2502 โรงเรียนได้รับงบประมาณก่อสร้างอาคารเรียนจำนวน 120,000 บาท ก่อสร้างอาคารเรียนหลังที่ 2 และต่อเติมอีก 4 ห้องเรียน ทาสีเสร็จเรียบร้อยเมื่อ พ.ศ. 2506 จำนวน 1 หลัง หลังจากนั้นโรงเรียนได้รับงบประมาณก่อสร้างอาคาร และอาคารประกอบการเพิ่มเติมอัตรากำลังครูและปริมาณนักเรียน</p>
+                                    
+                                    <p>นับตั้งแต่โรงเรียนสตรีพัทลุงได้ก่อตั้งขึ้นเมื่อ พ.ศ. 2477 เป็นต้นมา โรงเรียนได้เจริญเติบโตมาเป็นลำดับ ซึ่งในระยะแรกทางโรงเรียนรับเฉพาะนักเรียนหญิง ต่อมารับนักเรียนชายในระดับชั้นมัธยมศึกษาตอนปลาย ปีการศึกษา 2505 และเริ่มรับนักเรียนชายในระดับชั้นมัธยมศึกษาปีที่ 1 ปีการศึกษา 2528 จนถึงปัจจุบัน</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center order-1 md:order-2 md:sticky md:top-24">
+                                <div class="relative w-full max-w-sm">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-[2rem] rotate-6 opacity-20 blur-lg transform translate-y-2"></div>
+                                    <div class="bg-white p-3 rounded-[2rem] shadow-xl relative z-10">
+                                        <img src="https://img2.pic.in.th/pic/Untitled-design-2c4975a4504ceb210.png" class="w-full h-auto rounded-[1.5rem] object-contain">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderAboutMoral() {
+            return `
+                <div class="max-w-5xl mx-auto fade-in">
+                    <div class="glass-card p-8 md:p-16 relative overflow-hidden">
+                        <div class="absolute bottom-0 right-0 w-64 h-64 bg-yellow-400 rounded-full blur-3xl opacity-10 translate-x-1/3 translate-y-1/3"></div>
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div class="flex justify-center">
+                                <div class="relative group">
+                                    <div class="absolute inset-0 bg-yellow-400 rounded-full blur-md opacity-40 group-hover:opacity-60 transition"></div>
+                                    <img src="https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg" class="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-2xl border-8 border-white relative z-10 object-cover">
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <span class="text-yellow-600 font-bold tracking-wider text-sm bg-yellow-50 px-3 py-1 rounded-full">โครงการ</span>
+                                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">โรงเรียนคุณธรรม สพฐ.</h2>
+                                <p class="text-slate-600 text-lg">ขับเคลื่อนกระบวนการสร้างคนดีให้แก่บ้านเมือง ด้วยโครงงานคุณธรรม</p>
+                                <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-100">
+                                    <h4 class="font-bold text-yellow-800 mb-2 flex items-center"><i class="fas fa-quote-left mr-2"></i> คุณธรรมอัตลักษณ์</h4>
+                                    <p class="font-semibold text-slate-700 italic text-lg text-center">"รักสามัคคี ซื่อสัตย์สุจริต รับผิดชอบ สู่จิตสาธารณะ"</p>
+                                    <h4 class="font-bold text-yellow-800 mb-2 flex items-center justify-end"><i class="fas fa-quote-right ml-2"></i></h4>
+                                </div>
+                                <p class="text-slate-500">เน้นการมีส่วนร่วมของนักเรียน ครู และบุคลากรทุกฝ่าย เพื่อสร้างสังคมแห่งความสุขและความดีงามอย่างยั่งยืน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderCommittee() {
+    let people = await fetchAll('committee');
+    const depts = ["ฝ่ายบริหาร", "ฝ่ายเผยแพร่และประชาสัมพันธ์", "ฝ่ายแผนงานและโครงการ", "ฝ่ายขับเคลื่อนโครงงาน", "ฝ่ายครูที่ปรึกษา"];
+    
+    // Custom Sorting Logic
+    const roleOrder = ['ประธาน', 'รองประธาน', 'กรรมการ', 'กรรมการและผู้ช่วยเลขานุการ', 'กรรมการและเลขานุการ', 'ที่ปรึกษา'];
+    
+    // Add button only for ADMINS
+    const addButton = (currentUser && !currentUser.isAnonymous) ? `
+        <button onclick="openAddModal('committee', {committeeMode: true})" class="mb-8 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 transition font-bold">
+            <i class="fas fa-user-plus mr-2"></i> เพิ่มคณะกรรมการ
+        </button>
+    ` : '';
+
+    let content = '';
+    depts.forEach(dept => {
+        const deptMembers = people.filter(p => p.department === dept);
+        
+        // Sort Logic
+        deptMembers.sort((a, b) => {
+            let indexA = roleOrder.indexOf(a.role);
+            let indexB = roleOrder.indexOf(b.role);
+            if(indexA === -1) indexA = 99;
+            if(indexB === -1) indexB = 99;
+            return indexA - indexB;
+        });
+
+        if(deptMembers.length > 0) {
+            content += `
+                <div class="mb-12">
+                    <div class="flex items-center mb-6">
+                        <div class="w-2 h-8 bg-blue-500 rounded-r-lg mr-4"></div>
+                        <h3 class="text-2xl font-bold text-slate-800">${dept}</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        ${deptMembers.map(m => {
+                            // --- ส่วนที่แก้ไข (Image Logic) ---
+                            // ตรวจสอบว่ามีรูปหรือไม่ ถ้าไม่มีให้ใช้รูป Default ที่กำหนด
+                            const imageUrl = (m.image && m.image.trim() !== '') 
+                                ? m.image 
+                                : 'https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg';
+
+                            // แสดงผลเป็น img tag เสมอ เพราะเรามีรูป Default แล้ว
+                            const imgDisplay = `<img src="${imageUrl}" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-white shadow-md">`;
+                            // --------------------------------
+
+                            return `
+                            <div class="glass-card p-4 text-center relative group hover:bg-white pt-8">
+                                    ${(currentUser && !currentUser.isAnonymous) ? `
+                                    <div class="absolute top-2 right-2 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-white/80 rounded-full p-1 shadow-sm">
+                                        <button onclick="openEditModal('committee', '${m.id}')" class="w-6 h-6 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 hover:bg-yellow-200"><i class="fas fa-pen text-[10px]"></i></button>
+                                        <button onclick="deleteItemData('committee', '${m.id}')" class="w-6 h-6 flex items-center justify-center rounded-full bg-red-100 text-red-500 hover:bg-red-200"><i class="fas fa-times text-[10px]"></i></button>
+                                    </div>
+                                    ` : ''}
+                                ${imgDisplay}
+                                <h4 class="font-bold text-slate-800 text-sm mb-1">${m.name}</h4>
+                                <span class="inline-block px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] rounded-full font-medium">${m.role}</span>
+                            </div>
+                        `}).join('')}
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    return `
+        <div class="max-w-7xl mx-auto fade-in">
+            <div class="text-center mb-10">
+                <span class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl inline-flex items-center justify-center text-2xl mb-4"><i class="fas fa-users-cog"></i></span>
+                <h2 class="text-4xl font-bold text-slate-800">คณะกรรมการ</h2>
+            </div>
+            ${addButton}
+            ${content || '<div class="text-center py-20 text-slate-400 glass rounded-3xl">ยังไม่มีข้อมูลคณะกรรมการ</div>'}
+        </div>
+    `;
+}
+
+
+        async function renderDocuments() {
+            return renderListSection({
+                collection: 'documents',
+                title: 'เอกสารเผยแพร่',
+                icon: 'fa-file-alt',
+                subtitle: 'ดาวน์โหลดเอกสาร คู่มือ และแบบฟอร์มต่างๆ',
+                cardTemplate: (item) => {
+                    return `
+                    <div class="flex items-start space-x-4 p-2 cursor-pointer" onclick="openViewModal('${item.id}')">
+                        <div class="flex-shrink-0 w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 shadow-sm border border-red-100">
+                            <i class="fas fa-file-pdf text-2xl"></i>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h3 class="font-bold text-slate-800 text-sm mb-1 truncate">${item.title}</h3>
+                            <p class="text-xs text-slate-500 mb-3 line-clamp-2">${item.details}</p>
+                            <span class="text-xs inline-flex items-center px-3 py-1.5 bg-slate-100 rounded-lg text-slate-600 hover:bg-slate-200 hover:text-slate-800 font-medium transition">
+                                <i class="fas fa-search-plus mr-1.5"></i> ดูรายละเอียด
+                            </span>
+                        </div>
+                    </div>
+                `}
+            });
+        }
+        
+        async function renderLinks() {
+             return renderListSection({
+                collection: 'links',
+                title: 'ลิงก์ที่เกี่ยวข้อง',
+                icon: 'fa-link',
+                cardTemplate: (item) => `
+                    <a href="${item.link}" target="_blank" class="flex items-center p-4 bg-white/50 hover:bg-white rounded-2xl border border-blue-100 hover:border-blue-300 shadow-sm hover:shadow-md transition-all group h-full">
+                         <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                         <div class="ml-4 flex-grow overflow-hidden">
+                            <h3 class="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">${item.title}</h3>
+                            <p class="text-xs text-slate-500 truncate flex items-center mt-1">
+                                ${item.link}
+                            </p>
+                        </div>
+                        <div class="ml-2 text-slate-300 group-hover:text-blue-500 transition-colors">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+                `
+            });
+        }
+
+        async function renderContact() {
+            return `
+                <div class="max-w-5xl mx-auto fade-in">
+                    <div class="text-center mb-10">
+                        <span class="inline-block p-3 rounded-full bg-indigo-100 text-indigo-600 mb-4 shadow-sm"><i class="fas fa-headset text-2xl"></i></span>
+                        <h2 class="text-4xl font-bold text-slate-800 mb-2">ติดต่อเรา</h2>
+                        <p class="text-slate-500">ช่องทางการติดต่อและสอบถามข้อมูล</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        <div class="glass-card p-8 text-center hover:bg-white transition duration-300 flex flex-col justify-center items-center h-full">
+                            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-4 text-2xl shadow-inner">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-2">ที่อยู่</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                โรงเรียนสตรีพัทลุง<br>
+                                250 ถนนราเมศวร์ ตำบลคูหาสวรรค์<br>
+                                อำเภอเมือง จังหวัดพัทลุง 93000
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-8 text-center hover:bg-white transition duration-300 flex flex-col justify-center items-center h-full">
+                            <div class="w-16 h-16 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center mb-4 text-2xl shadow-inner">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-2">อีเมล</h3>
+                            <a href="mailto:sptmorral@spt.ac.th" class="text-slate-600 text-sm hover:text-pink-600 transition font-medium">
+                                sptmorral@spt.ac.th
+                            </a>
+                        </div>
+
+                        <div class="glass-card p-6 text-center hover:bg-white transition duration-300 flex flex-col items-center h-full">
+                            <h3 class="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">
+                                <i class="fas fa-share-alt text-indigo-500"></i> โซเชียลมีเดีย
+                            </h3>
+                            <div class="w-full space-y-3">
+                                <a href="https://www.facebook.com/sptmoralschool" target="_blank" class="flex items-center justify-center w-full py-2.5 rounded-xl bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white transition font-medium text-sm group shadow-sm hover:shadow">
+                                    <i class="fab fa-facebook-f text-lg mr-2 group-hover:scale-110 transition-transform"></i> Facebook
+                                </a>
+                                <a href="https://www.instagram.com/spt_moral_school" target="_blank" class="flex items-center justify-center w-full py-2.5 rounded-xl bg-[#E4405F]/10 text-[#E4405F] hover:bg-gradient-to-r hover:from-[#833AB4] hover:via-[#FD1D1D] hover:to-[#FCAF45] hover:text-white transition font-medium text-sm group shadow-sm hover:shadow">
+                                    <i class="fab fa-instagram text-lg mr-2 group-hover:scale-110 transition-transform"></i> Instagram
+                                </a>
+                                <a href="https://www.tiktok.com/@spt.moral.school" target="_blank" class="flex items-center justify-center w-full py-2.5 rounded-xl bg-black/5 text-black hover:bg-black hover:text-white transition font-medium text-sm group shadow-sm hover:shadow">
+                                    <i class="fab fa-tiktok text-lg mr-2 group-hover:scale-110 transition-transform"></i> TikTok
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderAdmissionLeader() {
+            const html = await renderListSection({ 
+                collection: 'admission_leader', 
+                title: 'รับสมัครนักเรียนแกนนำ', 
+                icon: 'fa-user-graduate',
+                cardTemplate: (item) => `
+                    <div class="mt-2 flex flex-col h-full cursor-pointer" onclick="openViewModal('${item.id}')">
+                         <div class="flex items-center text-xs font-bold text-blue-500 mb-2">
+                            <i class="far fa-clock mr-1.5"></i> ${item.date || 'ไม่ระบุวันที่'}
+                         </div>
+                         <h3 class="text-lg font-bold text-slate-800 mb-3 leading-snug group-hover:text-blue-600 transition">${item.title}</h3>
+                         <div class="h-1 w-10 bg-slate-200 rounded-full mb-3"></div>
+                         <p class="text-sm text-slate-600 mb-4 flex-grow line-clamp-3 leading-relaxed">${item.details}</p>
+                         <div class="mt-auto block text-center w-full py-2.5 rounded-xl bg-slate-50 text-slate-600 hover:bg-blue-600 hover:text-white text-sm font-semibold transition-all">
+                            อ่านเพิ่มเติม <i class="fas fa-chevron-right ml-1 text-xs opacity-70"></i>
+                         </div>
+                    </div>
+                `
+            });
+            return `${html} <div class="text-center mt-10"><a href="https://spt-moral-school.github.io/registers" target="_blank" class="inline-block px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg hover:-translate-y-1 transition">สมัครนักเรียนแกนนำ</a></div>`;
+        }
+
+        async function renderAdmissionSMLC() {
+             const html = await renderListSection({ 
+                 collection: 'admission_smlc', 
+                 title: 'คณะกรรมการนักเรียน SMLC', 
+                 icon: 'fa-users', 
+                 adminMode: {hasType: true},
+                 cardTemplate: (item) => `
+    <div class="mt-2 flex flex-col h-full cursor-pointer"
+         onclick="openViewModal('${item.id}')">
+
+        ${item.type
+            ? `<span class="absolute top-0 left-6 px-3 py-1 bg-yellow-400 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">
+                   ${item.type}
+               </span>`
+            : ''
+        }
+
+        <div class="flex items-center text-xs font-bold text-blue-500 mb-2">
+            <i class="far fa-clock mr-1.5"></i> ${item.date || 'ไม่ระบุวันที่'}
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-800 mb-3 leading-snug group-hover:text-blue-600 transition">
+            ${item.title}
+        </h3>
+
+        <div class="h-1 w-10 bg-slate-200 rounded-full mb-3"></div>
+
+        <p class="text-sm text-slate-600 mb-4 flex-grow line-clamp-3 leading-relaxed">
+            ${item.details}
+        </p>
+
+        <div class="mt-auto block text-center w-full py-2.5 rounded-xl bg-slate-50 text-slate-600 hover:bg-blue-600 hover:text-white text-sm font-semibold transition-all">
+            รายละเอียด <i class="fas fa-chevron-right ml-1 text-xs opacity-70"></i>
+        </div>
+    </div>
+`
+
+             });
+             return `${html} <div class="text-center mt-10"><a href="https://spt-moral-school.github.io/registers-smlc" target="_blank" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg hover:-translate-y-1 transition">สมัคร SMLC</a></div>`;
+        }
+
+        async function renderAdmissionProject() {
+            const html = await renderListSection({ 
+                collection: 'admission_project', 
+                title: '๑ ห้องเรียน ๑ โครงงานคุณธรรม', 
+                icon: 'fa-lightbulb', 
+                adminMode: {hasType: true, typeOptions: ['เกณฑ์', 'ผลคัดเลือก', 'รางวัล']},
+                cardTemplate: (item) => `
+    <div class="mt-2 flex flex-col h-full cursor-pointer"
+         onclick="openViewModal('${item.id}')">
+
+        ${item.type
+            ? `<span class="absolute top-0 left-6 px-3 py-1 bg-yellow-400 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">
+                   ${item.type}
+               </span>`
+            : ''
+        }
+
+        <div class="flex items-center text-xs font-bold text-blue-500 mb-2">
+            <i class="far fa-clock mr-1.5"></i> ${item.date || 'ไม่ระบุวันที่'}
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-800 mb-3 leading-snug group-hover:text-blue-600 transition">
+            ${item.title}
+        </h3>
+
+        <div class="h-1 w-10 bg-slate-200 rounded-full mb-3"></div>
+
+        <p class="text-sm text-slate-600 mb-4 flex-grow line-clamp-3 leading-relaxed">
+            ${item.details}
+        </p>
+
+        <div class="mt-auto block text-center w-full py-2.5 rounded-xl bg-slate-50 text-slate-600 hover:bg-blue-600 hover:text-white text-sm font-semibold transition-all">
+            อ่านเพิ่มเติม <i class="fas fa-chevron-right ml-1 text-xs opacity-70"></i>
+        </div>
+    </div>
+`
+
+            });
+            return `${html} <div class="text-center mt-10"><a href="https://spt-moral-school.github.io/link/contest" target="_blank" class="inline-block px-8 py-4 bg-green-600 text-white rounded-2xl font-bold shadow-lg hover:-translate-y-1 transition">ส่งผลงาน / สมัคร</a></div>`;
+        }
+
+        async function renderLogin() {
+            if (currentUser && !currentUser.isAnonymous) {
+                return `
+                    <div class="max-w-md mx-auto text-center fade-in pt-20">
+                        <div class="glass-card p-10">
+                            <div class="w-24 h-24 bg-green-100 text-green-500 rounded-full mx-auto flex items-center justify-center text-4xl mb-6 shadow-inner animate-pulse">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-2 text-slate-800">เข้าสู่ระบบแล้ว</h2>
+                            <p class="text-slate-500 mb-8">ยินดีต้อนรับผู้ดูแลระบบ</p>
+                            <button onclick="handleLogout()" class="px-8 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition shadow-lg font-bold w-full">ออกจากระบบ</button>
+                        </div>
+                    </div>
+                `;
+            }
+            return `
+                <div class="max-w-sm mx-auto fade-in pt-12">
+                    <div class="glass-card p-8">
+                        <div class="text-center mb-8">
+                            <h2 class="text-2xl font-bold text-slate-800">ผู้ดูแลระบบ</h2>
+                            <p class="text-xs text-slate-400 mt-1">กรุณาเข้าสู่ระบบเพื่อจัดการข้อมูล</p>
+                        </div>
+                        <form onsubmit="handleLogin(event)" class="space-y-5">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1">Email</label>
+                                <div class="relative mt-1">
+                                    <i class="fas fa-envelope absolute left-3 top-3.5 text-slate-400"></i>
+                                    <input type="email" id="login-email" class="w-full input-soft pl-10" required placeholder="admin@spt.ac.th">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1">Password</label>
+                                <div class="relative mt-1">
+                                    <i class="fas fa-lock absolute left-3 top-3.5 text-slate-400"></i>
+                                    <input type="password" id="login-password" class="w-full input-soft pl-10" required placeholder="••••••••">
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition font-bold">เข้าสู่ระบบ</button>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderPolicy() { 
+            return `
+                <div class="max-w-4xl mx-auto fade-in">
+                    <div class="glass-card p-8 md:p-12">
+                        <div class="text-center mb-10">
+                            <span class="inline-block p-3 rounded-full bg-green-100 text-green-600 mb-4"><i class="fas fa-shield-alt text-2xl"></i></span>
+                            <h2 class="text-3xl font-bold text-slate-800">นโยบายความเป็นส่วนตัว</h2>
+                            <p class="text-slate-500 mt-2">และการคุ้มครองข้อมูลส่วนบุคคล</p>
+                        </div>
+                        
+                        <div class="space-y-8 text-slate-600 leading-relaxed">
+                            <div class="bg-green-50/50 p-6 rounded-2xl border border-green-100">
+                                <p class="font-medium text-lg text-slate-800">โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง ให้ความสำคัญกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน นโยบายนี้อธิบายวิธีการที่เราจัดการกับข้อมูลส่วนบุคคลที่ท่านมอบให้เมื่อใช้งานเว็บไซต์ที่เกี่ยวข้องกับโครงการ</p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">1</span> ข้อมูลที่เราเก็บรวบรวม</h3>
+                                <p class="pl-11 mb-3">เรารวบรวมข้อมูลส่วนบุคคลที่ท่านให้ไว้โดยตรงผ่านแบบฟอร์มต่าง ๆ เช่น:</p>
+                                <ul class="list-none pl-11 space-y-2">
+                                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <span><strong class="text-slate-700">ข้อมูลการระบุตัวตน:</strong> ชื่อ-นามสกุล, เลขประจำตัวประชาชน, วันเดือนปีเกิด</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <span><strong class="text-slate-700">ข้อมูลการติดต่อ:</strong> เบอร์โทรศัพท์, ที่อยู่, อีเมล</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <span><strong class="text-slate-700">ข้อมูลการศึกษา/การสมัคร:</strong> ผลการเรียน, ประวัติการศึกษา, ข้อมูลผู้ปกครอง</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> <span><strong class="text-slate-700">ข้อมูลการใช้งานเว็บไซต์:</strong> ข้อมูล IP Address, ชนิดของเบราว์เซอร์, เวลาการเข้าชม</span></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">2</span> วัตถุประสงค์ในการเก็บรวบรวมข้อมูล</h3>
+                                <ul class="list-disc pl-14 space-y-2 marker:text-green-400">
+                                    <li>ดำเนินการและยืนยันการลงทะเบียน/การสมัครเข้าร่วมโครงการหรือการสมัครเรียน</li>
+                                    <li>ติดต่อสื่อสารเกี่ยวกับโครงการ การศึกษา หรือกิจกรรมต่าง ๆ ของโรงเรียน</li>
+                                    <li>ปรับปรุงคุณภาพและประสบการณ์การใช้งานเว็บไซต์</li>
+                                    <li>ปฏิบัติตามกฎหมายและข้อบังคับที่เกี่ยวข้อง</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">3</span> การเปิดเผยข้อมูลส่วนบุคคล</h3>
+                                <p class="pl-11 mb-2">เราจะไม่เปิดเผยข้อมูลส่วนบุคคลของท่านให้กับบุคคลภายนอก เว้นแต่ในกรณีที่:</p>
+                                <ul class="list-disc pl-14 space-y-2 marker:text-green-400">
+                                    <li>ได้รับความยินยอมจากท่าน</li>
+                                    <li>จำเป็นต้องเปิดเผยเพื่อให้บรรลุวัตถุประสงค์ของการลงทะเบียนหรือการสมัคร (เช่น การส่งข้อมูลไปยังระบบบริหารจัดการนักเรียนของโรงเรียน)</li>
+                                    <li>ถูกกำหนดหรือบังคับโดยกฎหมาย</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">4</span> ความปลอดภัยของข้อมูล</h3>
+                                <p class="pl-11">โรงเรียนใช้มาตรการรักษาความปลอดภัยที่เหมาะสมเพื่อปกป้องข้อมูลส่วนบุคคลของท่านจากการเข้าถึง การเปลี่ยนแปลง หรือการเปิดเผยโดยไม่ได้รับอนุญาต</p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">5</span> สิทธิของเจ้าของข้อมูล</h3>
+                                <p class="pl-11">ท่านมีสิทธิในการเข้าถึง ขอสำเนา แก้ไข หรือให้ลบข้อมูลส่วนบุคคลของท่านที่อยู่ภายใต้การดูแลของเรา ท่านสามารถติดต่อโรงเรียนตามรายละเอียดด้านล่างเพื่อใช้สิทธิเหล่านี้</p>
+                            </div>
+
+                            <div class="text-right text-sm text-slate-400 mt-10 pt-6 border-t border-slate-200">
+                                <i class="far fa-clock mr-1"></i> อัปเดตล่าสุด: 4 ธันวาคม 2568
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `; 
+        }
+        
+        async function renderTerms() { 
+            return `
+                <div class="max-w-4xl mx-auto fade-in">
+                    <div class="glass-card p-8 md:p-12">
+                        <div class="text-center mb-10">
+                            <span class="inline-block p-3 rounded-full bg-blue-100 text-blue-600 mb-4"><i class="fas fa-file-contract text-2xl"></i></span>
+                            <h2 class="text-3xl font-bold text-slate-800">ข้อกำหนดการใช้งาน</h2>
+                            <p class="text-slate-500 mt-2">เว็บไซต์โรงเรียนคุณธรรม สพฐ.</p>
+                        </div>
+                        
+                        <div class="space-y-8 text-slate-600 leading-relaxed">
+                            <div class="bg-blue-50/50 p-6 rounded-2xl border border-blue-100">
+                                <p class="font-medium text-lg text-slate-800">การเข้าถึงและการใช้งานเว็บไซต์และบริการต่าง ๆ ที่เกี่ยวข้องกับโครงการโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง (เช่น ระบบสมัคร/ลงทะเบียน/ศูนย์ข้อมูล) ถือว่าท่านได้ยอมรับและผูกพันตามข้อกำหนดและเงื่อนไขเหล่านี้แล้ว</p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">1</span> ขอบเขตการใช้งาน</h3>
+                                <ul class="list-disc pl-14 space-y-2 marker:text-blue-400">
+                                    <li>ข้อกำหนดนี้ครอบคลุมการใช้งานบนทุกโดเมนและหน้าย่อยที่เกี่ยวข้อง (รวมถึง <code class="bg-slate-100 px-1 py-0.5 rounded text-sm text-pink-600">/registers</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-sm text-pink-600">/registers-smlc</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-sm text-pink-600">/link</code>, <code class="bg-slate-100 px-1 py-0.5 rounded text-sm text-pink-600">/smlc</code>)</li>
+                                    <li>เว็บไซต์นี้จัดทำขึ้นเพื่อวัตถุประสงค์ในการให้ข้อมูล การสื่อสารประชาสัมพันธ์ และการให้บริการด้านการลงทะเบียน/สมัครเข้าเรียนเท่านั้น</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">2</span> ภาระผูกพันของผู้ใช้</h3>
+                                <ul class="list-disc pl-14 space-y-2 marker:text-blue-400">
+                                    <li>ผู้ใช้ตกลงที่จะให้ข้อมูลที่เป็นจริง ถูกต้อง และเป็นปัจจุบันในการลงทะเบียนหรือการสมัครใด ๆ ผ่านทางเว็บไซต์</li>
+                                    <li>ผู้ใช้ต้องไม่ดำเนินการใด ๆ ที่อาจก่อให้เกิดความเสียหายต่อเว็บไซต์ ระบบคอมพิวเตอร์ หรือชื่อเสียงของโรงเรียน</li>
+                                    <li>ห้ามมิให้ผู้ใช้เผยแพร่เนื้อหาที่เป็นการละเมิดกฎหมาย ข่มขู่ คุกคาม หรือผิดศีลธรรมอันดีงาม</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">3</span> ทรัพย์สินทางปัญญา</h3>
+                                <p class="pl-11">เนื้อหาทั้งหมดในเว็บไซต์ รวมถึงข้อความ รูปภาพ โลโก้ และการออกแบบ ถือเป็นทรัพย์สินทางปัญญาของ โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง หรือผู้ให้อนุญาต ห้ามมิให้ทำซ้ำ ดัดแปลง เผยแพร่ หรือใช้ประโยชน์จากเนื้อหาใด ๆ โดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษรจากโรงเรียน</p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">4</span> การปฏิเสธความรับผิดชอบ</h3>
+                                <p class="pl-11">เว็บไซต์และข้อมูลที่แสดงอยู่บนเว็บไซต์นี้จัดทำขึ้น "ตามสภาพที่เป็นอยู่" โดยไม่มีการรับประกันใด ๆ ทั้งสิ้น โรงเรียนจะไม่รับผิดชอบต่อความเสียหายใด ๆ ที่เกิดขึ้นจากการใช้งานเว็บไซต์นี้</p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center"><span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm mr-3">5</span> การเปลี่ยนแปลงข้อกำหนด</h3>
+                                <p class="pl-11">โรงเรียนขอสงวนสิทธิ์ในการแก้ไขหรือเปลี่ยนแปลงข้อกำหนดการใช้งานเหล่านี้ได้ตลอดเวลา การใช้งานเว็บไซต์อย่างต่อเนื่องของท่านถือเป็นการยอมรับข้อกำหนดที่แก้ไขใหม่แล้ว</p>
+                            </div>
+
+                            <div class="text-right text-sm text-slate-400 mt-10 pt-6 border-t border-slate-200">
+                                <i class="far fa-clock mr-1"></i> อัปเดตล่าสุด: 4 ธันวาคม 2568
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `; 
+        }
+
+        // --- Router & Logic ---
+        
+        const routes = {
+            '': renderHome, 'home': renderHome, 'about-school': renderAboutSchool, 'about-moral': renderAboutMoral,
+            'activities': renderActivities, 'pr': renderPR,
+            'admission-leader': renderAdmissionLeader, 'admission-smlc': renderAdmissionSMLC, 'admission-project': renderAdmissionProject,
+            'committee': renderCommittee, 'documents': renderDocuments, 'links': renderLinks, 'contact': renderContact,
+            'policy': renderPolicy, 'terms': renderTerms, 'login': renderLogin
+        };
+
+        const thaiPageNames = {
+            'home': 'หน้าหลัก',
+            'about-school': 'เกี่ยวกับโรงเรียนสตรีพัทลุง',
+            'about-moral': 'เกี่ยวกับโรงเรียนคุณธรรม สพฐ.',
+            'activities': 'กิจกรรมทั้งหมด',
+            'pr': 'ข่าวประชาสัมพันธ์',
+            'admission-leader': 'รับสมัครนักเรียนแกนนำ',
+            'admission-smlc': 'รับสมัครคณะกรรมการ SMLC',
+            'admission-project': '๑ ห้องเรียน ๑ โครงงานคุณธรรม',
+            'committee': 'คณะกรรมการ',
+            'documents': 'เอกสารเผยแพร่',
+            'links': 'ลิงก์ที่เกี่ยวข้อง',
+            'contact': 'ติดต่อเรา',
+            'login': 'เข้าสู่ระบบผู้ดูแล',
+            'policy': 'นโยบายความเป็นส่วนตัว',
+            'terms': 'ข้อกำหนดการใช้งาน'
+        };
+
+        async function handleHashChange() {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            
+            // 1. Highlight Desktop Menu
+            document.querySelectorAll('.nav-link').forEach(el => {
+                el.classList.remove('nav-active');
+                if (el.getAttribute('href') === `#${hash}`) {
+                    el.classList.add('nav-active');
+                }
+            });
+            
+            // Highlight Parent Dropdown for Desktop
+            document.querySelectorAll('.dropdown-content a').forEach(el => {
+                 el.classList.remove('text-blue-600', 'bg-blue-50'); 
+                 if (el.getAttribute('href') === `#${hash}`) {
+                     el.classList.add('text-blue-600', 'bg-blue-50');
+                     const parentBtn = el.closest('.group').querySelector('button');
+                     if(parentBtn) parentBtn.classList.add('nav-active');
+                 }
+            });
+
+            // 2. Highlight Mobile Menu
+            document.querySelectorAll('.mobile-link').forEach(el => {
+                 el.classList.remove('bg-blue-50', 'text-blue-600', 'font-bold');
+                 if(el.getAttribute('href') === `#${hash}`) {
+                     el.classList.add('bg-blue-50', 'text-blue-600', 'font-bold');
+                     const parentGroup = el.closest('.mobile-group');
+                     if(parentGroup) {
+                         const content = parentGroup.querySelector('div.hidden, div.block');
+                         const toggle = parentGroup.querySelector('.mobile-dropdown-toggle');
+                         if(content && content.classList.contains('hidden')) {
+                             content.classList.remove('hidden');
+                             if(toggle) toggle.querySelector('i').classList.add('rotate-180');
+                         }
+                     }
+                 }
+            });
+
+            // Render
+            const appDiv = document.getElementById('app');
+            appDiv.innerHTML = `<div class="flex flex-col justify-center items-center pt-20"><div class="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-blue-600 mb-4"></div></div>`;
+            
+            const baseTitle = 'โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง | SPT Moral School';
+
+            if (routes[hash]) {
+                appDiv.innerHTML = await routes[hash]();
+                
+                // --- NEW TITLE LOGIC ---
+                if (hash === 'home' || hash === '') {
+                    document.title = baseTitle;
+                } else {
+                    const pageTitleThai = thaiPageNames[hash] || 'ข้อมูล';
+                    document.title = `${pageTitleThai} - ${baseTitle}`;
+                }
+                // -------------------------
+
+                window.scrollTo(0,0);
+            } else {
+                appDiv.innerHTML = `<div class="text-center py-32 text-slate-400 font-bold text-xl glass rounded-3xl mx-auto max-w-lg">ไม่พบหน้าดังกล่าว</div>`;
+                document.title = `ไม่พบหน้า - ${baseTitle}`;
+            }
+        }
+
+        // --- Global Assignments ---
+        window.deleteItemData = deleteItemData;
+        window.closeModal = () => document.getElementById('modal').classList.add('hidden');
+        
+        window.openAddModal = (collectionName, options = {}) => {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('hidden');
+            title.textContent = `เพิ่มข้อมูล (${collectionName})`;
+
+            let fieldsHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">หัวข้อ/ชื่อ</label>
+                        <input type="text" id="inp-title" class="w-full input-soft" required placeholder="ระบุชื่อเรื่อง...">
+                    </div>
+            `;
+
+            if (options.committeeMode) {
+                 fieldsHTML = `
+                    <div class="space-y-4">
+                        <div><label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ชื่อ-สกุล</label><input type="text" id="inp-name" class="w-full input-soft" required placeholder="นาย/นางสาว..."></div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">รูปภาพ (URL)</label>
+                            <input type="url" id="inp-image" class="w-full input-soft" placeholder="https://...">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ฝ่าย</label>
+                            <select id="inp-dept" class="w-full input-soft appearance-none cursor-pointer">
+                                <option>ฝ่ายบริหาร</option>
+                                <option>ฝ่ายเผยแพร่และประชาสัมพันธ์</option>
+                                <option>ฝ่ายแผนงานและโครงการ</option>
+                                <option>ฝ่ายขับเคลื่อนโครงงาน</option>
+                                <option>ฝ่ายครูที่ปรึกษา</option>
+                            </select>
+                        </div>
+                         <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ตำแหน่ง</label>
+                            <select id="inp-role" class="w-full input-soft appearance-none cursor-pointer">
+                                <option>ประธาน</option>
+                                <option>รองประธาน</option>
+                                <option>กรรมการ</option>
+                                <option>กรรมการและผู้ช่วยเลขานุการ</option>
+                                <option>กรรมการและเลขานุการ</option>
+                                <option>ที่ปรึกษา</option>
+                            </select>
+                        </div>
+                    </div>
+                 `;
+            } else {
+               if (collectionName !== 'links') {
+                     fieldsHTML += `
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">วันที่</label>
+                                <input type="date" id="inp-date" class="w-full input-soft">
+                            </div>
+                             ${options.hasType ? `
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ประเภท</label>
+                                    <select id="inp-type" class="w-full input-soft">
+                                        ${(options.typeOptions || ['ประกาศรับสมัคร', 'ประกาศรายชื่อมีสิทธิ์สัมภาษณ์', 'ประกาศรายชื่อผู้ผ่าน']).map(t => `<option>${t}</option>`).join('')}
+                                    </select>
+                                </div>` : ''}
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">รายละเอียดโดยย่อ</label>
+                            <textarea id="inp-details" rows="3" class="w-full input-soft" placeholder="รายละเอียด..."></textarea>
+                        </div>
+                     `;
+                }
+                fieldsHTML += `<div><label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ลิงก์ (URL)</label><input type="url" id="inp-link" class="w-full input-soft" placeholder="https://..."></div>`;
+                if (collectionName === 'activities') {
+                    fieldsHTML += `<div class="flex items-center p-3 bg-blue-50 rounded-xl border border-blue-100"><input type="checkbox" id="inp-featured" class="w-5 h-5 text-blue-600 rounded border-slate-300"><label for="inp-featured" class="ml-3 text-sm font-medium text-slate-700">ตั้งเป็นกิจกรรมเด่น</label></div>`;
+                }
+            }
+
+            fieldsHTML += `
+                <div class="flex gap-3 mt-6 pt-4 border-t border-slate-100">
+                    <button onclick="closeModal()" class="w-1/3 py-2.5 bg-slate-100 text-slate-600 rounded-xl hover:bg-slate-200 font-bold transition">ยกเลิก</button>
+                    <button onclick="submitAdd('${collectionName}', ${options.committeeMode}, ${options.hasType})" class="w-2/3 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-bold transition shadow-lg shadow-blue-200">บันทึกข้อมูล</button>
+                </div>
+            `;
+            content.innerHTML = fieldsHTML;
+            // Scroll to top
+            document.getElementById('modal-content').scrollTop = 0;
+        };
+        
+        window.openEditModal = async (col, id) => {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('hidden');
+            const contentDiv = document.getElementById('modal-content');
+            document.getElementById('modal-title').textContent = "กำลังโหลด...";
+            contentDiv.innerHTML = `<div class="flex justify-center p-8"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>`;
+
+            try {
+                const docRef = doc(db, 'artifacts', APP_ID, 'public', 'data', col, id);
+                const docSnap = await getDoc(docRef);
+                
+                if (!docSnap.exists()) {
+                    closeModal();
+                    return showToast("ไม่พบข้อมูล", true);
+                }
+                
+                const data = docSnap.data();
+                document.getElementById('modal-title').textContent = "แก้ไขข้อมูล";
+
+                let formHTML = '';
+                
+                if (col === 'committee') {
+                    formHTML = `
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ชื่อ-สกุล</label>
+                                <input type="text" id="edit-name" class="w-full input-soft" value="${data.name || ''}">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">รูปภาพ (URL)</label>
+                                <input type="url" id="edit-image" class="w-full input-soft" placeholder="https://..." value="${data.image || ''}">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ฝ่าย</label>
+                                <select id="edit-dept" class="w-full input-soft">
+                                    ${["ฝ่ายบริหาร", "ฝ่ายเผยแพร่และประชาสัมพันธ์", "ฝ่ายแผนงานและโครงการ", "ฝ่ายขับเคลื่อนโครงงาน", "ฝ่ายครูที่ปรึกษา"].map(d => `<option ${data.department === d ? 'selected' : ''}>${d}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ตำแหน่ง</label>
+                                <select id="edit-role" class="w-full input-soft">
+                                    ${['ประธาน', 'รองประธาน', 'กรรมการ', 'กรรมการและผู้ช่วยเลขานุการ', 'กรรมการและเลขานุการ', 'ที่ปรึกษา'].map(r => `<option ${data.role === r ? 'selected' : ''}>${r}</option>`).join('')}
+                                </select>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    formHTML = `
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">หัวข้อ/ชื่อ</label>
+                                <input type="text" id="edit-title" class="w-full input-soft" placeholder="ชื่อเรื่อง..." value="${data.title || ''}">
+                            </div>
+                            
+                            ${col !== 'links' ? `
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">วันที่</label>
+                                    <input type="date" id="edit-date" class="w-full input-soft" value="${data.date || ''}">
+                                </div>
+                                ${data.type !== undefined ? `
+                                <div>
+                                    <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ประเภท</label>
+                                    <select id="edit-type" class="w-full input-soft">
+                                        <option ${data.type === 'ประกาศรับสมัคร' ? 'selected' : ''}>ประกาศรับสมัคร</option>
+                                        <option ${data.type === 'ประกาศรายชื่อมีสิทธิ์สัมภาษณ์' ? 'selected' : ''}>ประกาศรายชื่อมีสิทธิ์สัมภาษณ์</option>
+                                        <option ${data.type === 'ประกาศรายชื่อผู้ผ่าน' ? 'selected' : ''}>ประกาศรายชื่อผู้ผ่าน</option>
+                                        <option ${data.type === 'เกณฑ์' ? 'selected' : ''}>เกณฑ์</option>
+                                        <option ${data.type === 'ผลคัดเลือก' ? 'selected' : ''}>ผลคัดเลือก</option>
+                                        <option ${data.type === 'รางวัล' ? 'selected' : ''}>รางวัล</option>
+                                    </select>
+                                </div>` : ''}
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">รายละเอียด</label>
+                                <textarea id="edit-details" rows="5" class="w-full input-soft" placeholder="รายละเอียด...">${data.details || ''}</textarea>
+                            </div>
+                            ` : ''}
+
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">ลิงก์ (URL)</label>
+                                <input type="url" id="edit-link" class="w-full input-soft" placeholder="https://..." value="${data.link || ''}">
+                            </div>
+
+                            ${col === 'activities' ? `
+                            <div class="flex items-center p-3 bg-blue-50 rounded-xl border border-blue-100">
+                                <input type="checkbox" id="edit-featured" class="w-5 h-5 text-blue-600 rounded border-slate-300" ${data.isFeatured ? 'checked' : ''}>
+                                <label for="edit-featured" class="ml-3 text-sm font-medium text-slate-700">ตั้งเป็นกิจกรรมเด่น</label>
+                            </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+
+                formHTML += `
+                    <div class="flex gap-3 mt-6 pt-4 border-t border-slate-100">
+                        <button onclick="closeModal()" class="w-1/3 py-2.5 bg-slate-100 text-slate-600 rounded-xl hover:bg-slate-200 font-bold transition">ยกเลิก</button>
+                        <button onclick="submitEdit('${col}', '${id}')" class="w-2/3 bg-yellow-500 text-white py-2.5 rounded-xl font-bold shadow-lg shadow-yellow-200 hover:bg-yellow-600 transition">อัปเดต</button>
+                    </div>
+                `;
+                
+                contentDiv.innerHTML = formHTML;
+                // Scroll to top
+                document.getElementById('modal-content').scrollTop = 0;
+
+            } catch (e) {
+                console.error(e);
+                closeModal();
+                showToast("เกิดข้อผิดพลาดในการโหลดข้อมูล", true);
+            }
+        }
+
+        window.submitAdd = (col, isCommittee, hasType) => {
+            let data = {};
+            if (isCommittee) {
+                data = {
+                    name: document.getElementById('inp-name').value,
+                    image: document.getElementById('inp-image').value, // Added image field
+                    department: document.getElementById('inp-dept').value,
+                    role: document.getElementById('inp-role').value
+                };
+            } else {
+                data = {
+                    title: document.getElementById('inp-title').value,
+                    link: document.getElementById('inp-link').value || '#',
+                };
+                if(document.getElementById('inp-date')) data.date = document.getElementById('inp-date').value;
+                if(document.getElementById('inp-details')) data.details = document.getElementById('inp-details').value;
+                if(document.getElementById('inp-featured')) data.isFeatured = document.getElementById('inp-featured').checked;
+                if(hasType) data.type = document.getElementById('inp-type').value;
+            }
+            createItem(col, data);
+        };
+        
+        window.submitEdit = (col, id) => {
+            const data = {};
+            if (col === 'committee') {
+                data.name = document.getElementById('edit-name').value;
+                data.image = document.getElementById('edit-image').value; // Added image field
+                data.department = document.getElementById('edit-dept').value;
+                data.role = document.getElementById('edit-role').value;
+            } else {
+                const t = document.getElementById('edit-title');
+                if(t) data.title = t.value;
+                
+                const d = document.getElementById('edit-details');
+                if(d) data.details = d.value;
+                
+                const dt = document.getElementById('edit-date');
+                if(dt) data.date = dt.value;
+                
+                const l = document.getElementById('edit-link');
+                if(l) data.link = l.value;
+                
+                const ty = document.getElementById('edit-type');
+                if(ty) data.type = ty.value;
+                
+                const f = document.getElementById('edit-featured');
+                if(f) data.isFeatured = f.checked;
+            }
+            updateItemData(col, id, data);
+        }
+
+        window.handleLogin = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-password').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                showToast("เข้าสู่ระบบสำเร็จ");
+                window.location.hash = "#home";
+            } catch (err) {
+                showToast("ข้อมูลไม่ถูกต้อง", true);
+            }
+        };
+
+        window.handleLogout = async () => {
+            await signOut(auth);
+            showToast("ออกจากระบบแล้ว");
+            window.location.reload(); 
+        };
+
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            document.getElementById('toast-title').textContent = isError ? 'เกิดข้อผิดพลาด' : 'สำเร็จ';
+            document.getElementById('toast-icon').className = `w-8 h-8 rounded-full ${isError ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-500'} flex items-center justify-center flex-shrink-0`;
+            document.getElementById('toast-icon').innerHTML = `<i class="fas ${isError ? 'fa-times' : 'fa-check'}"></i>`;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-24', 'opacity-0'), 3000);
+        }
+
+        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('load', handleHashChange);
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+             const m = document.getElementById('mobile-menu');
+             m.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const isHidden = content.classList.contains('hidden');
+                document.querySelectorAll('.mobile-dropdown-toggle').forEach(b => {
+                    b.nextElementSibling.classList.add('hidden');
+                    b.querySelector('i').classList.remove('rotate-180');
+                });
+                if(isHidden) {
+                    content.classList.remove('hidden');
+                    this.querySelector('i').classList.add('rotate-180');
+                }
+            });
+        });
+        
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden')));
+
+        const initAuth = async () => {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token);
+                else await signInAnonymously(auth);
+            } catch (e) {
+                console.warn("Fallback auth:", e);
+                await signInAnonymously(auth).catch(()=>{});
+            }
+        };
+        initAuth();
+
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            const desk = document.getElementById('auth-container-desktop');
+            const mob = document.getElementById('auth-container-mobile');
+            if (user && !user.isAnonymous) {
+                const btn = `<button onclick="handleLogout()" class="px-3 py-1 bg-red-100 text-red-600 rounded-lg text-xs font-bold hover:bg-red-200 transition">Logout</button>`;
+                desk.innerHTML = btn; mob.innerHTML = btn;
+            } else {
+                desk.innerHTML = `<a href="#login" class="text-xs text-slate-300 hover:text-blue-500 transition"><i class="fas fa-lock"></i></a>`;
+                mob.innerHTML = '';
+            }
+            handleHashChange();
+        });
+
+    </script>
+</body>
+</html>
