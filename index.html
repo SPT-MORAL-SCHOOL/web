@@ -775,76 +775,82 @@
         }
 
         async function renderCommittee() {
-            let people = await fetchAll('committee');
-            const depts = ["ฝ่ายบริหาร", "ฝ่ายเผยแพร่และประชาสัมพันธ์", "ฝ่ายแผนงานและโครงการ", "ฝ่ายขับเคลื่อนโครงงาน", "ฝ่ายครูที่ปรึกษา"];
-            
-            // Custom Sorting Logic
-            const roleOrder = ['ประธาน', 'รองประธาน', 'กรรมการ', 'กรรมการและผู้ช่วยเลขานุการ', 'กรรมการและเลขานุการ', 'ที่ปรึกษา'];
-            
-            // Add button only for ADMINS
-            const addButton = (currentUser && !currentUser.isAnonymous) ? `
-                <button onclick="openAddModal('committee', {committeeMode: true})" class="mb-8 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 transition font-bold">
-                    <i class="fas fa-user-plus mr-2"></i> เพิ่มคณะกรรมการ
-                </button>
-            ` : '';
+    let people = await fetchAll('committee');
+    const depts = ["ฝ่ายบริหาร", "ฝ่ายเผยแพร่และประชาสัมพันธ์", "ฝ่ายแผนงานและโครงการ", "ฝ่ายขับเคลื่อนโครงงาน", "ฝ่ายครูที่ปรึกษา"];
+    
+    // Custom Sorting Logic
+    const roleOrder = ['ประธาน', 'รองประธาน', 'กรรมการ', 'กรรมการและผู้ช่วยเลขานุการ', 'กรรมการและเลขานุการ', 'ที่ปรึกษา'];
+    
+    // Add button only for ADMINS
+    const addButton = (currentUser && !currentUser.isAnonymous) ? `
+        <button onclick="openAddModal('committee', {committeeMode: true})" class="mb-8 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 transition font-bold">
+            <i class="fas fa-user-plus mr-2"></i> เพิ่มคณะกรรมการ
+        </button>
+    ` : '';
 
-            let content = '';
-            depts.forEach(dept => {
-                const deptMembers = people.filter(p => p.department === dept);
-                
-                // Sort Logic
-                deptMembers.sort((a, b) => {
-                    let indexA = roleOrder.indexOf(a.role);
-                    let indexB = roleOrder.indexOf(b.role);
-                    if(indexA === -1) indexA = 99;
-                    if(indexB === -1) indexB = 99;
-                    return indexA - indexB;
-                });
+    let content = '';
+    depts.forEach(dept => {
+        const deptMembers = people.filter(p => p.department === dept);
+        
+        // Sort Logic
+        deptMembers.sort((a, b) => {
+            let indexA = roleOrder.indexOf(a.role);
+            let indexB = roleOrder.indexOf(b.role);
+            if(indexA === -1) indexA = 99;
+            if(indexB === -1) indexB = 99;
+            return indexA - indexB;
+        });
 
-                if(deptMembers.length > 0) {
-                    content += `
-                        <div class="mb-12">
-                            <div class="flex items-center mb-6">
-                                <div class="w-2 h-8 bg-blue-500 rounded-r-lg mr-4"></div>
-                                <h3 class="text-2xl font-bold text-slate-800">${dept}</h3>
-                            </div>
-                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                                ${deptMembers.map(m => {
-                                    // Image Display Logic
-                                    const imgDisplay = m.image && m.image.trim() !== '' 
-                                        ? `<img src="${m.image}" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-white shadow-md">`
-                                        : `<div class="w-24 h-24 mx-auto bg-gradient-to-br from-blue-100 to-blue-200 rounded-full mb-4 flex items-center justify-center text-blue-400 shadow-inner border-4 border-white"><i class="fas fa-user text-4xl"></i></div>`;
-
-                                    return `
-                                    <div class="glass-card p-4 text-center relative group hover:bg-white pt-8">
-                                         ${(currentUser && !currentUser.isAnonymous) ? `
-                                            <div class="absolute top-2 right-2 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-white/80 rounded-full p-1 shadow-sm">
-                                                <button onclick="openEditModal('committee', '${m.id}')" class="w-6 h-6 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 hover:bg-yellow-200"><i class="fas fa-pen text-[10px]"></i></button>
-                                                <button onclick="deleteItemData('committee', '${m.id}')" class="w-6 h-6 flex items-center justify-center rounded-full bg-red-100 text-red-500 hover:bg-red-200"><i class="fas fa-times text-[10px]"></i></button>
-                                            </div>
-                                         ` : ''}
-                                        ${imgDisplay}
-                                        <h4 class="font-bold text-slate-800 text-sm mb-1">${m.name}</h4>
-                                        <span class="inline-block px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] rounded-full font-medium">${m.role}</span>
-                                    </div>
-                                `}).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-            });
-
-            return `
-                <div class="max-w-7xl mx-auto fade-in">
-                    <div class="text-center mb-10">
-                        <span class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl inline-flex items-center justify-center text-2xl mb-4"><i class="fas fa-users-cog"></i></span>
-                        <h2 class="text-4xl font-bold text-slate-800">คณะกรรมการ</h2>
+        if(deptMembers.length > 0) {
+            content += `
+                <div class="mb-12">
+                    <div class="flex items-center mb-6">
+                        <div class="w-2 h-8 bg-blue-500 rounded-r-lg mr-4"></div>
+                        <h3 class="text-2xl font-bold text-slate-800">${dept}</h3>
                     </div>
-                    ${addButton}
-                    ${content || '<div class="text-center py-20 text-slate-400 glass rounded-3xl">ยังไม่มีข้อมูลคณะกรรมการ</div>'}
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        ${deptMembers.map(m => {
+                            // --- ส่วนที่แก้ไข (Image Logic) ---
+                            // ตรวจสอบว่ามีรูปหรือไม่ ถ้าไม่มีให้ใช้รูป Default ที่กำหนด
+                            const imageUrl = (m.image && m.image.trim() !== '') 
+                                ? m.image 
+                                : 'https://img5.pic.in.th/file/secure-sv1/IMG_25650953161d1c1bbdd8.jpeg';
+
+                            // แสดงผลเป็น img tag เสมอ เพราะเรามีรูป Default แล้ว
+                            const imgDisplay = `<img src="${imageUrl}" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-white shadow-md">`;
+                            // --------------------------------
+
+                            return `
+                            <div class="glass-card p-4 text-center relative group hover:bg-white pt-8">
+                                    ${(currentUser && !currentUser.isAnonymous) ? `
+                                    <div class="absolute top-2 right-2 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-white/80 rounded-full p-1 shadow-sm">
+                                        <button onclick="openEditModal('committee', '${m.id}')" class="w-6 h-6 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 hover:bg-yellow-200"><i class="fas fa-pen text-[10px]"></i></button>
+                                        <button onclick="deleteItemData('committee', '${m.id}')" class="w-6 h-6 flex items-center justify-center rounded-full bg-red-100 text-red-500 hover:bg-red-200"><i class="fas fa-times text-[10px]"></i></button>
+                                    </div>
+                                    ` : ''}
+                                ${imgDisplay}
+                                <h4 class="font-bold text-slate-800 text-sm mb-1">${m.name}</h4>
+                                <span class="inline-block px-2 py-0.5 bg-slate-100 text-slate-500 text-[10px] rounded-full font-medium">${m.role}</span>
+                            </div>
+                        `}).join('')}
+                    </div>
                 </div>
             `;
         }
+    });
+
+    return `
+        <div class="max-w-7xl mx-auto fade-in">
+            <div class="text-center mb-10">
+                <span class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl inline-flex items-center justify-center text-2xl mb-4"><i class="fas fa-users-cog"></i></span>
+                <h2 class="text-4xl font-bold text-slate-800">คณะกรรมการ</h2>
+            </div>
+            ${addButton}
+            ${content || '<div class="text-center py-20 text-slate-400 glass rounded-3xl">ยังไม่มีข้อมูลคณะกรรมการ</div>'}
+        </div>
+    `;
+}
+
 
         async function renderDocuments() {
             return renderListSection({
