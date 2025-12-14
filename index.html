@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</title>
+    <link rel="icon" type="image/png" href="favicon.PNG"> 
     
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> 
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.PNG">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.PNG">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -674,7 +680,7 @@
                 collection: 'activities',
                 title: 'กิจกรรมทั้งหมด',
                 icon: 'fa-calendar-alt',
-                subtitle: 'รวมภาพความประทับใจและกิจกรรมต่างๆ ของโรงเรียน',
+                subtitle: 'รวมภาพความประทับใจและกิจกรรมต่างๆ ของโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง',
                 cardTemplate: (item) => {
                     return `
                     ${item.isFeatured ? '<span class="absolute top-0 left-6 px-3 py-1 bg-yellow-400 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">แนะนำ</span>' : ''}
@@ -698,7 +704,7 @@
                 collection: 'pr',
                 title: 'ข่าวประชาสัมพันธ์',
                 icon: 'fa-bullhorn',
-                subtitle: 'ติดตามข่าวสารและประกาศสำคัญจากทางโรงเรียน',
+                subtitle: 'ติดตามข่าวสารและประกาศสำคัญจากทางโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง',
                 cardTemplate: (item) => `
                     <div class="mt-2 flex flex-col h-full cursor-pointer" onclick="openViewModal('${item.id}')">
                          <div class="flex items-center text-xs font-bold text-blue-500 mb-2">
@@ -851,10 +857,10 @@
         <div class="max-w-7xl mx-auto fade-in">
             <div class="text-center mb-10">
                 <span class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl inline-flex items-center justify-center text-2xl mb-4"><i class="fas fa-users-cog"></i></span>
-                <h2 class="text-4xl font-bold text-slate-800">คณะกรรมการ</h2>
+                <h2 class="text-4xl font-bold text-slate-800">คณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</h2>
             </div>
             ${addButton}
-            ${content || '<div class="text-center py-20 text-slate-400 glass rounded-3xl">ยังไม่มีข้อมูลคณะกรรมการ</div>'}
+            ${content || '<div class="text-center py-20 text-slate-400 glass rounded-3xl">ยังไม่มีข้อมูลคณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง</div>'}
         </div>
     `;
 }
@@ -986,7 +992,7 @@
         async function renderAdmissionSMLC() {
              const html = await renderListSection({ 
                  collection: 'admission_smlc', 
-                 title: 'คณะกรรมการนักเรียน SMLC', 
+                 title: 'คณะกรรมการนักเรียนขับเคลื่อนโรงเรียนคุณธรรม สพฐ. โรงเรียนสตรีพัทลุง', 
                  icon: 'fa-users', 
                  adminMode: {hasType: true},
                  cardTemplate: (item) => `
@@ -994,7 +1000,7 @@
          onclick="openViewModal('${item.id}')">
 
         ${item.type
-            ? `<span class="absolute top-0 left-6 px-3 py-1 bg-yellow-400 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">
+            ? `<span class="absolute top-0 left-6 px-3 py-1 bg-indigo-500 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">
                    ${item.type}
                </span>`
             : ''
@@ -1035,7 +1041,7 @@
          onclick="openViewModal('${item.id}')">
 
         ${item.type
-            ? `<span class="absolute top-0 left-6 px-3 py-1 bg-yellow-400 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">
+            ? `<span class="absolute top-0 left-6 px-3 py-1 bg-green-500 text-white text-[10px] font-bold rounded-b-lg shadow-sm z-10">
                    ${item.type}
                </span>`
             : ''
