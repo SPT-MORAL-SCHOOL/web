@@ -988,6 +988,53 @@
                             
                         </div>
                     </div>
+                            <div class="mt-12 glass-card p-8 md:p-12 fade-in" style="animation-delay: 0.2s">
+            <div class="text-center mb-10">
+                <span class="inline-block p-3 rounded-full bg-blue-100 text-blue-600 mb-4">
+                    <i class="fas fa-comment-dots text-2xl"></i>
+                </span>
+                <h3 class="text-2xl font-bold text-slate-800">ส่งข้อเสนอแนะ / ติดต่อสอบถาม</h3>
+                <p class="text-slate-500 text-sm mt-2">ความคิดเห็นของท่านมีความหมายต่อการพัฒนาโรงเรียนคุณธรรมของเรา</p>
+            </div>
+
+            <form onsubmit="alert('ระบบรับข้อความเรียบร้อยแล้ว (ตัวอย่าง)'); event.preventDefault();" class="max-w-2xl mx-auto space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">ชื่อ-นามสกุล (ไม่บังคับ)</label>
+                        <div class="relative">
+                            <i class="fas fa-user absolute left-3 top-3.5 text-slate-400"></i>
+                            <input type="text" class="w-full input-soft pl-10" placeholder="ระบุชื่อของคุณ">
+                        </div>
+                    </div>
+                    <div>
+                         <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">อีเมลติดต่อกลับ</label>
+                         <div class="relative">
+                            <i class="fas fa-envelope absolute left-3 top-3.5 text-slate-400"></i>
+                            <input type="email" class="w-full input-soft pl-10" placeholder="name@example.com">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">เรื่องที่ต้องการติดต่อ</label>
+                    <select class="w-full input-soft">
+                        <option>เสนอแนะทั่วไป</option>
+                        <option>สอบถามข้อมูลการรับสมัคร</option>
+                        <option>แจ้งปัญหาการใช้งานเว็บไซต์</option>
+                        <option>อื่นๆ</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">ข้อความ</label>
+                    <textarea rows="4" class="w-full input-soft p-4" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
+                </div>
+                <div class="text-center pt-4">
+                     <button type="submit" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition font-bold">
+                        <i class="fas fa-paper-plane mr-2"></i> ส่งข้อความ
+                    </button>
+                </div>
+            </form>
+        </div>
+
                 </div>
             `;
         }
